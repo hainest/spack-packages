@@ -281,6 +281,9 @@ def load():
     variants.add(
         "lexical_cast",
         when="@1.20.0:",
+        requires=[
+            {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.lexical_cast requires Boost.container"},
+        ],
         description="General literal text conversions, such as an int represented a string, or vice-versa"
     )
     variants.add(
@@ -312,6 +315,7 @@ def load():
         buildable="@1.25.0:",
         requires=[
             {"spec": "+chrono", "when": "@1.47.0:", "msg": "Boost.thread requires Boost.chrono"},
+            {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.thread requires Boost.container"},
             {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
             {"spec": "+exception", "msg": "Boost.thread requires Boost.exception"},
             {"spec": "+system", "msg": "Boost.thread requires Boost.system"},
@@ -487,6 +491,7 @@ def load():
         "geometry",
         when="@1.47.0:",
         requires=[
+            {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.geometry requires Boost.container"},
             {"spec": "+graph", "msg": "Boost.geometry requires Boost.graph"},
             {"spec": "+lexical_cast", "msg": "Boost.geometry requires Boost.lexical_cast"},
             {"spec": "+math", "msg": "Boost.geometry requires Boost.math"},
@@ -494,6 +499,12 @@ def load():
             {"spec": "+thread", "msg": "Boost.geometry requires Boost.thread"},
         ],
         description="The Boost.Geometry library provides geometric algorithms, primitives and spatial index"
+    )
+    variants.add(
+        "container",
+        when="@1.48.0:",
+        buildable="@1.56.0:",  # Extended Allocators need to be compiled
+        description="Standard library containers and extensions",
     )
 
     return variants

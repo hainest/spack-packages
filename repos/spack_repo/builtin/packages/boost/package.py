@@ -102,14 +102,10 @@ class Boost(Package):
     # dependencies and/or because there is a great deal of customization
     # possible (and it would be difficult to choose sensible defaults)
     #
-    # Boost.Container can be both header-only and compiled. '+container'
-    # indicates the compiled version which requires Extended Allocator
-    # support. The header-only library is installed when no variant is given.
     all_libs = [
         "atomic",
         "charconv",
         "cobalt",
-        "container",
         "context",
         "contract",
         "coroutine",
@@ -213,9 +209,6 @@ class Boost(Package):
     conflicts("~context", when="+fiber")  # Fiber requires Context.
 
     conflicts("+numpy", when="~python")
-
-    # Container's Extended Allocators were not added until 1.56.0
-    conflicts("+container", when="@:1.55")
 
     # Boost 1.80 does not build with the Intel oneapi compiler
     # (https://github.com/spack/spack/pull/32879#issuecomment-1265933265)
