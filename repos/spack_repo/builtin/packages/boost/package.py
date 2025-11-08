@@ -105,7 +105,6 @@ class Boost(Package):
         "atomic",
         "charconv",
         "cobalt",
-        "context",
         "contract",
         "coroutine",
         "fiber",
@@ -139,7 +138,6 @@ class Boost(Package):
         "type_erasure": {"when": "@1.60:"},
         "atomic": {"when": "@1.53:"},
         "coroutine": {"when": "@1.54:1.66"},
-        "context": {"when": "@1.51:"},
     }
 
     for lib in all_libs:
@@ -208,9 +206,7 @@ class Boost(Package):
     conflicts("context-impl=ucontext", when="@:1.65.0")
     conflicts("context-impl=winfib", when="@:1.65.0")
 
-    # Coroutine, Context, Fiber, etc., are not straightforward. The version ranges in which
-    # these libraries exist are encoded in the "when" clauses of the variants above.
-    conflicts("cxxstd=98", when="+context")  # Context requires >=C++11.
+    # Coroutine, Context, Fiber, etc., are not straightforward.
     conflicts("~context", when="+coroutine")  # Coroutine requires Context.
     conflicts("cxxstd=98", when="+fiber")  # Fiber requires >=C++11.
     conflicts("~context", when="+fiber")  # Fiber requires Context.
