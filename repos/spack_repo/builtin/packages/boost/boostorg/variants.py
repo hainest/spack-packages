@@ -156,6 +156,14 @@ def load():
         description="Build in debug mode",
     )
     variants.add(
+        "icu",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "ICU requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "msg": "ICU requires cxxstd >= 11"},
+        ],
+        description="Enable Unicode support via ICU",
+    )
+    variants.add(
         "multithreaded",
         description="Enable use of multiple threads",
     )
