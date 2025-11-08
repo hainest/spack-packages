@@ -104,7 +104,6 @@ class Boost(Package):
         "charconv",
         "cobalt",
         "contract",
-        "coroutine",
         "fiber",
         "json",
         "log",
@@ -134,7 +133,6 @@ class Boost(Package):
         "stacktrace": {"when": "@1.65:"},
         "fiber": {"when": "@1.62:"},
         "type_erasure": {"when": "@1.60:"},
-        "coroutine": {"when": "@1.54:1.66"},
     }
 
     for lib in all_libs:
@@ -204,7 +202,6 @@ class Boost(Package):
     conflicts("context-impl=winfib", when="@:1.65.0")
 
     # Coroutine, Context, Fiber, etc., are not straightforward.
-    conflicts("~context", when="+coroutine")  # Coroutine requires Context.
     conflicts("cxxstd=98", when="+fiber")  # Fiber requires >=C++11.
     conflicts("~context", when="+fiber")  # Fiber requires Context.
 
