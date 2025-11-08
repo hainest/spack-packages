@@ -113,7 +113,7 @@ def load():
     # ----------------------------------------------------------------------
     variants.add(
         "cxxstd",
-        default="11",
+        default="14",
         values=(
             # Boost supports pre-releases like 2a, but spack.CompilerAdaptor doesn't
             "98",
