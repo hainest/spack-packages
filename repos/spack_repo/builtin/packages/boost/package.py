@@ -372,7 +372,7 @@ class Boost(Package):
             )
 
         # If we are building context, tell b2 which backend to use
-        if "+context" in spec and "context-impl" in spec.variants:
+        if spec.satisfies("+context") and "context-impl" in spec.variants:
             options.extend(["context-impl=%s" % spec.variants["context-impl"].value])
 
         if spec.satisfies("+taggedlayout"):
