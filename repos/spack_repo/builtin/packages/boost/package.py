@@ -153,8 +153,6 @@ class Boost(Package):
         when="@1.65.0: +context",
     )
 
-    variant("numpy", default=False, description="Build the Boost NumPy library (requires +python)")
-
     depends_on("c", type="build")
     depends_on("cxx", type="build")
 
@@ -177,9 +175,12 @@ class Boost(Package):
         # https://github.com/boostorg/python/commit/cbd2d9f033c61d29d0a1df14951f4ec91e7d05cd
         depends_on("python@:3.9", when="@:1.75")
 
-    depends_on("py-numpy", when="+numpy", type=("build", "run"))
-    # https://github.com/boostorg/python/issues/431
-    depends_on("py-numpy@:1", when="@:1.86+numpy", type=("build", "run"))
+    with when("+numpy"):
+        type = ("build", "run")
+        depends_on("py-numpy", type=type)
+
+        # https://github.com/boostorg/python/issues/431
+        depends_on("py-numpy@:1", when="@:1.86", type=type)
 
     with when("+iostreams"):
         depends_on("bzip2")
@@ -191,8 +192,6 @@ class Boost(Package):
     conflicts("context-impl=fcontext", when="@:1.65.0")
     conflicts("context-impl=ucontext", when="@:1.65.0")
     conflicts("context-impl=winfib", when="@:1.65.0")
-
-    conflicts("+numpy", when="~python")
 
     # Boost 1.80 does not build with the Intel oneapi compiler
     # (https://github.com/spack/spack/pull/32879#issuecomment-1265933265)
