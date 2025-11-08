@@ -384,6 +384,7 @@ def load():
         "asio",
         when="@1.35.0:",
         requires=[
+            {"spec": "+context", "when":"@1.51.0:", "msg": "Boost.asio requires Boost.context"},
             {"spec": "+date_time", "msg": "Boost.asio requires Boost.date_time"},
             {"spec": "+system", "msg": "Boost.asio requires Boost.system"},
         ],
@@ -516,6 +517,16 @@ def load():
             {"spec": "+thread", "msg": "Boost.locale requires Boost.thread"},
         ],
         description="Localization and Unicode facilities",
+    )
+    variants.add(
+        "context",
+        when="@1.51.0:",
+        buildable="@1.51.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.61.0:", "msg": "Boost.context requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.61.0:", "msg": "Boost.context requires cxxstd >= 11"},
+        ],
+        description="Cooperative multitasking on a single thread",
     )
 
     return variants

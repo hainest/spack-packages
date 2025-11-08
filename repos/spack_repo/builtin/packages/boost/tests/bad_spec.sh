@@ -24,6 +24,7 @@ should_fail "+asio ~system"                                           # asio req
 should_fail "+chrono ~system"                                         # chrono requires system
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
+should_fail "~context context-impl=fcontext"                          # context-impl requires context
 should_fail "+date_time ~lexical_cast"                                # date_time requires lexical_cast
 should_fail "+filesystem ~system"                                     # filesystem requires system
 should_fail "+geometry ~graph"                                        # geometry requires graph
@@ -69,6 +70,9 @@ should_fail "@1.47.0 +thread ~chrono"                                 # thread r
 should_fail "@1.48.0 +geometry ~container"                            # geometry requires container since 1.48.0
 should_fail "@1.48.0 +lexical_cast ~container"                        # lexical_cast requires container since 1.48.0
 should_fail "@1.48.0 +thread ~container"                              # thread requires container  since 1.48.0
+should_fail "@1.51.0 +asio ~context"                                  # asio requires context since 1.51.0
+should_fail "@1.61.0 +context cxxstd=98"                              # context requires cxxstd >= 11 after 1.61.0
+should_fail "@1.61.0 +context cxxstd=03"                              # context requires cxxstd >= 11 after 1.61.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
