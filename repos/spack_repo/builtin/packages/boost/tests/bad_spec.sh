@@ -19,4 +19,10 @@ function should_fail () {
   fi
 }
 
+should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
+should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
+should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
+should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
+should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 added C++26 support
+
 exit $failed

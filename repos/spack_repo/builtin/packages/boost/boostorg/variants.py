@@ -111,6 +111,27 @@ def load():
     #
     #    These variants affect every library.
     # ----------------------------------------------------------------------
+    variants.add(
+        "cxxstd",
+        default="11",
+        values=(
+            # Boost supports pre-releases like 2a, but spack.CompilerAdaptor doesn't
+            "98",
+            "11",
+            "14",
+            sp.conditional("17", when="@1.63.0:"),
+            sp.conditional("20", when="@1.77.0:"),
+            sp.conditional("23", when="@1.79.0:"),
+            sp.conditional("26", when="@1.79.0:"),
+        ),
+        multi=False,
+        is_named=True,
+        conflicts=[
+            # Boost.core requires cxxstd >= 03 since 1.76.0
+            {"spec": "cxxstd=98", "when":"@1.76.0:", "msg": "This version of Boost requires cxxstd >= 03"},
+        ],
+        description="C++ standard",
+    )
 
     # ----------------------------------------------------------------------
     #  Library-level configurations
