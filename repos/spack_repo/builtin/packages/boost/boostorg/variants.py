@@ -536,5 +536,16 @@ def load():
         buildable="@1.53.0:",
         description="C++11-style atomic types",
     )
+    variants.add(
+        "coroutine",
+        when="@1.53.0:",
+        buildable="@1.54.0:",
+        requires=[
+            {"spec": "+context", "msg": "Boost.coroutine requires Boost.context"},
+            {"spec": "+exception", "msg": "Boost.coroutine requires Boost.exception"},
+            {"spec": "+system", "msg": "Boost.coroutine requires Boost.system"},
+        ],
+        description="DEPRECATED use coroutine2",
+    )
 
     return variants
