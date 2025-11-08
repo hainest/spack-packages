@@ -164,6 +164,13 @@ def load():
         description="Generate binaries with position-independent code",
     )
     variants.add(
+        "shared",
+        conflicts=[
+            {"spec": "~pic", "msg": "Cannot build non-PIC shared libraries"},
+        ],
+        description="Generate shared libraries (DSO, DLL, etc.)",
+    )
+    variants.add(
         "singlethreaded",
         default=False,
         description="Disable use of multiple threads",
