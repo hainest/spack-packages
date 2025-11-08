@@ -591,5 +591,14 @@ def load():
         ],
         description="Lightweight userland threads",
     )
+    variants.add(
+        "numpy",
+        when="@1.63.0:",
+        default=False,
+        requires=[
+            {"spec": "+python", "msg": "Numpy support requires Boost.python"}
+        ],
+        description="Enable numpy support in Boost.Python",
+    )
 
     return variants

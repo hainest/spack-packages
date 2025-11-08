@@ -35,9 +35,9 @@ for l in "versionedlayout" "taggedlayout"; do
 done
 
 # All python stuff
-python_libs="+python"
-test_install "${python_libs}"
-test_install "${python_libs}"
+python_libs="+python+numpy"
+test_install "${python_libs} ^py-numpy@1"
+test_install "${python_libs} ^py-numpy@2"
 
 # signals was removed in 1.68.0
 test_install "@1.67.0 +signals"

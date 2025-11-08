@@ -123,6 +123,14 @@ def load():
             when="@1.63.0:1.67",
             sha256="7f95f95be9645eb7f10a7222173c8549501aebbe1db12b955442a7554dc59f3e",
         )
+        # Support for numpy >= 2
+        sp.patch(
+            "patches/python_PR432.patch",
+            when="@:1.86.0 +numpy",
+            working_dir="libs/python",
+            level=0,
+            sha256="41d0e85c8f29d2b13e259d43f7fa9e44d3ab402a9b8c3d351334feb958c9199e",
+        )
         sp.patch(
             "patches/python_jam-1_77.patch",
             when="@1.77:",
