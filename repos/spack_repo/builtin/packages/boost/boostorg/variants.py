@@ -160,6 +160,10 @@ def load():
         description="Enable use of multiple threads",
     )
     variants.add(
+        "pic",
+        description="Generate binaries with position-independent code",
+    )
+    variants.add(
         "singlethreaded",
         default=False,
         description="Disable use of multiple threads",
