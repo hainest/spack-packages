@@ -8,7 +8,10 @@ from pathlib import Path
 
 from spack_repo.builtin.build_systems.generic import Package
 
-from spack.package import *
+from spack.package import *  # noqa: E402
+
+sys.path.append(os.path.dirname(__file__))
+import boostorg.variants as boostvariants  # noqa: E402
 
 
 class Boost(Package):
@@ -159,6 +162,8 @@ class Boost(Package):
         "wave",
     ]
 
+    boost_variants = boostvariants.load()
+
     # Add any extra requirements for specific libraries
     # signals library was removed from boost in 1.69
     # https://www.boost.org/releases/1.69.0/#:~:text=Discontinued
@@ -183,6 +188,7 @@ class Boost(Package):
         libnames = (
             query if query else [lib for lib in self.all_libs if self.spec.satisfies("+%s" % lib)]
         )
+        libnames += self.boost_variants.libraries_to_build(self.spec)
         libnames += ["monitor"]
         libraries = ["libboost_*%s*" % lib for lib in libnames]
 
