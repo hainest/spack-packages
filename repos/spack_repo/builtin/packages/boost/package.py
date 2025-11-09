@@ -365,13 +365,6 @@ class Boost(Package):
     # Patch to workaround gcc-8.3 compiler issue https://github.com/boostorg/mpl/issues/44
     patch("boost_gcc83_cpp17_fix.patch", when="@1.69:%gcc@8.3")
 
-    # Fix missing declaration of uintptr_t with glibc>=2.17 - https://bugs.gentoo.org/482372
-    patch(
-        "https://482372.bugs.gentoo.org/attachment.cgi?id=356970",
-        when="@1.53.0:1.54",
-        sha256="b6f6ce68282159d46c716a1e6c819c815914bdb096cddc516fa48134209659f2",
-    )
-
     # Fix: "Compile issue with flat_tree insert"
     # See: https://github.com/boostorg/container/pull/101
     patch(

@@ -138,3 +138,14 @@ def load():
             when="@:1.55.0",
             sha256="f994ac84634f2f833a7a4d3179c5bf9a06f14349ef67aacba39d08837ffab004",
         )
+
+    #
+    # --------------------------------------------------------------------------------------
+    #
+
+    # Fix missing declaration of uintptr_t with glibc>=2.17 - https://bugs.gentoo.org/482372
+    sp.patch(
+        "patches/glibc_gentoo_v1.53.0.patch",
+        when="@1.53.0:1.54",
+        sha256="b6f6ce68282159d46c716a1e6c819c815914bdb096cddc516fa48134209659f2",
+    )
