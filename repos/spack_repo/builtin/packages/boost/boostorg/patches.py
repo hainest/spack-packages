@@ -80,3 +80,26 @@ def load():
             level=2,
             sha256="666eec8cfb0f71a87443ab27d179a9771bda32bcb8ff5e16afa3767f7b7f1e70",
         )
+
+    #
+    # ----- Platform-specific ---------
+    #
+    with sp.when("platform=darwin"):
+        # Fix for version comparison on newer Clang on darwin
+        # See: https://github.com/boostorg/build/issues/440
+        # See: https://github.com/macports/macports-ports/pull/6726
+        sp.patch(
+            "patches/darwin_clang_version.patch",
+            level=0,
+            when="@1.56.0:1.72.0",
+            sha256="95f5420d8ed34f60e3f88b38a4a5e8a032c94dc57b85cc2ab8243dd0d754a626",
+        )
+
+        # Allow building context asm sources with GCC on Darwin
+        # See https://github.com/spack/spack/pull/24889
+        # and https://github.com/boostorg/context/issues/177
+        sp.patch(
+            "patches/context-macho-gcc.patch",
+            when="@1.65:1.76 +context %gcc",
+            sha256="6edc1de3dcb931939a875796207057c00708525d86926b588ba55f65c18dc611",
+        )

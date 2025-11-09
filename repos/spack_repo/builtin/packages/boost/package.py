@@ -370,11 +370,6 @@ class Boost(Package):
     # Patch to workaround gcc-8.3 compiler issue https://github.com/boostorg/mpl/issues/44
     patch("boost_gcc83_cpp17_fix.patch", when="@1.69:%gcc@8.3")
 
-    # Fix for version comparison on newer Clang on darwin
-    # See: https://github.com/boostorg/build/issues/440
-    # See: https://github.com/macports/macports-ports/pull/6726
-    patch("darwin_clang_version.patch", level=0, when="@1.56.0:1.72.0 platform=darwin")
-
     # Fix missing declaration of uintptr_t with glibc>=2.17 - https://bugs.gentoo.org/482372
     patch(
         "https://482372.bugs.gentoo.org/attachment.cgi?id=356970",
@@ -435,11 +430,6 @@ class Boost(Package):
 
     # Fix compiler used for building bjam during bootstrap
     patch("bootstrap-compiler.patch", when="@1.76:")
-
-    # Allow building context asm sources with GCC on Darwin
-    # See https://github.com/spack/spack/pull/24889
-    # and https://github.com/boostorg/context/issues/177
-    patch("context-macho-gcc.patch", when="@1.65:1.76 +context platform=darwin %gcc")
 
     # Fix building with Intel compilers
     patch(
