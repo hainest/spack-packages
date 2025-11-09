@@ -359,9 +359,6 @@ class Boost(Package):
     # Patch fix from https://svn.boost.org/trac/boost/ticket/11856
     patch("boost_11856.patch", when="@1.60.0%gcc@4.4.7")
 
-    # Patch fix from https://svn.boost.org/trac/boost/ticket/10125
-    patch("call_once_variadic.patch", when="@1.54.0:1.55%gcc@5.0:")
-
     # Patch to workaround gcc-8.3 compiler issue https://github.com/boostorg/mpl/issues/44
     patch("boost_gcc83_cpp17_fix.patch", when="@1.69:%gcc@8.3")
 

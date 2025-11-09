@@ -149,3 +149,9 @@ def load():
         when="@1.53.0:1.54",
         sha256="b6f6ce68282159d46c716a1e6c819c815914bdb096cddc516fa48134209659f2",
     )
+
+    sp.patch(
+        "patches/call_once_variadic.patch",
+        when="@1.54.0:1.55 %gcc@5.0:",
+        sha256="4f2b06f77ad5e485e9debb769199414b2d6ebc0784aa1a8e28c1144fa971e155",
+    )
