@@ -103,3 +103,11 @@ def load():
             when="@1.65:1.76 +context %gcc",
             sha256="6edc1de3dcb931939a875796207057c00708525d86926b588ba55f65c18dc611",
         )
+
+    with sp.when("platform=windows"):
+        # https://github.com/boostorg/filesystem/issues/284
+        sp.patch(
+            "patches/filesystem_PR284.patch",
+            when="@1.82.0",
+            sha256="738ba8e0d7b5cdcf5fae4998f9450b51577bbde1bb0d220a0721551609714ca4",
+        )
