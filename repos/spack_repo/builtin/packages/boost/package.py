@@ -11,6 +11,7 @@ from spack_repo.builtin.build_systems.generic import Package
 from spack.package import *  # noqa: E402
 
 sys.path.append(os.path.dirname(__file__))
+import boostorg.patches as boostpatches  # noqa: E402
 import boostorg.variants as boostvariants  # noqa: E402
 
 
@@ -163,6 +164,7 @@ class Boost(Package):
     ]
 
     boost_variants = boostvariants.load()
+    boostpatches.load()
 
     # Add any extra requirements for specific libraries
     # signals library was removed from boost in 1.69
