@@ -19,3 +19,19 @@ def load():
             when="@1.77.0:",
             sha256="f627cd4a5e33680ff1d08f427a526d43b80a35a2204852d82e769ffa916b4e77",
         )
+
+    with sp.when("%xl"):
+        # IBM XL C
+        sp.patch(
+            "patches/xl_1_62_0_le.patch",
+            when="@1.62.0",
+            sha256="fd64b4f1e9c136549c7b704bd0014283e1515de8b68e54f0dd0cde758866eb69",
+        )
+
+    with sp.when("%xl_r"):
+        # IBM XL C++
+        sp.patch(
+            "patches/xl_1_62_0_le.patch",
+            when="@1.62.0",
+            sha256="fd64b4f1e9c136549c7b704bd0014283e1515de8b68e54f0dd0cde758866eb69",
+        )

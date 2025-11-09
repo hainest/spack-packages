@@ -364,10 +364,6 @@ class Boost(Package):
     patch("python_jam.patch", when="@1.56:1.76 ^python@3:")
     patch("python_jam_pre156.patch", when="@:1.55.0   ^python@3:")
 
-    # Patch fix for IBM XL compiler
-    patch("xl_1_62_0_le.patch", when="@1.62.0%xl_r")
-    patch("xl_1_62_0_le.patch", when="@1.62.0%xl")
-
     # Patch fix from https://svn.boost.org/trac/boost/ticket/10125
     patch("call_once_variadic.patch", when="@1.54.0:1.55%gcc@5.0:")
 
