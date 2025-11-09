@@ -367,13 +367,6 @@ class Boost(Package):
     # Patch fix from https://svn.boost.org/trac/boost/ticket/10125
     patch("call_once_variadic.patch", when="@1.54.0:1.55%gcc@5.0:")
 
-    # Patch to override the PGI toolset when using the NVIDIA compilers
-    patch("nvhpc-1.74.patch", when="@1.74.0:1.75%nvhpc")
-    patch("nvhpc-1.76.patch", when="@1.76.0:1.76%nvhpc")
-
-    # Patch to workaround compiler bug
-    patch("nvhpc-find_address.patch", when="@1.75.0:1.76%nvhpc")
-
     # Patch to workaround gcc-8.3 compiler issue https://github.com/boostorg/mpl/issues/44
     patch("boost_gcc83_cpp17_fix.patch", when="@1.69:%gcc@8.3")
 
