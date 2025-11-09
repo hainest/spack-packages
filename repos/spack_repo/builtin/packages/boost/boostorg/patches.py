@@ -111,3 +111,30 @@ def load():
             when="@1.82.0",
             sha256="738ba8e0d7b5cdcf5fae4998f9450b51577bbde1bb0d220a0721551609714ca4",
         )
+
+    #
+    # ----- Python ---------
+    #
+    with sp.when("^python@3:"):
+        # Backport Python3 import problem
+        # See https://github.com/boostorg/python/pull/218
+        sp.patch(
+            "patches/python_PR218.patch",
+            when="@1.63.0:1.67",
+            sha256="7f95f95be9645eb7f10a7222173c8549501aebbe1db12b955442a7554dc59f3e",
+        )
+        sp.patch(
+            "patches/python_jam-1_77.patch",
+            when="@1.77:",
+            sha256="b8569d7d4c3ef0501a39857126a2b0a88519bf256c29f3252a6958916ce82255",
+        )
+        sp.patch(
+            "patches/python_jam.patch",
+            when="@1.56:1.76",
+            sha256="2ab6c72d03dec6a4ae20220a9dfd5c8c572c5294252155b85c6874d97c323199",
+        )
+        sp.patch(
+            "patches/python_jam_pre156.patch",
+            when="@:1.55.0",
+            sha256="f994ac84634f2f833a7a4d3179c5bf9a06f14349ef67aacba39d08837ffab004",
+        )

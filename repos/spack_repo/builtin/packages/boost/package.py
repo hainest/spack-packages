@@ -359,11 +359,6 @@ class Boost(Package):
     # Patch fix from https://svn.boost.org/trac/boost/ticket/11856
     patch("boost_11856.patch", when="@1.60.0%gcc@4.4.7")
 
-    # Patch fix from https://svn.boost.org/trac/boost/ticket/11120
-    patch("python_jam-1_77.patch", when="@1.77:     ^python@3:")
-    patch("python_jam.patch", when="@1.56:1.76 ^python@3:")
-    patch("python_jam_pre156.patch", when="@:1.55.0   ^python@3:")
-
     # Patch fix from https://svn.boost.org/trac/boost/ticket/10125
     patch("call_once_variadic.patch", when="@1.54.0:1.55%gcc@5.0:")
 
@@ -418,10 +413,6 @@ class Boost(Package):
     # Support bzip2 and gzip in other directory
     # See https://github.com/boostorg/build/pull/154
     patch("boost_154.patch", when="@1.56.0:1.63")
-
-    # Backport Python3 import problem
-    # See https://github.com/boostorg/python/pull/218
-    patch("boost_218.patch", when="@1.63.0:1.67")
 
     # Fix B2 bootstrap toolset during installation
     # See https://github.com/spack/spack/issues/20757
