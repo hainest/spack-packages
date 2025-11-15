@@ -380,10 +380,6 @@ class Boost(Package):
     patch("system-non-virtual-dtor-include.patch", when="@1.69.0", level=2)
     patch("system-non-virtual-dtor-test.patch", when="@1.69.0", working_dir="libs/system", level=1)
 
-    # Add option to C/C++ compile commands in clang-linux.jam
-    patch("clang-linux_add_option.patch", when="@1.56.0:1.63.0")
-    patch("clang-linux_add_option2.patch", when="@1.47.0:1.55.0")
-
     # C++20 concepts fix for Beast
     # See https://github.com/boostorg/beast/pull/1927 for details
     patch(
