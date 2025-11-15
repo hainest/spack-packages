@@ -29,6 +29,7 @@ test_patch "@1.69.0 +system"                  # system-non-virtual-dtor-{include
 test_patch "@1.75"                            # bootstrap-toolset
 test_patch "@1.76.0 +python ^python@3"        # python_jam, bootstrap-compiler
 test_patch "@1.77.0 +python ^python@3"        # python_jam-1_77, b2_PR79
+test_patch "@1.82.0"                          # phoenix_PR111
 test_patch "@1.87.0 +context"                 # context_PR280
 
 exit $failed

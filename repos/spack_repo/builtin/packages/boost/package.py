@@ -364,9 +364,6 @@ class Boost(Package):
         sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
     )
 
-    # https://github.com/boostorg/phoenix/issues/111
-    patch("boost_phoenix_1.81.0.patch", level=2, when="@1.81.0:1.82.0")
-
     # https://github.com/boostorg/context/pull/280
     patch(
         "https://github.com/boostorg/context/commit/d11cbccc87da5d6d41c04f3949e18d49c43e62fc.patch?full_index=1",

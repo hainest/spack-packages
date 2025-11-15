@@ -265,3 +265,11 @@ def load():
         working_dir="tools/build",
         sha256="272cdec9584de33d43a5ea5be50370f45e8474838215a03ac8f7b53dc27acfb5",
     )
+
+    # https://github.com/boostorg/phoenix/issues/111
+    sp.patch(
+        "patches/phoenix_PR111.patch",
+        when="@1.81.0:1.83.0",
+        level=2,
+        sha256="a7c807fcd855aa70ba839c0bdfcf5877dc9a37f8026211ccda9c676b42431b17",
+    )
