@@ -1,0 +1,23 @@
+From 55289ec27299b97d75006501f6256460d9e6f469 Mon Sep 17 00:00:00 2001
+From: Nikita Kniazev <nok.raven@gmail.com>
+Date: Sun, 29 Aug 2021 19:45:38 +0300
+Subject: [PATCH] Allow only suffixes starting with a digit
+
+An easiest way to ignore toolset platform subfeature suffixes (-linux/darwin/win).
+---
+ src/engine/build.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/engine/build.sh b/src/engine/build.sh
+index dae3e1859f..f1ad08cbc6 100755
+--- a/src/engine/build.sh
++++ b/src/engine/build.sh
+@@ -151,7 +151,7 @@ test_toolset ()
+ #
+ check_toolset ()
+ {
+-    TOOLSET=${B2_TOOLSET%%-*}
++    TOOLSET=${B2_TOOLSET%%-[0-9]*}
+     TOOLSET_SUFFIX=${B2_TOOLSET##$TOOLSET}
+ 
+     # Prefer Clang (clang) on macOS..

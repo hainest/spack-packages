@@ -364,22 +364,6 @@ class Boost(Package):
         sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
     )
 
-    # Fix B2 bootstrap toolset during installation
-    # See https://github.com/spack/spack/issues/20757
-    # and https://github.com/spack/spack/pull/21408
-    patch("bootstrap-toolset.patch", when="@1.75")
-
-    # Fix compiler used for building bjam during bootstrap
-    patch("bootstrap-compiler.patch", when="@1.76:")
-
-    # Fix building with Intel compilers
-    patch(
-        "https://github.com/bfgroup/b2/commit/23212066f0f20358db54568bb16b3fe1d76f88ce.patch?full_index=1",
-        sha256="4849671f9df4b8f3c962130d7f6d44eba3b20d113e84f9faade75e6469e90310",
-        when="@1.77.0",
-        working_dir="tools/build",
-    )
-
     # https://github.com/boostorg/phoenix/issues/111
     patch("boost_phoenix_1.81.0.patch", level=2, when="@1.81.0:1.82.0")
 

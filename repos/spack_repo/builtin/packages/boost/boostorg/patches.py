@@ -241,3 +241,27 @@ def load():
             when="+outcome",
             sha256="246508e052c44b6f4e8c2542a71c06cacaa72cd1447ab8d2a542b987bc35ace9",
         )
+
+    # Fix B2 bootstrap toolset during installation
+    # See https://github.com/spack/spack/issues/20757
+    # and https://github.com/spack/spack/pull/21408
+    sp.patch(
+        "patches/bootstrap-toolset.patch",
+        when="@1.75",
+        sha256="f2409bfa0e69e44817a5f8799e25c2e9e5ee50876a5aaacefd32fa647b80472f",
+    )
+
+    # Fix compiler used for building bjam during bootstrap
+    sp.patch(
+        "patches/bootstrap-compiler.patch",
+        when="@1.76:",
+        sha256="a440f9696d3bbb77e7eab1516c004730f622e59c71d39960b472026ef92f88e8",
+    )
+
+    # Fix building with Intel compilers
+    sp.patch(
+        "patches/b2_PR79.patch",
+        when="@1.77.0",
+        working_dir="tools/build",
+        sha256="272cdec9584de33d43a5ea5be50370f45e8474838215a03ac8f7b53dc27acfb5",
+    )
