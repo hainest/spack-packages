@@ -356,9 +356,6 @@ class Boost(Package):
             requires("+signals", when=f"@:1.68 +{lib} platform=windows")
             requires("+signals2", when=f"@1.69: +{lib} platform=windows")
 
-    # Patch to workaround gcc-8.3 compiler issue https://github.com/boostorg/mpl/issues/44
-    patch("boost_gcc83_cpp17_fix.patch", when="@1.69:%gcc@8.3")
-
     # Fix: "Compile issue with flat_tree insert"
     # See: https://github.com/boostorg/container/pull/101
     patch(

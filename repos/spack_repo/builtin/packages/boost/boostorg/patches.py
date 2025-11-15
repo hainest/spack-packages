@@ -200,3 +200,10 @@ def load():
             level=1,
             sha256="607b0772dec1287c9084ae3b36ee32bff945a2fe5e608823ed47a1ea765c84cd",
         )
+
+    # MPL compile error with gcc 8.3.1 and C++17 mode
+    sp.patch(
+        "patches/mpl_PR44.patch",
+        when="@1.69: +mpl %gcc@8.3",
+        sha256="53e492188ab40abcb01a2d8b3ab1a61e2bf575070fcd4f54e72145f0281bc2b5",
+    )
