@@ -273,3 +273,11 @@ def load():
         level=2,
         sha256="a7c807fcd855aa70ba839c0bdfcf5877dc9a37f8026211ccda9c676b42431b17",
     )
+
+    # https://github.com/boostorg/context/pull/280
+    sp.patch(
+        "patches/context_PR280.patch",
+        sha256="e2d37f9e35e8e238977de9af32604a8e1c2648d153df1d568935a20216b5c67f",
+        when="@1.87.0 +context",
+        working_dir="libs/context",
+    )
