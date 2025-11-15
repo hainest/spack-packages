@@ -176,3 +176,9 @@ def load():
         when="@1.56.0:1.63",
         sha256="fb7d84358c36309062fa4aaaa187343eb16871bd95893f0270e0941955c488ab",
     )
+
+    sp.patch(
+        "patches/container_pool_resource.patch",
+        when="@1.60.0 %gcc@4.4.7 +container",
+        sha256="cfd4e6e1e9747def96adeae0075994a03a10e1bfb471900ecb52b7839afa9ca2",
+    )
