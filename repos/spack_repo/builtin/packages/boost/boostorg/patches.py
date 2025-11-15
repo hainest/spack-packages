@@ -207,3 +207,11 @@ def load():
         when="@1.69: +mpl %gcc@8.3",
         sha256="53e492188ab40abcb01a2d8b3ab1a61e2bf575070fcd4f54e72145f0281bc2b5",
     )
+
+    # Fix issues with PTHREAD_STACK_MIN not being a DEFINED constant in newer glibc
+    # See https://github.com/spack/spack/issues/28273
+    sp.patch(
+        "patches/pthread-stack-min-fix.patch",
+        when="@1.69.0:1.72.0",
+        sha256="5da7ad24de07adc1e99b2bab8b5aeefa0059d0f0ace932788c7746f9117d9917",
+    )
