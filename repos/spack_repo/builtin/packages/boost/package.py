@@ -396,10 +396,6 @@ class Boost(Package):
         when="@1.73.0",
     )
 
-    # Support bzip2 and gzip in other directory
-    # See https://github.com/boostorg/build/pull/154
-    patch("boost_154.patch", when="@1.56.0:1.63")
-
     # Fix B2 bootstrap toolset during installation
     # See https://github.com/spack/spack/issues/20757
     # and https://github.com/spack/spack/pull/21408

@@ -168,3 +168,11 @@ def load():
         when="@1.47.0:1.55.0",
         sha256="4f0f7c0c0711e330aa077e2a1a989f68cbdcf7a3d20f85db872f3c34fce278e1",
     )
+
+    # Support bzip2 and gzip in other directory
+    # See https://github.com/boostorg/build/pull/154
+    sp.patch(
+        "patches/build_PR154.patch",
+        when="@1.56.0:1.63",
+        sha256="fb7d84358c36309062fa4aaaa187343eb16871bd95893f0270e0941955c488ab",
+    )
