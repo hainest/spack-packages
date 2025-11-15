@@ -215,3 +215,12 @@ def load():
         when="@1.69.0:1.72.0",
         sha256="5da7ad24de07adc1e99b2bab8b5aeefa0059d0f0ace932788c7746f9117d9917",
     )
+
+    # Fix: "Unable to compile code using boost/process.hpp"
+    # See: https://github.com/boostorg/process/issues/116
+    sp.patch(
+        "patches/process_PR116.patch",
+        level=2,
+        when="+process @1.72.0",
+        sha256="e13cca1cfad7dcce9ed3d4ef989c14e464c4ea00caaf335f762e3677b35cab61",
+    )

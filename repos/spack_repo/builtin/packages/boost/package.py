@@ -364,11 +364,6 @@ class Boost(Package):
         sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
     )
 
-    # Fix: "Unable to compile code using boost/process.hpp"
-    # See: https://github.com/boostorg/process/issues/116
-    # Patch: https://github.com/boostorg/process/commit/6a4d2ff72114ef47c7afaf92e1042aca3dfa41b0.patch
-    patch("1.72_boost_process.patch", level=2, when="@1.72.0")
-
     # C++20 concepts fix for Beast
     # See https://github.com/boostorg/beast/pull/1927 for details
     patch(
