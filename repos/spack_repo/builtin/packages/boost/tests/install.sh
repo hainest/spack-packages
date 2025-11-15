@@ -34,4 +34,9 @@ for l in "versionedlayout" "taggedlayout"; do
   test_install "+debug+icu+singlethreaded+$l"
 done
 
+# All python stuff
+python_libs="+python"
+test_install "${python_libs}"
+test_install "${python_libs}"
+
 exit $failed

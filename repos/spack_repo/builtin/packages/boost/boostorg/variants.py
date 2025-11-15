@@ -257,5 +257,20 @@ def load():
         ],
         description="Perl and POSIX regular expressions",
     )
+    variants.add(
+        "python",
+        default=False,
+        sticky=False,
+        when="@1.19.0:",
+        buildable="@1.19.0:",
+        conflicts=[
+            # https://github.com/boostorg/python/issues/400
+            {"spec": "@:1.80.0 ^python@3.11:", "msg": "Boost.python.enum has a known bug for boost@:1.80.0 and python@3.11:"},
+        ],
+        requires=[
+            {"spec": "+graph", "msg": "Boost.python requires Boost.graph"},
+        ],
+        description="C++ wrapper for interacting with Python",
+    )
 
     return variants
