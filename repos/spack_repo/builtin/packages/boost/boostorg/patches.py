@@ -182,3 +182,21 @@ def load():
         when="@1.60.0 %gcc@4.4.7 +container",
         sha256="cfd4e6e1e9747def96adeae0075994a03a10e1bfb471900ecb52b7839afa9ca2",
     )
+
+    with sp.when("@1.69.0"):
+        # Patch fix for warnings from commits 2d37749, af1dc84, c705bab, and
+        # 0134441 on https://github.com/boostorg/system.
+        sp.patch(
+            "patches/system-non-virtual-dtor-include.patch",
+            when="+system",
+            level=2,
+            sha256="3a83d907043708218325c35ffc318fd6d6cfd78ba89a78f2c70013c72603e5b8",
+        )
+
+        sp.patch(
+            "patches/system-non-virtual-dtor-test.patch",
+            when="+system",
+            working_dir="libs/system",
+            level=1,
+            sha256="607b0772dec1287c9084ae3b36ee32bff945a2fe5e608823ed47a1ea765c84cd",
+        )
