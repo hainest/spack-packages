@@ -142,7 +142,6 @@ class Boost(Package):
         "nowide",
         "openmethod",
         "program_options",
-        "python",
         "serialization",
         "signals",
         "signals2",
@@ -214,9 +213,11 @@ class Boost(Package):
 
     conflicts("+locale ~icu")  # Boost.Locale "strongly recommends" icu, so enforce it
 
-    depends_on("python", when="+python")
-    # https://github.com/boostorg/python/commit/cbd2d9f033c61d29d0a1df14951f4ec91e7d05cd
-    depends_on("python@:3.9", when="@:1.75 +python")
+    with when("+python"):
+        depends_on("python")
+
+        # https://github.com/boostorg/python/commit/cbd2d9f033c61d29d0a1df14951f4ec91e7d05cd
+        depends_on("python@:3.9", when="@:1.75")
 
     depends_on("mpi", when="+mpi")
     depends_on("bzip2", when="+iostreams")
@@ -273,13 +274,6 @@ class Boost(Package):
 
     # Boost did not support the oneapi compilers prior to 1.76
     conflicts("%oneapi@2023:", when="@:1.75")
-
-    # https://github.com/boostorg/python/issues/400
-    conflicts(
-        "@:1.80.0",
-        when="+python ^python@3.11:",
-        msg="Boost.python.enum has a known bug for boost@:1.80.0 and python@3.11:",
-    )
 
     # On Windows, the signals variant is required when building any of
     # the all_libs variants.
