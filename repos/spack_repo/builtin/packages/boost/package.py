@@ -364,22 +364,6 @@ class Boost(Package):
         sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
     )
 
-    # C++20 concepts fix for Beast
-    # See https://github.com/boostorg/beast/pull/1927 for details
-    patch(
-        "https://www.boost.org/patches/1_73_0/0002-beast-coroutines.patch",
-        sha256="4dd507e1f5a29e3b87b15321a4d8c74afdc8331433edabf7aeab89b3c405d556",
-        when="@1.73.0",
-    )
-
-    # Cloning a status_code with indirecting_domain leads to segmentation fault
-    # See https://github.com/ned14/outcome/issues/223 for details
-    patch(
-        "https://www.boost.org/patches/1_73_0/0001-outcome-assert.patch",
-        sha256="246508e052c44b6f4e8c2542a71c06cacaa72cd1447ab8d2a542b987bc35ace9",
-        when="@1.73.0",
-    )
-
     # Fix B2 bootstrap toolset during installation
     # See https://github.com/spack/spack/issues/20757
     # and https://github.com/spack/spack/pull/21408

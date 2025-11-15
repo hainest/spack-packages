@@ -224,3 +224,20 @@ def load():
         when="+process @1.72.0",
         sha256="e13cca1cfad7dcce9ed3d4ef989c14e464c4ea00caaf335f762e3677b35cab61",
     )
+
+    with sp.when("@1.73.0"):
+        # C++20 concepts fix for Beast
+        # See https://github.com/boostorg/beast/pull/1927 for details
+        sp.patch(
+            "patches/beast_PR1927.patch",
+            when="+beast",
+            sha256="4dd507e1f5a29e3b87b15321a4d8c74afdc8331433edabf7aeab89b3c405d556",
+        )
+
+        # Cloning a status_code with indirecting_domain leads to segmentation fault
+        # See https://github.com/ned14/outcome/issues/223 for details
+        sp.patch(
+            "patches/outcome_PR223.patch",
+            when="+outcome",
+            sha256="246508e052c44b6f4e8c2542a71c06cacaa72cd1447ab8d2a542b987bc35ace9",
+        )
