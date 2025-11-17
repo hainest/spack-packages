@@ -124,7 +124,6 @@ class Boost(Package):
         "nowide",
         "openmethod",
         "process",
-        "signals",
         "signals2",
         "stacktrace",
         "type_erasure",
@@ -146,7 +145,6 @@ class Boost(Package):
         "url": {"when": "@1.81:"},
         "json": {"when": "@1.75:"},
         "nowide": {"when": "@1.73:"},
-        "signals": {"when": "@:1.68"},
         "contract": {"when": "@1.67:"},
         "stacktrace": {"when": "@1.65:"},
         "fiber": {"when": "@1.62:"},
@@ -250,9 +248,8 @@ class Boost(Package):
     # On Windows, the signals variant is required when building any of
     # the all_libs variants.
     for lib in all_libs:
-        if lib not in ["signals", "signals2"]:
+        if lib not in ["signals2"]:
             # <= 1.68 needs signals, after that needs signals2
-            requires("+signals", when=f"@:1.68 +{lib} platform=windows")
             requires("+signals2", when=f"@1.69: +{lib} platform=windows")
 
     # Fix: "Compile issue with flat_tree insert"
@@ -554,8 +551,6 @@ class Boost(Package):
             with_libs.discard("url")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
-        if spec.satisfies("@1.69.0:"):
-            with_libs.discard("signals")
         if not spec.satisfies("@1.54.0:"):
             with_libs.discard("log")
         if not spec.satisfies("@1.53.0:"):

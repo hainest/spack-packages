@@ -39,6 +39,9 @@ python_libs="+python"
 test_install "${python_libs}"
 test_install "${python_libs}"
 
+# signals was removed in 1.68.0
+test_install "@1.67.0 +signals"
+
 # All mpi/parallel stuff
 parallel="+mpi"
 test_install ${parallel}
