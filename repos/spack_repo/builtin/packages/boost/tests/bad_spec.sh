@@ -30,6 +30,10 @@ should_fail "+coroutine ~exception"                                   # coroutin
 should_fail "+coroutine ~system"                                      # coroutine requires system
 should_fail "+date_time ~lexical_cast"                                # date_time requires lexical_cast
 should_fail "+filesystem ~system"                                     # filesystem requires system
+should_fail "+fiber cxxstd=98"                                        # fiber requires cxxstd >= 11
+should_fail "+fiber cxxstd=03"                                        # fiber requires cxxstd >= 11
+should_fail "+fiber ~context"                                         # fiber requires context
+should_fail "+fiber ~filesystem"                                      # fiber requires filesystem
 should_fail "+geometry ~graph"                                        # geometry requires graph
 should_fail "+geometry ~lexical_cast"                                 # geometry requires lexical_cast
 should_fail "+geometry ~math"                                         # geometry requires math

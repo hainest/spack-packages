@@ -100,7 +100,6 @@ class Boost(Package):
         "charconv",
         "cobalt",
         "contract",
-        "fiber",
         "json",
         "mqtt5",
         "nowide",
@@ -125,7 +124,6 @@ class Boost(Package):
         "nowide": {"when": "@1.73:"},
         "contract": {"when": "@1.67:"},
         "stacktrace": {"when": "@1.65:"},
-        "fiber": {"when": "@1.62:"},
     }
 
     for lib in all_libs:
@@ -193,10 +191,6 @@ class Boost(Package):
     conflicts("context-impl=fcontext", when="@:1.65.0")
     conflicts("context-impl=ucontext", when="@:1.65.0")
     conflicts("context-impl=winfib", when="@:1.65.0")
-
-    # Coroutine, Context, Fiber, etc., are not straightforward.
-    conflicts("cxxstd=98", when="+fiber")  # Fiber requires >=C++11.
-    conflicts("~context", when="+fiber")  # Fiber requires Context.
 
     conflicts("+numpy", when="~python")
 
