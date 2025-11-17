@@ -39,6 +39,7 @@ should_fail "+mpi ~lexical_cast"                                      # mpi requ
 should_fail "+mpi ~serialization"                                     # mpi requires serialization
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+random ~system"                                         # random requires system
+should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
 should_fail "+system ~variant2"                                       # system requires variant2
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+thread ~chrono"                                         # thread requires chrono
