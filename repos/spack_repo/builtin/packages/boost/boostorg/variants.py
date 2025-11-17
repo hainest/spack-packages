@@ -343,5 +343,15 @@ def load():
         buildable="@1.32.0:",
         description="Serialization for persistence and marshalling",
     )
+    variants.add(
+        "iostreams",
+        when="@1.33.0:",
+        buildable="@1.33.0:",
+        requires=[
+            {"spec": "+random", "msg": "Boost.iostreams requires Boost.random"},
+            {"spec": "+regex", "msg": "Boost.iostreams requires Boost.regex"},
+        ],
+        description="Streams, stream buffers, and i/o filters",
+    )
 
     return variants

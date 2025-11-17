@@ -95,7 +95,6 @@ class Boost(Package):
             "+atomic",
             "+chrono",
             "+exception",
-            "+iostreams",
             "+locale",
             "+log",
             "+system",
@@ -122,7 +121,6 @@ class Boost(Package):
         "exception",
         "fiber",
         "graph_parallel",
-        "iostreams",
         "json",
         "locale",
         "log",
@@ -204,13 +202,15 @@ class Boost(Package):
         depends_on("python@:3.9", when="@:1.75")
 
     depends_on("mpi", when="+mpi")
-    depends_on("bzip2", when="+iostreams")
-    depends_on("zlib-api", when="+iostreams")
-    depends_on("zstd", when="+iostreams")
-    depends_on("xz", when="+iostreams")
     depends_on("py-numpy", when="+numpy", type=("build", "run"))
     # https://github.com/boostorg/python/issues/431
     depends_on("py-numpy@:1", when="@:1.86+numpy", type=("build", "run"))
+
+    with when("+iostreams"):
+        depends_on("bzip2")
+        depends_on("zlib-api")
+        depends_on("zstd")
+        depends_on("xz")
 
     # Improve the error message when the context-impl variant is conflicting
     conflicts("context-impl=fcontext", when="@:1.65.0")
