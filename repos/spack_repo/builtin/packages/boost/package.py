@@ -100,7 +100,6 @@ class Boost(Package):
         "charconv",
         "cobalt",
         "contract",
-        "fiber",
         "json",
         "mqtt5",
         "nowide",
@@ -179,11 +178,6 @@ class Boost(Package):
         depends_on("zlib-api")
         depends_on("zstd")
         depends_on("xz")
-
-    # Coroutine, Context, Fiber, etc., are not straightforward.
-    conflicts("+fiber", when="@:1.61")  # Fiber since 1.62.0.
-    conflicts("cxxstd=98", when="+fiber")  # Fiber requires >=C++11.
-    conflicts("~context", when="+fiber")  # Fiber requires Context.
 
     conflicts("+numpy", when="~python")
 
