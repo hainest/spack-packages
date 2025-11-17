@@ -425,5 +425,22 @@ def load():
             "Transport arbitrary data in exceptions, and exceptions between threads"
         ),
     )
+    variants.add(
+        "signals",
+        default=False,
+        when="@1.29.0:1.68.0",
+        buildable="@1.29.0:1.68.0",
+        conflicts=[
+            {"spec": "@1.69.0:", "msg": "Boost.signals was removed in 1.68.0"}
+        ],
+        requires=[
+            {
+                "spec": "+signals",
+                "when": "platform=windows @1.29.0:1.68.0",
+                "msg": "Boost.Signals is requires on Windows"
+            }
+        ],
+        description="Managed signals & slots callback implementation",
+    )
 
     return variants

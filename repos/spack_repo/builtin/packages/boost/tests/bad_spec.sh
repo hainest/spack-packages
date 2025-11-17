@@ -52,6 +52,7 @@ should_fail "+wave ~serialization"                                    # wave req
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
+should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03

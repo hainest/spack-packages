@@ -123,7 +123,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "signals",
         "signals2",
         "stacktrace",
         "type_erasure",
@@ -140,7 +139,6 @@ class Boost(Package):
         "openmethod": {"when": "@1.90.0:"},
         "charconv": {"when": "@1.85.0:"},
         "cobalt": {"when": "@1.84.0:"},
-        "signals": {"when": "@:1.68"},
         "signals2": {"when": "@1.4:"},
     }
 
@@ -236,9 +234,8 @@ class Boost(Package):
     # On Windows, the signals variant is required when building any of
     # the all_libs variants.
     for lib in all_libs:
-        if lib not in ["signals", "signals2"]:
+        if lib not in ["signals2"]:
             # <= 1.68 needs signals, after that needs signals2
-            requires("+signals", when=f"@:1.68 +{lib} platform=windows")
             requires("+signals2", when=f"@1.69: +{lib} platform=windows")
 
     # Fix: "Compile issue with flat_tree insert"
@@ -539,8 +536,6 @@ class Boost(Package):
             with_libs.discard("url")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
-        if spec.satisfies("@1.69.0:"):
-            with_libs.discard("signals")
         if not spec.satisfies("@1.54.0:"):
             with_libs.discard("log")
         if not spec.satisfies("@1.53.0:"):
