@@ -442,5 +442,21 @@ def load():
         ],
         description="Managed signals & slots callback implementation",
     )
+    variants.add(
+        "signals2",
+        when="@1.39.0:",
+        buildable="@1.87.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.Signals2 requires cxxstd >= 03"}
+        ],
+        requires=[
+            {
+                "spec": "+signals2",
+                "when": "platform=windows @1.68.0:",
+                "msg": "Boost.Signals2 is required on Windows"
+            }
+        ],
+        description="Thread-safe managed signals & slots callback implementation",
+    )
 
     return variants

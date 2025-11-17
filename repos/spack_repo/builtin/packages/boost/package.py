@@ -123,7 +123,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "signals2",
         "stacktrace",
         "type_erasure",
         "url",
@@ -133,13 +132,10 @@ class Boost(Package):
     boostpatches.load()
 
     # Add any extra requirements for specific libraries
-    # signals library was removed from boost in 1.69
-    # https://www.boost.org/releases/1.69.0/#:~:text=Discontinued
     all_libs_opts = {
         "openmethod": {"when": "@1.90.0:"},
         "charconv": {"when": "@1.85.0:"},
         "cobalt": {"when": "@1.84.0:"},
-        "signals2": {"when": "@1.4:"},
     }
 
     for lib in all_libs:
@@ -230,13 +226,6 @@ class Boost(Package):
 
     # Boost did not support the oneapi compilers prior to 1.76
     conflicts("%oneapi@2023:", when="@:1.75")
-
-    # On Windows, the signals variant is required when building any of
-    # the all_libs variants.
-    for lib in all_libs:
-        if lib not in ["signals2"]:
-            # <= 1.68 needs signals, after that needs signals2
-            requires("+signals2", when=f"@1.69: +{lib} platform=windows")
 
     # Fix: "Compile issue with flat_tree insert"
     # See: https://github.com/boostorg/container/pull/101
