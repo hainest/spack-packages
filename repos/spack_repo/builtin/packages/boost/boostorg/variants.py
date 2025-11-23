@@ -287,6 +287,9 @@ def load():
         "test",
         when="@1.21.0:",
         buildable="@1.21.0:",
+        requires=[
+            {"spec": "+exception", "msg": "Boost.test requires Boost.exception"},
+        ],
         description=(
             "Simple program testing, full unit testing, and program execution monitoring"
         ),
@@ -309,6 +312,7 @@ def load():
         buildable="@1.25.0:",
         requires=[
             {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
+            {"spec": "+exception", "msg": "Boost.thread requires Boost.exception"},
             {"spec": "+system", "msg": "Boost.thread requires Boost.system"},
         ],
         description="Portable C++ multi-threading",
@@ -412,6 +416,14 @@ def load():
             {"spec": "platform=darwin %gcc @:1.76", "msg": "Boost.System bug"}
         ],
         description="Extensible error reporting",
+    )
+    variants.add(
+        "exception",
+        when="@1.36.0:",
+        buildable="@1.47.0:",
+        description=(
+            "Transport arbitrary data in exceptions, and exceptions between threads"
+        ),
     )
 
     return variants

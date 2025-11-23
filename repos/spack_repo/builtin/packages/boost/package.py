@@ -94,7 +94,6 @@ class Boost(Package):
         [
             "+atomic",
             "+chrono",
-            "+exception",
             "+locale",
             "+log",
         ]
@@ -116,7 +115,6 @@ class Boost(Package):
         "context",
         "contract",
         "coroutine",
-        "exception",
         "fiber",
         "graph_parallel",
         "json",
@@ -551,8 +549,6 @@ class Boost(Package):
             with_libs.discard("locale")
         if not spec.satisfies("@1.47.0:"):
             with_libs.discard("chrono")
-        if not spec.satisfies("@1.39.0:"):
-            with_libs.discard("exception")
         if spec.satisfies("+graph") and spec.satisfies("+mpi"):
             with_libs.add("graph_parallel")
 

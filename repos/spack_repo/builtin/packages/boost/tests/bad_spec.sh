@@ -40,6 +40,7 @@ should_fail "+mpi ~serialization"                                     # mpi requ
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+random ~system"                                         # random requires system
 should_fail "+system ~variant2"                                       # system requires variant2
+should_fail "+test ~exception"                                        # test requires exception
 should_fail "+thread ~chrono"                                         # thread requires chrono
 should_fail "+thread ~container"                                      # thread requires container
 should_fail "+thread ~date_time"                                      # thread requires date_time
