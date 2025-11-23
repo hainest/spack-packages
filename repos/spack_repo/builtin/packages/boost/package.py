@@ -93,7 +93,6 @@ class Boost(Package):
     with_default_variants = "boost" + "".join(
         [
             "+atomic",
-            "+chrono",
             "+locale",
             "+log",
         ]
@@ -109,7 +108,6 @@ class Boost(Package):
     all_libs = [
         "atomic",
         "charconv",
-        "chrono",
         "cobalt",
         "container",
         "context",
@@ -150,7 +148,6 @@ class Boost(Package):
         "context": {"when": "@1.51:"},
         "container": {"when": "@1.56:"},
         "locale": {"when": "@1.48:"},
-        "chrono": {"when": "@1.47:"},
     }
 
     for lib in all_libs:
@@ -545,8 +542,6 @@ class Boost(Package):
             with_libs.discard("atomic")
         if not spec.satisfies("@1.48.0:"):
             with_libs.discard("locale")
-        if not spec.satisfies("@1.47.0:"):
-            with_libs.discard("chrono")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

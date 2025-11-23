@@ -21,6 +21,7 @@ function should_fail () {
 
 should_fail "+asio ~date_time"                                        # asio requires date_time
 should_fail "+asio ~system"                                           # asio requires system
+should_fail "+chrono ~system"                                         # chrono requires system
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "+date_time ~lexical_cast"                                # date_time requires lexical_cast
@@ -57,6 +58,7 @@ should_fail "+wave ~filesystem"                                       # wave req
 should_fail "+wave ~lexical_cast"                                     # wave requires lexical_cast
 should_fail "+wave ~serialization"                                    # wave requires serialization
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
+should_fail "@1.47.0 +thread ~chrono"                                 # thread requires chrono since 1.47.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
