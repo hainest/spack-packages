@@ -54,4 +54,8 @@ test_install "${cxx14_libs}  cxxstd=14"
 cxx17_libs="+openmethod"
 test_install "${cxx17_libs} cxxstd=17"
 
+# All C++20 non-parallel, non-windows, non-default libraries
+cxx20_libs="+cobalt"
+test_install "${cxx20_libs} cxxstd=20"
+
 exit $failed

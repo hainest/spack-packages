@@ -98,7 +98,6 @@ class Boost(Package):
     #
     all_libs = [
         "charconv",
-        "cobalt",
         "json",
         "mqtt5",
     ]
@@ -110,7 +109,6 @@ class Boost(Package):
     all_libs_opts = {
         "mqtt5": {"when": "@1.88:"},
         "charconv": {"when": "@1.85:"},
-        "cobalt": {"when": "@1.84:"},
         "json": {"when": "@1.75:"},
     }
 
@@ -472,8 +470,6 @@ class Boost(Package):
             with_libs.discard("mqtt5")
         if not spec.satisfies("@1.85.0:"):
             with_libs.discard("charconv")
-        if not spec.satisfies("@1.84.0:"):
-            with_libs.discard("cobalt")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
 
