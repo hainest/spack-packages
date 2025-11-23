@@ -642,5 +642,17 @@ def load():
         ],
         description="Portable HTTP, WebSocket, and network operations using Boost.Asio",
     )
+    variants.add(
+        "contract",
+        when="@1.67.0:",
+        buildable="@1.67.0:",
+        requires=[
+            {"spec": "+exception", "msg": "Boost.contract requires Boost.exception"},
+            {"spec": "+thread", "msg": "Boost.contract requires Boost.thread"},
+        ],
+        description=(
+            "Contract programming with subcontracting, class invariants, and pre/postconditions."
+        ),
+    )
 
     return variants

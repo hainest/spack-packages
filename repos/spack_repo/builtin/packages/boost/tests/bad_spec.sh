@@ -28,6 +28,8 @@ should_fail "+chrono ~system"                                         # chrono r
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "~context context-impl=fcontext"                          # context-impl requires context
+should_fail "+contract ~exception"                                    # contract requires exception
+should_fail "+contract ~thread"                                       # contract requires thread
 should_fail "+coroutine~context"                                      # coroutine requires context
 should_fail "+coroutine ~exception"                                   # coroutine requires exception
 should_fail "+coroutine ~system"                                      # coroutine requires system

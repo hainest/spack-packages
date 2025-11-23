@@ -99,7 +99,6 @@ class Boost(Package):
     all_libs = [
         "charconv",
         "cobalt",
-        "contract",
         "json",
         "mqtt5",
         "nowide",
