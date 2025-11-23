@@ -90,11 +90,7 @@ class Boost(Package):
     version("1.40.0", sha256="36cf4a239b587067a4923fdf6e290525a14c3af29829524fa73f3dec6841530c")
     version("1.39.0", sha256="44785eae8c6cce61a29a8a51f9b737e57b34d66baa7c0bcd4af188832b8018fd")
 
-    with_default_variants = "boost" + "".join(
-        [
-            "+log",
-        ]
-    )
+    with_default_variants = "boost"
 
     # mpi/python are not installed by default because they pull in many
     # dependencies and/or because there is a great deal of customization
@@ -106,7 +102,6 @@ class Boost(Package):
         "contract",
         "fiber",
         "json",
-        "log",
         "mqtt5",
         "nowide",
         "openmethod",
@@ -498,8 +493,6 @@ class Boost(Package):
             with_libs.discard("url")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
-        if not spec.satisfies("@1.54.0:"):
-            with_libs.discard("log")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

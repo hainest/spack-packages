@@ -50,6 +50,14 @@ should_fail "+python ~graph"                                          # python r
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+locale ~icu"                                            # locale requires icu
 should_fail "+locale ~thread"                                         # locale requires thread
+should_fail "+log ~asio"                                              # log requires asio
+should_fail "+log ~atomic"                                            # log requires atomic
+should_fail "+log ~date_time"                                         # log requires date_time
+should_fail "+log ~exception"                                         # log requires exception
+should_fail "+log ~filesystem"                                        # log requires filesystem
+should_fail "+log ~regex"                                             # log requires regex
+should_fail "+log ~system"                                            # log requires system
+should_fail "+log ~thread"                                            # log requires thread
 should_fail "+math ~lexical_cast"                                     # math requires lexical_cast
 should_fail "+math ~random"                                           # math requires random
 should_fail "+mpi ~graph"                                             # mpi requires graph

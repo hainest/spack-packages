@@ -547,5 +547,21 @@ def load():
         ],
         description="DEPRECATED use coroutine2",
     )
+    variants.add(
+        "log",
+        when="@1.54.0:",
+        buildable="@1.54.0:",
+        requires=[
+            {"spec": "+asio", "msg": "Boost.log requires Boost.asio"},
+            {"spec": "+atomic", "msg": "Boost.log requires Boost.atomic"},
+            {"spec": "+date_time", "msg": "Boost.log requires Boost.date_time"},
+            {"spec": "+exception", "msg": "Boost.log requires Boost.exception"},
+            {"spec": "+filesystem", "msg": "Boost.log requires Boost.filesystem"},
+            {"spec": "+regex", "msg": "Boost.log requires Boost.regex"},
+            {"spec": "+system", "msg": "Boost.log requires Boost.system"},
+            {"spec": "+thread", "msg": "Boost.log requires Boost.thread"},
+        ],
+        description="Simple, extensible, and fast logging",
+    )
 
     return variants
