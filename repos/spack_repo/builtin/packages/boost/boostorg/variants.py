@@ -359,6 +359,9 @@ def load():
         "serialization",
         when="@1.32.0:",
         buildable="@1.32.0:",
+        requires=[
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.serialization requires Boost.variant2"},
+        ],
         description="Serialization for persistence and marshalling",
     )
     variants.add(
@@ -422,6 +425,9 @@ def load():
             # gcc on Darwin incorrectly detects 'mutex'
             # https://github.com/STEllAR-GROUP/hpx/issues/5442#issuecomment-878889166
             {"spec": "platform=darwin %gcc @:1.76", "msg": "Boost.System bug"}
+        ],
+        requires=[
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.system requires Boost.variant2"},
         ],
         description="Extensible error reporting",
     )
@@ -500,6 +506,7 @@ def load():
             {"spec": "+math", "msg": "Boost.geometry requires Boost.math"},
             {"spec": "+serialization", "msg": "Boost.geometry requires Boost.serialization"},
             {"spec": "+thread", "msg": "Boost.geometry requires Boost.thread"},
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.geometry requires Boost.variant2"},
         ],
         description="The Boost.Geometry library provides geometric algorithms, primitives and spatial index"
     )
@@ -676,6 +683,11 @@ def load():
         description=(
             "Deterministic failure handling, partially simulating lightweight exceptions"
         ),
+    )
+    variants.add(
+        "variant2",
+        when="@1.71.0:",
+        description="A never-valueless, strong-guarantee tagged union",
     )
 
     return variants
