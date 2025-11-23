@@ -705,5 +705,19 @@ def load():
         when="@1.73.0:",
         description="A fixed capacity dynamically sized string"
     )
+    variants.add(
+        "json",
+        when="@1.75.0:",
+        buildable="@1.75.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.JSON requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "msg": "Boost.JSON requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+container", "msg": "Boost.json requires Boost.container"},
+            {"spec": "+system", "msg": "Boost.json requires Boost.system"},
+        ],
+        description="JSON parsing, serialization, and DOM in C++11",
+    )
 
     return variants

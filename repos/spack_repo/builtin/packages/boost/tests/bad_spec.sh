@@ -55,8 +55,8 @@ should_fail "+graph_parallel ~random"                                 # graph_pa
 should_fail "+graph_parallel ~serialization"                          # graph_parallel requires serialization
 should_fail "+iostreams ~random"                                      # iostreams requires random
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
-should_fail "+python ~graph"                                          # python requires graph
-should_fail "+test ~exception"                                        # test requires exception
+should_fail "+json ~container"                                        # json requires container
+should_fail "+json ~system"                                           # json requires system
 should_fail "+locale ~icu"                                            # locale requires icu
 should_fail "+locale ~thread"                                         # locale requires thread
 should_fail "+log ~asio"                                              # log requires asio

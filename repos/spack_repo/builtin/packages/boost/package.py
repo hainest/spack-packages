@@ -99,7 +99,6 @@ class Boost(Package):
     all_libs = [
         "charconv",
         "cobalt",
-        "json",
         "mqtt5",
         "openmethod",
         "url",
@@ -471,8 +470,6 @@ class Boost(Package):
             with_libs.discard("cobalt")
         if not spec.satisfies("@1.81.0:"):
             with_libs.discard("url")
-        if not spec.satisfies("@1.75.0:"):
-            with_libs.discard("json")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
