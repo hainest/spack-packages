@@ -97,7 +97,6 @@ class Boost(Package):
     # possible (and it would be difficult to choose sensible defaults)
     #
     all_libs = [
-        "charconv",
         "json",
         "mqtt5",
     ]
@@ -108,7 +107,6 @@ class Boost(Package):
     # Add any extra requirements for specific libraries
     all_libs_opts = {
         "mqtt5": {"when": "@1.88:"},
-        "charconv": {"when": "@1.85:"},
         "json": {"when": "@1.75:"},
     }
 
@@ -468,8 +466,6 @@ class Boost(Package):
         # Remove libraries that the release version does not support
         if not spec.satisfies("@1.88.0:"):
             with_libs.discard("mqtt5")
-        if not spec.satisfies("@1.85.0:"):
-            with_libs.discard("charconv")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
 
