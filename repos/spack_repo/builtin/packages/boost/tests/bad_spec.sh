@@ -44,6 +44,8 @@ should_fail "+iostreams ~random"                                      # iostream
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+python ~graph"                                          # python requires graph
 should_fail "+test ~exception"                                        # test requires exception
+should_fail "+locale ~icu"                                            # locale requires icu
+should_fail "+locale ~thread"                                         # locale requires thread
 should_fail "+math ~lexical_cast"                                     # math requires lexical_cast
 should_fail "+math ~random"                                           # math requires random
 should_fail "+mpi ~graph"                                             # mpi requires graph
