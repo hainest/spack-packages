@@ -532,8 +532,6 @@ class Boost(Package):
             with_libs.discard("locale")
         if not spec.satisfies("@1.47.0:"):
             with_libs.discard("chrono")
-        if spec.satisfies("+graph") and spec.satisfies("+mpi"):
-            with_libs.add("graph_parallel")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
