@@ -21,6 +21,7 @@ function should_fail () {
 
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
+should_fail "+date_time ~lexical_cast"                                # date_time requires lexical_cast
 should_fail "+graph ~random"                                          # graph requires random
 should_fail "+graph ~lexical_cast"                                    # graph requires lexical_cast
 should_fail "+python ~graph"                                          # python requires graph

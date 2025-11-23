@@ -94,7 +94,6 @@ class Boost(Package):
         [
             "+atomic",
             "+chrono",
-            "+date_time",
             "+exception",
             "+filesystem",
             "+iostreams",
@@ -123,7 +122,6 @@ class Boost(Package):
         "context",
         "contract",
         "coroutine",
-        "date_time",
         "exception",
         "fiber",
         "filesystem",
