@@ -231,5 +231,16 @@ def load():
         buildable="@1.43.0:",
         description="A complete system for random number generation",
     )
+    variants.add(
+        "graph",
+        when="@1.18.0:",
+        buildable="@1.18.0:",
+        requires=[
+            {"spec": "+random", "msg": "Boost.graph requires Boost.random"},
+        ],
+        description=(
+            "Generic components for mathematical graphs (collections of nodes and edges)."
+        ),
+    )
 
     return variants
