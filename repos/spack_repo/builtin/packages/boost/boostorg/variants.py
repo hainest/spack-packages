@@ -303,7 +303,19 @@ def load():
         "thread",
         when="@1.25.0:",
         buildable="@1.25.0:",
+        requires=[
+            {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
+        ],
         description="Portable C++ multi-threading",
+    )
+    variants.add(
+        "date_time",
+        when="@1.29.0:",
+        buildable="@1.29.0:",
+        requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.date_time requires Boost.lexical_cast"}
+        ],
+        description="Calculate, format, and convert dates and times",
     )
 
     return variants
