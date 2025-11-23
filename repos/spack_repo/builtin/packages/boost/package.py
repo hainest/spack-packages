@@ -92,7 +92,6 @@ class Boost(Package):
 
     with_default_variants = "boost" + "".join(
         [
-            "+atomic",
             "+log",
         ]
     )
@@ -102,7 +101,6 @@ class Boost(Package):
     # possible (and it would be difficult to choose sensible defaults)
     #
     all_libs = [
-        "atomic",
         "charconv",
         "cobalt",
         "contract",
@@ -505,8 +503,6 @@ class Boost(Package):
             with_libs.discard("json")
         if not spec.satisfies("@1.54.0:"):
             with_libs.discard("log")
-        if not spec.satisfies("@1.53.0:"):
-            with_libs.discard("atomic")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

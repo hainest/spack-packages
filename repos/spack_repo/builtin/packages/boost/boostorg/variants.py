@@ -314,6 +314,7 @@ def load():
         when="@1.25.0:",
         buildable="@1.25.0:",
         requires=[
+            {"spec": "+atomic", "when": "@1.53.0:", "msg": "Boost.thread requires Boost.atomic"},
             {"spec": "+chrono", "when": "@1.47.0:", "msg": "Boost.thread requires Boost.chrono"},
             {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.thread requires Boost.container"},
             {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
@@ -336,6 +337,7 @@ def load():
         when="@1.30.0:",
         buildable="@1.30.0:",
         requires=[
+            {"spec": "+atomic", "when": "@1.53.0:", "msg": "Boost.filesystem requires Boost.atomic"},
             {"spec": "+system", "msg": "Boost.filesystem requires Boost.system"},
         ],
         description=(
@@ -527,6 +529,12 @@ def load():
             {"spec": "cxxstd=03", "when": "@1.61.0:", "msg": "Boost.context requires cxxstd >= 11"},
         ],
         description="Cooperative multitasking on a single thread",
+    )
+    variants.add(
+        "atomic",
+        when="@1.53.0:",
+        buildable="@1.53.0:",
+        description="C++11-style atomic types",
     )
 
     return variants
