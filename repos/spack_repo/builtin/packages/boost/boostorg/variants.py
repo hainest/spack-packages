@@ -311,6 +311,7 @@ def load():
         when="@1.25.0:",
         buildable="@1.25.0:",
         requires=[
+            {"spec": "+chrono", "when": "@1.47.0:", "msg": "Boost.thread requires Boost.chrono"},
             {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
             {"spec": "+exception", "msg": "Boost.thread requires Boost.exception"},
             {"spec": "+system", "msg": "Boost.thread requires Boost.system"},
@@ -472,6 +473,15 @@ def load():
             {"spec": "+serialization", "msg": "Boost.graph_parallel requires Boost.serialization"},
         ],
         description="Scalable parallel version of Boost.Graph using MPI multiprocessing",
+    )
+    variants.add(
+        "chrono",
+        when="@1.47.0:",
+        buildable="@1.47.0:",
+        requires=[
+            {"spec": "+system", "msg": "Boost.chrono requires Boost.system"},
+        ],
+        description="Extended version of C++11 time utilities",
     )
 
     return variants
