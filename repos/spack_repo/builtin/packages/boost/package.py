@@ -99,7 +99,6 @@ class Boost(Package):
     all_libs = [
         "charconv",
         "cobalt",
-        "contract",
         "json",
         "mqtt5",
         "nowide",
@@ -119,7 +118,6 @@ class Boost(Package):
         "url": {"when": "@1.81:"},
         "json": {"when": "@1.75:"},
         "nowide": {"when": "@1.73:"},
-        "contract": {"when": "@1.67:"},
     }
 
     for lib in all_libs:
