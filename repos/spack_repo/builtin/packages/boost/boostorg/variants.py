@@ -506,5 +506,16 @@ def load():
         buildable="@1.56.0:",  # Extended Allocators need to be compiled
         description="Standard library containers and extensions",
     )
+    variants.add(
+        "locale",
+        default=False,
+        when="@1.48.0:",
+        buildable="@1.48.0:",
+        requires=[
+            {"spec": "+icu", "msg": "Boost.Locale requires Unicode support"},
+            {"spec": "+thread", "msg": "Boost.locale requires Boost.thread"},
+        ],
+        description="Localization and Unicode facilities",
+    )
 
     return variants

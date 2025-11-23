@@ -93,7 +93,6 @@ class Boost(Package):
     with_default_variants = "boost" + "".join(
         [
             "+atomic",
-            "+locale",
             "+log",
         ]
     )
@@ -111,7 +110,6 @@ class Boost(Package):
         "coroutine",
         "fiber",
         "json",
-        "locale",
         "log",
         "mqtt5",
         "nowide",
@@ -172,8 +170,6 @@ class Boost(Package):
         #   This is not ideal, but nothing we can do about it here.
         for std in ["11", "14", "17"]:
             depends_on(f"icu4c cxxstd={std}", when=f"cxxstd={std}")
-
-    conflicts("+locale ~icu")  # Boost.Locale "strongly recommends" icu, so enforce it
 
     with when("+mpi"):
         depends_on("mpi")
@@ -519,8 +515,6 @@ class Boost(Package):
             with_libs.discard("log")
         if not spec.satisfies("@1.53.0:"):
             with_libs.discard("atomic")
-        if not spec.satisfies("@1.48.0:"):
-            with_libs.discard("locale")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

@@ -46,4 +46,8 @@ test_install "@1.67.0 +signals"
 parallel="+mpi+graph_parallel"
 test_install ${parallel}
 
+# All C++14 non-parallel, non-windows, non-default libraries
+cxx14_libs="+locale"
+test_install "${cxx14_libs}  cxxstd=14"
+
 exit $failed
