@@ -97,7 +97,6 @@ class Boost(Package):
     # possible (and it would be difficult to choose sensible defaults)
     #
     all_libs = [
-        "charconv",
         "mqtt5",
         "openmethod",
     ]
@@ -108,7 +107,6 @@ class Boost(Package):
     # Add any extra requirements for specific libraries
     all_libs_opts = {
         "openmethod": {"when": "@1.90.0:"},
-        "charconv": {"when": "@1.85.0:"},
     }
 
     for lib in all_libs:
@@ -461,8 +459,6 @@ class Boost(Package):
         # Remove libraries that the release version does not support
         if not spec.satisfies("@1.88.0:"):
             with_libs.discard("mqtt5")
-        if not spec.satisfies("@1.85.0:"):
-            with_libs.discard("charconv")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

@@ -522,6 +522,7 @@ def load():
         when="@1.48.0:",
         buildable="@1.48.0:",
         requires=[
+            {"spec": "+charconv", "when": "@1.85.0:", "msg": "Boost.locale requires Boost.charconv"},
             {"spec": "+icu", "msg": "Boost.Locale requires Unicode support"},
             {"spec": "+thread", "msg": "Boost.locale requires Boost.thread"},
         ],
@@ -765,6 +766,12 @@ def load():
         description=(
             "Simple single-threaded asynchronicity akin to node.js and asyncio in python"
         ),
+    )
+    variants.add(
+        "charconv",
+        when="@1.85.0:",
+        buildable="@1.85.0:",
+        description="An implementation of C++20's <charconv> in C++11",
     )
 
     return variants
