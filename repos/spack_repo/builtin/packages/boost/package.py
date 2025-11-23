@@ -116,7 +116,6 @@ class Boost(Package):
         "contract",
         "coroutine",
         "fiber",
-        "graph_parallel",
         "json",
         "locale",
         "log",

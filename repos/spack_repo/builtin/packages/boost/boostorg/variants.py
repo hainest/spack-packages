@@ -458,5 +458,20 @@ def load():
         ],
         description="Thread-safe managed signals & slots callback implementation",
     )
+    variants.add(
+        "graph_parallel",
+        default=False,
+        when="@1.40.0:",
+        buildable="@1.40.0:",
+        requires=[
+            {"spec": "+filesystem", "msg": "Boost.graph_parallel requires Boost.filesystem"},
+            {"spec": "+graph", "msg": "Boost.graph_parallel requires Boost.graph"},
+            {"spec": "+lexical_cast", "msg": "Boost.graph_parallel requires Boost.lexical_cast"},
+            {"spec": "+mpi", "msg": "Boost.graph_parallel requires Boost.mpi"},
+            {"spec": "+random", "msg": "Boost.graph_parallel requires Boost.random"},
+            {"spec": "+serialization", "msg": "Boost.graph_parallel requires Boost.serialization"},
+        ],
+        description="Scalable parallel version of Boost.Graph using MPI multiprocessing",
+    )
 
     return variants
