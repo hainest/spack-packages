@@ -43,7 +43,7 @@ test_install "${python_libs}"
 test_install "@1.67.0 +signals"
 
 # All mpi/parallel stuff
-parallel="+mpi"
+parallel="+mpi+graph_parallel"
 test_install ${parallel}
 
 exit $failed

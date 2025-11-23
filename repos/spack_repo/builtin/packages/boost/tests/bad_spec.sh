@@ -28,6 +28,12 @@ should_fail "+filesystem ~system"                                     # filesyst
 should_fail "+graph ~random"                                          # graph requires random
 should_fail "+graph ~lexical_cast"                                    # graph requires lexical_cast
 should_fail "+graph ~serialization"                                   # graph requires serialization
+should_fail "+graph_parallel ~filesystem"                             # graph_parallel requires filesystem
+should_fail "+graph_parallel ~graph"                                  # graph_parallel requires graph
+should_fail "+graph_parallel ~lexical_cast"                           # graph_parallel requires lexical_cast
+should_fail "+graph_parallel ~mpi"                                    # graph_parallel requires mpi
+should_fail "+graph_parallel ~random"                                 # graph_parallel requires random
+should_fail "+graph_parallel ~serialization"                          # graph_parallel requires serialization
 should_fail "+iostreams ~random"                                      # iostreams requires random
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+python ~graph"                                          # python requires graph
