@@ -317,5 +317,13 @@ def load():
         ],
         description="Calculate, format, and convert dates and times",
     )
+    variants.add(
+        "filesystem",
+        when="@1.30.0:",
+        buildable="@1.30.0:",
+        description=(
+            "Portable facilities to query and manipulate paths, files, and directories"
+        ),
+    )
 
     return variants
