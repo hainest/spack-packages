@@ -744,5 +744,27 @@ def load():
         ],
         description="Portable model for parsing URLs and URIs",
     )
+    variants.add(
+        "cobalt",
+        default=False,
+        when="@1.84.0:",
+        buildable="@1.84.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "msg": "Boost.cobalt requires cxxstd >= 20"},
+            {"spec": "cxxstd=14", "msg": "Boost.cobalt requires cxxstd >= 20"},
+            {"spec": "cxxstd=17", "msg": "Boost.cobalt requires cxxstd >= 20"},
+        ],
+        requires=[
+            {"spec": "+asio", "msg": "Boost.cobalt requires Boost.asio"},
+            {"spec": "+container", "msg": "Boost.cobalt requires Boost.container"},
+            {"spec": "+context", "msg": "Boost.cobalt requires Boost.context"},
+            {"spec": "+static_string", "msg": "Boost.cobalt requires Boost.static_string"},
+            {"spec": "+system", "msg": "Boost.cobalt requires Boost.system"},
+            {"spec": "+variant2", "msg": "Boost.cobalt requires Boost.variant2"},
+        ],
+        description=(
+            "Simple single-threaded asynchronicity akin to node.js and asyncio in python"
+        ),
+    )
 
     return variants

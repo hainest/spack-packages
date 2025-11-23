@@ -98,7 +98,6 @@ class Boost(Package):
     #
     all_libs = [
         "charconv",
-        "cobalt",
         "mqtt5",
         "openmethod",
     ]
@@ -110,7 +109,6 @@ class Boost(Package):
     all_libs_opts = {
         "openmethod": {"when": "@1.90.0:"},
         "charconv": {"when": "@1.85.0:"},
-        "cobalt": {"when": "@1.84.0:"},
     }
 
     for lib in all_libs:
@@ -465,8 +463,6 @@ class Boost(Package):
             with_libs.discard("mqtt5")
         if not spec.satisfies("@1.85.0:"):
             with_libs.discard("charconv")
-        if not spec.satisfies("@1.84.0:"):
-            with_libs.discard("cobalt")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()

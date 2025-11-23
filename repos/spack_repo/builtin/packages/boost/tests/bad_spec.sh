@@ -26,6 +26,13 @@ should_fail "+beast ~container"                                       # beast re
 should_fail "+beast ~system"                                          # beast requires system
 should_fail "+chrono ~system"                                         # chrono requires system
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
+should_fail "+cobalt cxxstd=17"                                       # cobalt requires cxxstd >= 20
+should_fail "+cobalt ~asio"                                           # cobalt requires asio
+should_fail "+cobalt ~container"                                      # cobalt requires container
+should_fail "+cobalt ~context"                                        # cobalt requires context
+should_fail "+cobalt ~static_string"                                  # cobalt requires static_string
+should_fail "+cobalt ~system"                                         # cobalt requires system
+should_fail "+cobalt ~variant2"                                       # cobalt requires variant2
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "~context context-impl=fcontext"                          # context-impl requires context
 should_fail "+contract ~exception"                                    # contract requires exception
