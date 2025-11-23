@@ -719,5 +719,10 @@ def load():
         ],
         description="JSON parsing, serialization, and DOM in C++11",
     )
+    variants.add(
+        "leaf",
+        when="@1.75.0:",
+        description="Lightweight error-handling",
+    )
 
     return variants
