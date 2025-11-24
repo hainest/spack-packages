@@ -299,5 +299,11 @@ def load():
             "Extensive collection of integer, real, and complex mathematical operations"
         ),
     )
+    variants.add(
+        "thread",
+        when="@1.25.0:",
+        buildable="@1.25.0:",
+        description="Portable C++ multi-threading",
+    )
 
     return variants

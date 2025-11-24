@@ -27,6 +27,11 @@ should_fail "+python ~graph"                                          # python r
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+math ~lexical_cast"                                     # math requires lexical_cast
 should_fail "+math ~random"                                           # math requires random
+should_fail "+thread ~chrono"                                         # thread requires chrono
+should_fail "+thread ~container"                                      # thread requires container
+should_fail "+thread ~date_time"                                      # thread requires date_time
+should_fail "+thread ~exception"                                      # thread requires exception
+should_fail "+thread ~system"                                         # thread requires system
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
