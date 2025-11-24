@@ -229,6 +229,9 @@ def load():
         "random",
         when="@1.15.0:",
         buildable="@1.43.0:",
+        requires=[
+            {"spec": "+system", "msg": "Boost.random requires Boost.system"},
+        ],
         description="A complete system for random number generation",
     )
     variants.add(
@@ -306,6 +309,7 @@ def load():
         buildable="@1.25.0:",
         requires=[
             {"spec": "+date_time", "msg": "Boost.thread requires Boost.date_time"},
+            {"spec": "+system", "msg": "Boost.thread requires Boost.system"},
         ],
         description="Portable C++ multi-threading",
     )
@@ -322,6 +326,9 @@ def load():
         "filesystem",
         when="@1.30.0:",
         buildable="@1.30.0:",
+        requires=[
+            {"spec": "+system", "msg": "Boost.filesystem requires Boost.system"},
+        ],
         description=(
             "Portable facilities to query and manipulate paths, files, and directories"
         ),
@@ -369,6 +376,7 @@ def load():
         when="@1.35.0:",
         requires=[
             {"spec": "+date_time", "msg": "Boost.asio requires Boost.date_time"},
+            {"spec": "+system", "msg": "Boost.asio requires Boost.system"},
         ],
         description="Portable networking and other low-level I/O",
     )
@@ -393,6 +401,17 @@ def load():
         description=(
             "C++ wrapper to the Message Passing Interface for distributed-memory parallelism"
         ),
+    )
+    variants.add(
+        "system",
+        when="@1.35.0:",
+        buildable="@1.35.0:",
+        conflicts=[
+            # gcc on Darwin incorrectly detects 'mutex'
+            # https://github.com/STEllAR-GROUP/hpx/issues/5442#issuecomment-878889166
+            {"spec": "platform=darwin %gcc @:1.76", "msg": "Boost.System bug"}
+        ],
+        description="Extensible error reporting",
     )
 
     return variants

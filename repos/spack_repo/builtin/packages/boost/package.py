@@ -97,7 +97,6 @@ class Boost(Package):
             "+exception",
             "+locale",
             "+log",
-            "+system",
         ]
     )
 
@@ -129,7 +128,6 @@ class Boost(Package):
         "signals",
         "signals2",
         "stacktrace",
-        "system",
         "type_erasure",
         "url",
     ]
@@ -229,14 +227,6 @@ class Boost(Package):
 
     # Container's Extended Allocators were not added until 1.56.0
     conflicts("+container", when="@:1.55")
-
-    # Boost.System till 1.76 (included) was relying on mutex, which was not
-    # detected correctly on Darwin platform when using GCC
-    #
-    # More details here:
-    # https://github.com/STEllAR-GROUP/hpx/issues/5442#issuecomment-878889166
-    # https://github.com/STEllAR-GROUP/hpx/issues/5442#issuecomment-878913339
-    conflicts("%gcc", when="@:1.76 +system platform=darwin")
 
     # Boost 1.80 does not build with the Intel oneapi compiler
     # (https://github.com/spack/spack/pull/32879#issuecomment-1265933265)
