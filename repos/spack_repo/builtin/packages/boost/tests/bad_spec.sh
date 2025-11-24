@@ -20,9 +20,11 @@ function should_fail () {
 }
 
 should_fail "+asio ~date_time"                                        # asio requires date_time
+should_fail "+asio ~system"                                           # asio requires system
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "+date_time ~lexical_cast"                                # date_time requires lexical_cast
+should_fail "+filesystem ~system"                                     # filesystem requires system
 should_fail "+graph ~random"                                          # graph requires random
 should_fail "+graph ~lexical_cast"                                    # graph requires lexical_cast
 should_fail "+graph ~serialization"                                   # graph requires serialization
@@ -36,6 +38,8 @@ should_fail "+mpi ~graph"                                             # mpi requ
 should_fail "+mpi ~lexical_cast"                                      # mpi requires lexical_cast
 should_fail "+mpi ~serialization"                                     # mpi requires serialization
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
+should_fail "+random ~system"                                         # random requires system
+should_fail "+system ~variant2"                                       # system requires variant2
 should_fail "+thread ~chrono"                                         # thread requires chrono
 should_fail "+thread ~container"                                      # thread requires container
 should_fail "+thread ~date_time"                                      # thread requires date_time
