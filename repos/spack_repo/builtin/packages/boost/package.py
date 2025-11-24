@@ -103,7 +103,6 @@ class Boost(Package):
             "+log",
             "+math",
             "+program_options",
-            "+random",
             "+regex",
             "+serialization",
             "+system",
@@ -147,7 +146,6 @@ class Boost(Package):
         "openmethod",
         "program_options",
         "python",
-        "random",
         "regex",
         "serialization",
         "signals",
@@ -603,8 +601,6 @@ class Boost(Package):
             with_libs.discard("locale")
         if not spec.satisfies("@1.47.0:"):
             with_libs.discard("chrono")
-        if not spec.satisfies("@1.43.0:"):
-            with_libs.discard("random")
         if not spec.satisfies("@1.39.0:"):
             with_libs.discard("exception")
         if spec.satisfies("+graph") and spec.satisfies("+mpi"):
