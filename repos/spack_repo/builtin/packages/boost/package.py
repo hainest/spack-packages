@@ -102,7 +102,6 @@ class Boost(Package):
         "json",
         "mqtt5",
         "openmethod",
-        "url",
     ]
 
     boost_variants = boostvariants.load()
@@ -114,7 +113,6 @@ class Boost(Package):
         "mqtt5": {"when": "@1.88:"},
         "charconv": {"when": "@1.85:"},
         "cobalt": {"when": "@1.84:"},
-        "url": {"when": "@1.81:"},
         "json": {"when": "@1.75:"},
     }
 
@@ -478,8 +476,6 @@ class Boost(Package):
             with_libs.discard("charconv")
         if not spec.satisfies("@1.84.0:"):
             with_libs.discard("cobalt")
-        if not spec.satisfies("@1.81.0:"):
-            with_libs.discard("url")
         if not spec.satisfies("@1.75.0:"):
             with_libs.discard("json")
 

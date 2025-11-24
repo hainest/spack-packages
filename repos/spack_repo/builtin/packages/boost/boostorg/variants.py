@@ -649,5 +649,15 @@ def load():
         ],
         description="Standard library functions with UTF-8 API on Windows",
     )
+    variants.add(
+        "url",
+        when="@1.81.0:",
+        buildable="@1.81.0:",
+        requires=[
+            {"spec": "+system", "msg": "Boost.url requires Boost.system"},
+            {"spec": "+variant2", "msg": "Boost.url requires Boost.variant2"},
+        ],
+        description="Portable model for parsing URLs and URIs",
+    )
 
     return variants
