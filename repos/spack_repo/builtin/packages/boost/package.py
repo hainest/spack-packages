@@ -104,7 +104,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "stacktrace",
         "url",
     ]
 

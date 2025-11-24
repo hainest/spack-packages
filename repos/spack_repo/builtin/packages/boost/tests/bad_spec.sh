@@ -107,6 +107,7 @@ should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 a
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
 should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 added C++26 support
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
+should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
 
 exit $failed
