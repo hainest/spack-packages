@@ -101,7 +101,6 @@ class Boost(Package):
         "cobalt",
         "mqtt5",
         "openmethod",
-        "url",
     ]
 
     boost_variants = boostvariants.load()
@@ -468,8 +467,6 @@ class Boost(Package):
             with_libs.discard("charconv")
         if not spec.satisfies("@1.84.0:"):
             with_libs.discard("cobalt")
-        if not spec.satisfies("@1.81.0:"):
-            with_libs.discard("url")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
