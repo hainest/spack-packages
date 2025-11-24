@@ -107,7 +107,6 @@ class Boost(Package):
         "openmethod",
         "process",
         "stacktrace",
-        "type_erasure",
         "url",
     ]
 
@@ -127,7 +126,6 @@ class Boost(Package):
         "contract": {"when": "@1.67:"},
         "stacktrace": {"when": "@1.65:"},
         "fiber": {"when": "@1.62:"},
-        "type_erasure": {"when": "@1.60:"},
     }
 
     for lib in all_libs:
