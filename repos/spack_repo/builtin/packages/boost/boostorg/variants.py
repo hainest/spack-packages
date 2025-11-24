@@ -278,5 +278,14 @@ def load():
         when="@1.20.0:",
         description="General literal text conversions, such as an int represented a string, or vice-versa"
     )
+    variants.add(
+        "test",
+        when="@1.21.0:",
+        buildable="@1.21.0:",
+        description=(
+            "Simple program testing, full unit testing, and program execution monitoring"
+        ),
+
+    )
 
     return variants
