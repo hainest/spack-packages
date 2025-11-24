@@ -103,7 +103,6 @@ class Boost(Package):
             "+program_options",
             "+serialization",
             "+system",
-            "+thread",
             "+wave",
         ]
     )
@@ -143,7 +142,6 @@ class Boost(Package):
         "signals2",
         "stacktrace",
         "system",
-        "thread",
         "type_erasure",
         "url",
         "wave",
