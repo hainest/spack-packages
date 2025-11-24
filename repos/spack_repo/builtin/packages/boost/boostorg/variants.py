@@ -773,5 +773,22 @@ def load():
         buildable="@1.85.0:",
         description="An implementation of C++20's <charconv> in C++11",
     )
+    variants.add(
+        "mqtt5",
+        default=False,
+        when="@1.88.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "msg": "Boost.cobalt requires cxxstd >= 17"},
+            {"spec": "cxxstd=14", "msg": "Boost.cobalt requires cxxstd >= 17"},
+        ],
+        requires=[
+            {"spec": "+asio", "msg": "Boost.mqtt5 requires Boost.asio"},
+            {"spec": "+beast", "msg": "Boost.mqtt5 requires Boost.beast"},
+            {"spec": "+container", "msg": "Boost.mqtt5 requires Boost.container"},
+            {"spec": "+random", "msg": "Boost.mqtt5 requires Boost.random"},
+            {"spec": "+system", "msg": "Boost.mqtt5 requires Boost.system"},
+        ],
+        description="A C++17 MQTT client built on top of Boost.Asio",
+    )
 
     return variants

@@ -97,7 +97,6 @@ class Boost(Package):
     # possible (and it would be difficult to choose sensible defaults)
     #
     all_libs = [
-        "mqtt5",
         "openmethod",
     ]
 
@@ -455,10 +454,6 @@ class Boost(Package):
             env["PATH"] = newdir + ":" + env["PATH"]
 
         with_libs = {f"{lib}" for lib in Boost.all_libs if f"+{lib}" in spec}
-
-        # Remove libraries that the release version does not support
-        if not spec.satisfies("@1.88.0:"):
-            with_libs.discard("mqtt5")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
