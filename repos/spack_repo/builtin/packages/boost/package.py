@@ -109,7 +109,6 @@ class Boost(Package):
             "+system",
             "+test",
             "+thread",
-            "+timer",
             "+wave",
         ]
     )
@@ -157,7 +156,6 @@ class Boost(Package):
         "system",
         "test",
         "thread",
-        "timer",
         "type_erasure",
         "url",
         "wave",

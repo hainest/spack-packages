@@ -219,5 +219,11 @@ def load():
     #  dependencies and/or because there is a great deal of customization
     #  possible (and it would be difficult to choose sensible defaults).
     # ----------------------------------------------------------------------
+    variants.add(
+        "timer",
+        when="@1.16.1:",
+        buildable="@1.48.0:",
+        description="Timers for measuring wallclock and CPU times",
+    )
 
     return variants
