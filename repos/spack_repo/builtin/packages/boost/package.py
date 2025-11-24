@@ -98,7 +98,6 @@ class Boost(Package):
             "+locale",
             "+log",
             "+system",
-            "+wave",
         ]
     )
 
@@ -134,7 +133,6 @@ class Boost(Package):
         "system",
         "type_erasure",
         "url",
-        "wave",
     ]
 
     boost_variants = boostvariants.load()

@@ -37,6 +37,9 @@ should_fail "+thread ~container"                                      # thread r
 should_fail "+thread ~date_time"                                      # thread requires date_time
 should_fail "+thread ~exception"                                      # thread requires exception
 should_fail "+thread ~system"                                         # thread requires system
+should_fail "+wave ~filesystem"                                       # wave requires filesystem
+should_fail "+wave ~lexical_cast"                                     # wave requires lexical_cast
+should_fail "+wave ~serialization"                                    # wave requires serialization
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0

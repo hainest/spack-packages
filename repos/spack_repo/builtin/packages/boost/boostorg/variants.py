@@ -353,5 +353,16 @@ def load():
         ],
         description="Streams, stream buffers, and i/o filters",
     )
+    variants.add(
+        "wave",
+        when="@1.33.0:",
+        buildable="@1.33.0:",
+        requires=[
+            {"spec": "+filesystem", "msg": "Boost.wave requires Boost.filesystem"},
+            {"spec": "+lexical_cast", "msg": "Boost.wave requires Boost.lexical_cast"},
+            {"spec": "+serialization", "msg": "Boost.wave requires Boost.serialization"},
+        ],
+        description="Highly configurable implementation of the mandatory C99/C++ preprocessor",
+    )
 
     return variants
