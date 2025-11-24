@@ -101,7 +101,6 @@ class Boost(Package):
         "cobalt",
         "json",
         "mqtt5",
-        "nowide",
         "openmethod",
         "url",
     ]

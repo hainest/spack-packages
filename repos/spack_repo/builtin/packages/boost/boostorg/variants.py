@@ -689,5 +689,15 @@ def load():
         when="@1.71.0:",
         description="A never-valueless, strong-guarantee tagged union",
     )
+    variants.add(
+        "nowide",
+        default=False,
+        when="@1.73.0:",
+        buildable="@1.73.0:",
+        requires=[
+            {"spec": "+filesystem", "msg": "Boost.nowide requires Boost.filesystem"},
+        ],
+        description="Standard library functions with UTF-8 API on Windows",
+    )
 
     return variants
