@@ -242,5 +242,20 @@ def load():
             "Generic components for mathematical graphs (collections of nodes and edges)."
         ),
     )
+    variants.add(
+        "regex",
+        when="@1.18.0:",
+        buildable="@1.18.0:",
+        conflicts=[
+            # This was found from experimentation
+            {"spec": "cxxstd=98", "when": "@1.43.0:", "msg": "Boost.regex requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.43.0:", "msg": "Boost.regex requires cxxstd >= 11"},
+        ],
+        requires=[
+            # This was found from experimentation
+            {"spec": "+icu", "when": "@1.43.0:", "msg": "Boost.regex requires ICU support"},
+        ],
+        description="Perl and POSIX regular expressions",
+    )
 
     return variants
