@@ -237,6 +237,7 @@ def load():
         buildable="@1.18.0:",
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.graph requires Boost.lexical_cast"},
+            {"spec": "+math", "msg": "Boost.graph requires Boost.math"},
             {"spec": "+random", "msg": "Boost.graph requires Boost.random"},
         ],
         description=(
@@ -285,7 +286,18 @@ def load():
         description=(
             "Simple program testing, full unit testing, and program execution monitoring"
         ),
-
+    )
+    variants.add(
+        "math",
+        when="@1.23.0:",
+        buildable="@1.23.0:",
+        requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.math requires Boost.lexical_cast"},
+            {"spec": "+random", "msg": "Boost.math requires Boost.random"},
+        ],
+        description=(
+            "Extensive collection of integer, real, and complex mathematical operations"
+        ),
     )
 
     return variants
