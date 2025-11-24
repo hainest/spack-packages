@@ -28,6 +28,7 @@ should_fail "+python ~graph"                                          # python r
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+math ~lexical_cast"                                     # math requires lexical_cast
 should_fail "+math ~random"                                           # math requires random
+should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+thread ~chrono"                                         # thread requires chrono
 should_fail "+thread ~container"                                      # thread requires container
 should_fail "+thread ~date_time"                                      # thread requires date_time

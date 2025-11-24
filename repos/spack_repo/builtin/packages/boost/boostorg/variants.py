@@ -325,5 +325,16 @@ def load():
             "Portable facilities to query and manipulate paths, files, and directories"
         ),
     )
+    variants.add(
+        "program_options",
+        when="@1.32.0:",
+        buildable="@1.32.0:",
+        requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.program_options requires Boost.lexical_cast"},
+        ],
+        description=(
+            "Parse command-line options similar to POSIX getops or from config files"
+        ),
+    )
 
     return variants
