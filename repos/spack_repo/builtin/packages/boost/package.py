@@ -98,7 +98,6 @@ class Boost(Package):
             "+iostreams",
             "+locale",
             "+log",
-            "+serialization",
             "+system",
             "+wave",
         ]
@@ -131,7 +130,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "serialization",
         "signals",
         "signals2",
         "stacktrace",

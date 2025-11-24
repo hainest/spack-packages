@@ -239,6 +239,7 @@ def load():
             {"spec": "+lexical_cast", "msg": "Boost.graph requires Boost.lexical_cast"},
             {"spec": "+math", "msg": "Boost.graph requires Boost.math"},
             {"spec": "+random", "msg": "Boost.graph requires Boost.random"},
+            {"spec": "+serialization", "msg": "Boost.graph requires Boost.serialization"},
         ],
         description=(
             "Generic components for mathematical graphs (collections of nodes and edges)."
@@ -335,6 +336,12 @@ def load():
         description=(
             "Parse command-line options similar to POSIX getops or from config files"
         ),
+    )
+    variants.add(
+        "serialization",
+        when="@1.32.0:",
+        buildable="@1.32.0:",
+        description="Serialization for persistence and marshalling",
     )
 
     return variants
