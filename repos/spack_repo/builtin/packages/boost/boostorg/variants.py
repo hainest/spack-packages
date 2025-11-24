@@ -563,5 +563,14 @@ def load():
         ],
         description="Simple, extensible, and fast logging",
     )
+    variants.add(
+        "type_erasure",
+        when="@1.54.0:",
+        buildable="@1.60.0:",
+        requires=[
+            {"spec": "+thread", "msg": "Boost.type_erasure requires Boost.thread"},
+        ],
+        description="Runtime polymorphism based on concepts",
+    )
 
     return variants

@@ -106,7 +106,6 @@ class Boost(Package):
         "nowide",
         "openmethod",
         "stacktrace",
-        "type_erasure",
         "url",
     ]
 

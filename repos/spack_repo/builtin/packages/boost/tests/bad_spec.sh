@@ -74,6 +74,7 @@ should_fail "+thread ~container"                                      # thread r
 should_fail "+thread ~date_time"                                      # thread requires date_time
 should_fail "+thread ~exception"                                      # thread requires exception
 should_fail "+thread ~system"                                         # thread requires system
+should_fail "+type_erasure ~thread"                                   # type_erasure requires thread
 should_fail "+wave ~filesystem"                                       # wave requires filesystem
 should_fail "+wave ~lexical_cast"                                     # wave requires lexical_cast
 should_fail "+wave ~serialization"                                    # wave requires serialization
