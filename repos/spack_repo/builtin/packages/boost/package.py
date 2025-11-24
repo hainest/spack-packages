@@ -104,7 +104,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "stacktrace",
         "url",
     ]
 
@@ -121,7 +120,6 @@ class Boost(Package):
         "json": {"when": "@1.75:"},
         "nowide": {"when": "@1.73:"},
         "contract": {"when": "@1.67:"},
-        "stacktrace": {"when": "@1.65:"},
     }
 
     for lib in all_libs:
