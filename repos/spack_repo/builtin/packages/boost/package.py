@@ -101,7 +101,6 @@ class Boost(Package):
         "cobalt",
         "json",
         "mqtt5",
-        "nowide",
         "openmethod",
         "url",
     ]
@@ -117,7 +116,6 @@ class Boost(Package):
         "cobalt": {"when": "@1.84:"},
         "url": {"when": "@1.81:"},
         "json": {"when": "@1.75:"},
-        "nowide": {"when": "@1.73:"},
     }
 
     for lib in all_libs:

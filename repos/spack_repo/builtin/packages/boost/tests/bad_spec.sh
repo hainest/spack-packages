@@ -69,6 +69,7 @@ should_fail "+math ~random"                                           # math req
 should_fail "+mpi ~graph"                                             # mpi requires graph
 should_fail "+mpi ~lexical_cast"                                      # mpi requires lexical_cast
 should_fail "+mpi ~serialization"                                     # mpi requires serialization
+should_fail "+nowide ~filesystem"                                     # nowide requires filesystem
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+numpy ~python"                                          # numpy requires python
 should_fail "+process ~asio"                                          # process requires asio
