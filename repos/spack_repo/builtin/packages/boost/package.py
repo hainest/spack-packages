@@ -98,7 +98,6 @@ class Boost(Package):
             "+iostreams",
             "+locale",
             "+log",
-            "+serialization",
             "+system",
             "+wave",
         ]
@@ -132,7 +131,6 @@ class Boost(Package):
         "nowide",
         "openmethod",
         "process",
-        "serialization",
         "signals",
         "signals2",
         "stacktrace",
