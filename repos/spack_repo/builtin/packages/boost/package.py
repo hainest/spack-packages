@@ -92,35 +92,15 @@ class Boost(Package):
 
     with_default_variants = "boost"
 
-    # mpi/python are not installed by default because they pull in many
-    # dependencies and/or because there is a great deal of customization
-    # possible (and it would be difficult to choose sensible defaults)
-    #
-    all_libs = [
-        "openmethod",
-    ]
-
     boost_variants = boostvariants.load()
     boostpatches.load()
-
-    # Add any extra requirements for specific libraries
-    all_libs_opts = {
-        "openmethod": {"when": "@1.90.0:"},
-    }
-
-    for lib in all_libs:
-        lib_opts = all_libs_opts.get(lib, {})
-        variant(lib, default=False, description="Compile with {0} library".format(lib), **lib_opts)
 
     @property
     def libs(self):
         query = self.spec.last_query.extra_parameters
         shared = "+shared" in self.spec
 
-        libnames = (
-            query if query else [lib for lib in self.all_libs if self.spec.satisfies("+%s" % lib)]
-        )
-        libnames += self.boost_variants.libraries_to_build(self.spec)
+        libnames = query if query else self.boost_variants.libraries_to_build(self.spec)
         libnames += ["monitor"]
         libraries = ["libboost_*%s*" % lib for lib in libnames]
 
@@ -240,7 +220,7 @@ class Boost(Package):
             Path(spec["python"].libs[0]).parent.as_posix(),
         )
 
-    def determine_bootstrap_options(self, spec, with_libs, options):
+    def determine_bootstrap_options(self, spec, options):
         boost_toolset_id = self.determine_toolset(spec)
 
         # Arm compiler bootstraps with 'gcc' (but builds as 'clang')
@@ -248,6 +228,8 @@ class Boost(Package):
             options.append("--with-toolset=gcc")
         else:
             options.append("--with-toolset=%s" % boost_toolset_id)
+
+        with_libs = self.boost_variants.libraries_to_build(self.spec)
         if with_libs:
             options.append("--with-libraries=%s" % ",".join(sorted(with_libs)))
         else:
@@ -453,15 +435,13 @@ class Boost(Package):
             force_symlink("/usr/bin/libtool", join_path(newdir, "libtool"))
             env["PATH"] = newdir + ":" + env["PATH"]
 
-        with_libs = {f"{lib}" for lib in Boost.all_libs if f"+{lib}" in spec}
-
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
         else:
             # to make Boost find the user-config.jam
             env["BOOST_BUILD_PATH"] = self.stage.source_path
             bootstrap_options = ["--prefix=%s" % prefix]
-            self.determine_bootstrap_options(spec, with_libs, bootstrap_options)
+            self.determine_bootstrap_options(spec, bootstrap_options)
             bootstrap = Executable("./bootstrap.sh")
             bootstrap(*bootstrap_options)
 
