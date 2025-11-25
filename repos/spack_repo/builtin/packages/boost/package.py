@@ -104,7 +104,6 @@ class Boost(Package):
         "mqtt5",
         "nowide",
         "openmethod",
-        "process",
         "stacktrace",
         "url",
     ]
@@ -115,7 +114,6 @@ class Boost(Package):
     # Add any extra requirements for specific libraries
     all_libs_opts = {
         "openmethod": {"when": "@1.90:"},
-        "process": {"when": "@1.64:"},
         "mqtt5": {"when": "@1.88:"},
         "charconv": {"when": "@1.85:"},
         "cobalt": {"when": "@1.84:"},
