@@ -358,11 +358,11 @@ class Boost(Package):
             else:
                 options.append("runtime-link=static")
 
-            # Any lib that is in self.all_libs AND in the variants dictionary
-            # AND is set to False should be added to options in a --without flag
-            for lib in self.all_libs:
-                if lib not in self.spec.variants.dict or self.spec.satisfies(f"+{lib}"):
-                    continue
+            # Any library that could be passed to `--with-libraries` but is not
+            # an active variant needs to be passed to `--without-<NAME>`.
+            buildable = set(self.boost_variants.libraries_to_build(spec))
+            all_libs = set(self.boost_variants.all_libraries())
+            for lib in all_libs - buildable:
                 options.append(f"--without-{lib}")
 
         if not spec.satisfies("@:1.75 %intel") and not spec.satisfies("platform=windows"):

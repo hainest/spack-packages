@@ -99,6 +99,9 @@ class variant_set:
 
         return sorted(libs)
 
+    def all_libraries(self):
+        return self.libraries.keys()
+
 
 # fmt: off
 
