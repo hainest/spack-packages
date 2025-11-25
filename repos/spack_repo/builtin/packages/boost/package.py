@@ -462,16 +462,6 @@ class Boost(Package):
     # See https://github.com/spack/spack/issues/28273
     patch("pthread-stack-min-fix.patch", when="@1.69.0:1.72.0")
 
-    # https://www.intel.com/content/www/us/en/developer/articles/technical/building-boost-with-oneapi.html
-    patch("intel-oneapi-linux-jam.patch", when="@1.76: %oneapi")
-
-    # https://github.com/spack/spack/issues/44003
-    patch(
-        "oneapi_pthread.patch",
-        sha256="7845717c5d916fabc0e62eb6e1f5ad8f13baaf4a4b71b99b19847703386064c4",
-        when="@1.76: %oneapi@2022:",
-    )
-
     # https://github.com/boostorg/phoenix/issues/111
     patch("boost_phoenix_1.81.0.patch", level=2, when="@1.81.0:1.82.0")
 

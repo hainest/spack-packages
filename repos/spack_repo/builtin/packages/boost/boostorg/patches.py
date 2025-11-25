@@ -56,3 +56,18 @@ def load():
             when="@1.75.0:1.76",
             sha256="938811004ff77783a82d59c8ebf2582a40db88de89fb0a078351e52e9e0aa704",
         )
+
+    with sp.when("%oneapi"):
+        # https://www.intel.com/content/www/us/en/developer/articles/technical/building-boost-with-oneapi.html
+        sp.patch(
+            "patches/intel-oneapi-linux-jam.patch",
+            when="@1.76:",
+            sha256="8e3faa26450312e5ea8db8f32afda109b8559ba496e6a5799ddde271c9a6fc44",
+        )
+        
+        # https://github.com/spack/spack/issues/44003
+        sp.patch(
+            "oneapi_pthread.patch",
+            sha256="7845717c5d916fabc0e62eb6e1f5ad8f13baaf4a4b71b99b19847703386064c4",
+            when="@1.76: %oneapi@2022:",
+        )
