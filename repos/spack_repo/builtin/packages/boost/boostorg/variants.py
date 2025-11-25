@@ -600,5 +600,16 @@ def load():
         ],
         description="Enable numpy support in Boost.Python",
     )
+    variants.add(
+        "process",
+        when="@1.64.0:",
+        buildable="@1.86.0:",
+        requires=[
+            {"spec": "+asio", "msg": "Boost.process requires Boost.asio"},
+            {"spec": "+filesystem", "msg": "Boost.process requires Boost.filesystem"},
+            {"spec": "+system", "msg": "Boost.process requires Boost.system"},
+        ],
+        description="Portable process creation and management",
+    )
 
     return variants
