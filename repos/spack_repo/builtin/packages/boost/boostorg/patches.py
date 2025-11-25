@@ -64,10 +64,19 @@ def load():
             when="@1.76:",
             sha256="8e3faa26450312e5ea8db8f32afda109b8559ba496e6a5799ddde271c9a6fc44",
         )
-        
+
         # https://github.com/spack/spack/issues/44003
         sp.patch(
             "oneapi_pthread.patch",
             sha256="7845717c5d916fabc0e62eb6e1f5ad8f13baaf4a4b71b99b19847703386064c4",
             when="@1.76: %oneapi@2022:",
+        )
+
+    with sp.when("%cce"):
+        # Fix float128 support when building with CUDA and Cray compiler
+        sp.patch(
+            "patches/config_PR378.patch",
+            when="@:1.76",
+            level=2,
+            sha256="666eec8cfb0f71a87443ab27d179a9771bda32bcb8ff5e16afa3767f7b7f1e70",
         )

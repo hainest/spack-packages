@@ -441,15 +441,6 @@ class Boost(Package):
     # and https://github.com/boostorg/context/issues/177
     patch("context-macho-gcc.patch", when="@1.65:1.76 +context platform=darwin %gcc")
 
-    # Fix float128 support when building with CUDA and Cray compiler
-    # See https://github.com/boostorg/config/pull/378
-    patch(
-        "https://github.com/boostorg/config/commit/fee1ad07968386b6d547f089311b7a2c1bf7fa55.patch?full_index=1",
-        sha256="666eec8cfb0f71a87443ab27d179a9771bda32bcb8ff5e16afa3767f7b7f1e70",
-        when="@:1.76%cce",
-        level=2,
-    )
-
     # Fix building with Intel compilers
     patch(
         "https://github.com/bfgroup/b2/commit/23212066f0f20358db54568bb16b3fe1d76f88ce.patch?full_index=1",
