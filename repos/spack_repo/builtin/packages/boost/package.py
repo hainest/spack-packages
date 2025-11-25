@@ -100,10 +100,7 @@ class Boost(Package):
         query = self.spec.last_query.extra_parameters
         shared = "+shared" in self.spec
 
-        libnames = (
-            query if query else [lib for lib in self.all_libs if self.spec.satisfies("+%s" % lib)]
-        )
-        libnames += self.boost_variants.libraries_to_build(self.spec)
+        libnames = query if query else self.boost_variants.libraries_to_build(self.spec)
         libnames += ["monitor"]
         libraries = ["libboost_*%s*" % lib for lib in libnames]
 
@@ -221,7 +218,7 @@ class Boost(Package):
             Path(spec["python"].libs[0]).parent.as_posix(),
         )
 
-    def determine_bootstrap_options(self, spec, with_libs, options):
+    def determine_bootstrap_options(self, spec, options):
         boost_toolset_id = self.determine_toolset(spec)
 
         # Arm compiler bootstraps with 'gcc' (but builds as 'clang')
@@ -229,6 +226,8 @@ class Boost(Package):
             options.append("--with-toolset=gcc")
         else:
             options.append("--with-toolset=%s" % boost_toolset_id)
+
+        with_libs = self.boost_variants.libraries_to_build(self.spec)
         if with_libs:
             options.append("--with-libraries=%s" % ",".join(sorted(with_libs)))
         else:
@@ -339,11 +338,11 @@ class Boost(Package):
             else:
                 options.append("runtime-link=static")
 
-            # Any lib that is in self.all_libs AND in the variants dictionary
-            # AND is set to False should be added to options in a --without flag
-            for lib in self.all_libs:
-                if lib not in self.spec.variants or self.spec.satisfies(f"+{lib}"):
-                    continue
+            # Any library that could be passed to `--with-libraries` but is not
+            # an active variant needs to be passed to `--without-<NAME>`.
+            buildable = set(self.boost_variants.libraries_to_build(spec))
+            all_libs = set(self.boost_variants.all_libraries())
+            for lib in all_libs - buildable:
                 options.append(f"--without-{lib}")
 
         if not spec.satisfies("@:1.75 %intel") and not spec.satisfies("platform=windows"):
@@ -434,15 +433,13 @@ class Boost(Package):
             force_symlink("/usr/bin/libtool", join_path(newdir, "libtool"))
             env["PATH"] = newdir + ":" + env["PATH"]
 
-        with_libs = {f"{lib}" for lib in Boost.all_libs if f"+{lib}" in spec}
-
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
         else:
             # to make Boost find the user-config.jam
             env["BOOST_BUILD_PATH"] = self.stage.source_path
             bootstrap_options = ["--prefix=%s" % prefix]
-            self.determine_bootstrap_options(spec, with_libs, bootstrap_options)
+            self.determine_bootstrap_options(spec, bootstrap_options)
             bootstrap = Executable("./bootstrap.sh")
             bootstrap(*bootstrap_options)
 
