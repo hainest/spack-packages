@@ -634,6 +634,16 @@ def load():
         description="Gather, store, copy, and print backtraces",
     )
     variants.add(
+        "beast",
+        when="@1.66.0:",
+        requires=[
+            {"spec": "+asio", "msg": "Boost.beast requires Boost.asio"},
+            {"spec": "+container", "msg": "Boost.beast requires Boost.container"},
+            {"spec": "+system", "msg": "Boost.beast requires Boost.system"},
+        ],
+        description="Portable HTTP, WebSocket, and network operations using Boost.Asio",
+    )
+    variants.add(
         "contract",
         when="@1.67.0:",
         buildable="@1.67.0:",
