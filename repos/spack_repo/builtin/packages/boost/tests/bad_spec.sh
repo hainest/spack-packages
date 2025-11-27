@@ -79,6 +79,8 @@ should_fail "+parameter_python ~python"                               # paramete
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system
+should_fail "+outcome ~exception"                                     # outcome requires exception
+should_fail "+outcome ~system"                                        # outcome requires system
 should_fail "+random ~system"                                         # random requires system
 should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
 should_fail "+system ~variant2"                                       # system requires variant2

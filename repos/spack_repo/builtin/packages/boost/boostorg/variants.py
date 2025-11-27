@@ -666,5 +666,16 @@ def load():
         ],
         description="python bindings for Boost.Parameter"
     )
+    variants.add(
+        "outcome",
+        when="@1.70.0:",
+        requires=[
+            {"spec": "+exception", "msg": "Boost.outcome requires Boost.exception"},
+            {"spec": "+system", "msg": "Boost.outcome requires Boost.system"},
+        ],
+        description=(
+            "Deterministic failure handling, partially simulating lightweight exceptions"
+        ),
+    )
 
     return variants
