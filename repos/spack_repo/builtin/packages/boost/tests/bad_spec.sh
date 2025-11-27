@@ -21,6 +21,9 @@ function should_fail () {
 
 should_fail "+asio ~date_time"                                        # asio requires date_time
 should_fail "+asio ~system"                                           # asio requires system
+should_fail "+beast ~asio"                                            # beast requires asio
+should_fail "+beast ~container"                                       # beast requires container
+should_fail "+beast ~system"                                          # beast requires system
 should_fail "+chrono ~system"                                         # chrono requires system
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11

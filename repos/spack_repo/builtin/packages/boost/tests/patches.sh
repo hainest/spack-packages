@@ -27,6 +27,7 @@ test_patch "@1.56.0 %clang"                   # clang-linux_add_option, build_PR
 test_patch "@1.63.0 +python +numpy"           # python_PR218, python_PR432
 test_patch "@1.69.0 +system"                  # system-non-virtual-dtor-{include,test}, pthread-stack-min-fix
 test_patch "@1.72.0 +process"                 # process_PR116
+test_patch "@1.73.0 +beast"                   # beast_PR1927
 test_patch "@1.75"                            # bootstrap-toolset
 test_patch "@1.76.0 +python ^python@3"        # python_jam, bootstrap-compiler
 test_patch "@1.77.0 +python ^python@3"        # python_jam-1_77, b2_PR79
