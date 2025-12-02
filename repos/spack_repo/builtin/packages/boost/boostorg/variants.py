@@ -236,6 +236,7 @@ def load():
         when="@1.18.0:",
         buildable="@1.18.0:",
         requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.graph requires Boost.lexical_cast"},
             {"spec": "+random", "msg": "Boost.graph requires Boost.random"},
         ],
         description=(
@@ -271,6 +272,11 @@ def load():
             {"spec": "+graph", "msg": "Boost.python requires Boost.graph"},
         ],
         description="C++ wrapper for interacting with Python",
+    )
+    variants.add(
+        "lexical_cast",
+        when="@1.20.0:",
+        description="General literal text conversions, such as an int represented a string, or vice-versa"
     )
 
     return variants
