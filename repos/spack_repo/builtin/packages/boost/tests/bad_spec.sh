@@ -22,7 +22,9 @@ function should_fail () {
 should_fail "+clanglibcpp %gcc"                                       # gcc doesn't support libc++
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "+graph ~random"                                          # graph requires random
+should_fail "+graph ~lexical_cast"                                    # graph requires lexical_cast
 should_fail "+python ~graph"                                          # python requires graph
+should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
