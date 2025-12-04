@@ -483,5 +483,17 @@ def load():
         ],
         description="Extended version of C++11 time utilities",
     )
+    variants.add(
+        "geometry",
+        when="@1.47.0:",
+        requires=[
+            {"spec": "+graph", "msg": "Boost.geometry requires Boost.graph"},
+            {"spec": "+lexical_cast", "msg": "Boost.geometry requires Boost.lexical_cast"},
+            {"spec": "+math", "msg": "Boost.geometry requires Boost.math"},
+            {"spec": "+serialization", "msg": "Boost.geometry requires Boost.serialization"},
+            {"spec": "+thread", "msg": "Boost.geometry requires Boost.thread"},
+        ],
+        description="The Boost.Geometry library provides geometric algorithms, primitives and spatial index"
+    )
 
     return variants
