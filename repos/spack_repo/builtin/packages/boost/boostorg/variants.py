@@ -645,6 +645,7 @@ def load():
         requires=[
             {"spec": "+asio", "msg": "Boost.beast requires Boost.asio"},
             {"spec": "+container", "msg": "Boost.beast requires Boost.container"},
+            {"spec": "+static_string", "when": "@1.73.0:", "msg": "Boost.beast requires Boost.static_string"},
             {"spec": "+system", "msg": "Boost.beast requires Boost.system"},
         ],
         description="Portable HTTP, WebSocket, and network operations using Boost.Asio",
@@ -698,6 +699,11 @@ def load():
             {"spec": "+filesystem", "msg": "Boost.nowide requires Boost.filesystem"},
         ],
         description="Standard library functions with UTF-8 API on Windows",
+    )
+    variants.add(
+        "static_string",
+        when="@1.73.0:",
+        description="A fixed capacity dynamically sized string"
     )
 
     return variants

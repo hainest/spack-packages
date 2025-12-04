@@ -84,6 +84,7 @@ should_fail "+outcome ~exception"                                     # outcome 
 should_fail "+outcome ~system"                                        # outcome requires system
 should_fail "+random ~system"                                         # random requires system
 should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
+should_fail "+static_string cxxstd=03"                                # static_string requires cxxstd >= 11
 should_fail "+system ~variant2"                                       # system requires variant2
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+thread ~atomic"                                         # thread requires atomic
@@ -115,6 +116,7 @@ should_fail "@1.71.0 +serialization ~variant2"                        # serializ
 should_fail "@1.71.0 +system ~variant2"                               # system requires variant2 since 1.71.0
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98
+should_fail "@1.73.0 +beast ~static_string"                           # beast requires static_string since 1.73.0
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
 should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
