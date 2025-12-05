@@ -198,6 +198,7 @@ should_fail "@1.85.0 +locale ~charconv"                               # locale r
 should_fail "@1.86.0 +graph ~regex"                                   # graph requires regex until 1.86.0
 should_fail "@1.86.0 +graph cxxstd=11"                                # graph requires cxxstd >= 14 since 1.86.0
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
+should_fail "@1.88.0 +lockfree cxxstd=11"                             # lockfree requires cxxstd >= 14 after 1.87.0
 should_fail "@1.89.0 +parser cxxstd=14"                               # parser requires cxxstd >= 17 since 1.89.0
 
 exit $failed

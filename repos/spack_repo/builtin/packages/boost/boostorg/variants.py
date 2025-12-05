@@ -93,6 +93,9 @@ class variant_set:
         """
         libs = list()
 
+        if spec.satisfies("@1.87.0: platform=windows"):
+            libs.append("winapi")
+
         for name, version in self.libraries.items():
             if spec.satisfies("+{0:s} {1:s}".format(name, version)):
                 libs.append(name)
@@ -591,6 +594,18 @@ def load():
             {"spec": "+system", "msg": "Boost.coroutine requires Boost.system"},
         ],
         description="DEPRECATED use coroutine2",
+    )
+    variants.add(
+        "lockfree",
+        when="@1.53.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+atomic", "msg": "Boost.lockfree requires Boost.atomic"},
+        ],
+        description="Lockfree data structures"
     )
     variants.add(
         "multiprecision",
