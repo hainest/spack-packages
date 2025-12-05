@@ -705,6 +705,16 @@ def load():
         description="python bindings for Boost.Parameter"
     )
     variants.add(
+        "safe_numerics",
+        when="@1.69.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+        ],
+        description="Guaranteed Correct Integer Arithmetic"
+    )
+    variants.add(
         "outcome",
         when="@1.70.0:",
         requires=[

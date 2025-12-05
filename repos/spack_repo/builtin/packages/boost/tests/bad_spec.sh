@@ -99,6 +99,9 @@ should_fail "+outcome ~system"                                        # outcome 
 should_fail "+property_map_parallel ~mpi"                             # property_map_parallel requires mpi
 should_fail "+property_map_parallel ~serialization"                   # property_map_parallel requires serialization
 should_fail "+random ~system"                                         # random requires system
+should_fail "+safe_numerics cxxstd=98"                                # safe_numerics requires cxxstd >= 14
+should_fail "+safe_numerics cxxstd=03"                                # safe_numerics requires cxxstd >= 14
+should_fail "+safe_numerics cxxstd=11"                                # safe_numerics requires cxxstd >= 14
 should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
 should_fail "+static_string cxxstd=03"                                # static_string requires cxxstd >= 11
 should_fail "+system ~variant2"                                       # system requires variant2
@@ -134,6 +137,7 @@ should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 a
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.68.0 +gil cxxstd=98"                                  # gil requires cxxstd >= 11 starting in 1.68.0
 should_fail "@1.68.0 +gil cxxstd=03"                                  # gil requires cxxstd >= 11 starting in 1.68.0
+should_fail "@1.68.0 +safe_numerics"                                  # safe_numerics was added in 1.69.0
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
 should_fail "@1.71.0 +geometry ~variant2"                             # geometry requires variant2 since 1.71.0
 should_fail "@1.71.0 +serialization ~variant2"                        # serialization requires variant2 since 1.71.0
