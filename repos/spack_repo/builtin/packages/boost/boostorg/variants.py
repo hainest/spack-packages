@@ -93,6 +93,9 @@ class variant_set:
         """
         libs = list()
 
+        if spec.satisfies("@1.87.0: platform=windows"):
+            libs.append("winapi")
+
         for name, version in self.libraries.items():
             if spec.satisfies("+{0:s} {1:s}".format(name, version)):
                 libs.append(name)
@@ -594,6 +597,18 @@ def load():
         description="DEPRECATED use coroutine2",
     )
     variants.add(
+        "lockfree",
+        when="@1.53.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+atomic", "msg": "Boost.lockfree requires Boost.atomic"},
+        ],
+        description="Lockfree data structures"
+    )
+    variants.add(
         "multiprecision",
         when="@1.53.0:",
         conflicts=[
@@ -952,6 +967,20 @@ def load():
         "scope",
         when="@1.85.0:",
         description="A collection of scope guards and a unique_resource wrapper"
+    )
+    variants.add(
+        "parser",
+        default=False,
+        when="@1.87.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "when": "@1.89.0:", "msg": "Boost.parser requires cxxstd >= 17"},
+            {"spec": "cxxstd=14", "when": "@1.89.0:", "msg": "Boost.parser requires cxxstd >= 17"},
+        ],
+        requires=[
+            {"spec": "+charconv", "msg": "Boost.parser requires Boost.charconv"},
+            {"spec": "+hana", "msg": "Boost.parser requires Boost.hana"},
+        ],
+        description="A parser combinator library"
     )
     variants.add(
         "mqtt5",
