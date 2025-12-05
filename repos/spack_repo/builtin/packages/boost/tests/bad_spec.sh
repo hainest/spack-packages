@@ -108,6 +108,10 @@ should_fail "+url ~variant2"                                          # url requ
 should_fail "+wave ~filesystem"                                       # wave requires filesystem
 should_fail "+wave ~lexical_cast"                                     # wave requires lexical_cast
 should_fail "+wave ~serialization"                                    # wave requires serialization
+should_fail "+yap cxxstd=98"                                          # yap requires cxxstd >= 14
+should_fail "+yap cxxstd=03"                                          # yap requires cxxstd >= 14
+should_fail "+yap cxxstd=11"                                          # yap requires cxxstd >= 14
+should_fail "+yap ~hana"                                              # yap requires hana
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.47.0 +thread ~chrono"                                 # thread requires chrono since 1.47.0
 should_fail "@1.48.0 +geometry ~container"                            # geometry requires container since 1.48.0
@@ -121,6 +125,8 @@ should_fail "@1.53.0 +thread ~atomic"                                 # thread r
 should_fail "@1.60.0 +hana"                                           # hana was added in 1.61.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
+should_fail "@1.68.0 +gil cxxstd=98"                                  # gil requires cxxstd >= 11 starting in 1.68.0
+should_fail "@1.68.0 +gil cxxstd=03"                                  # gil requires cxxstd >= 11 starting in 1.68.0
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98

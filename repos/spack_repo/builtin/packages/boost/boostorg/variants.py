@@ -393,6 +393,19 @@ def load():
         description="Portable networking and other low-level I/O",
     )
     variants.add(
+        "gil",
+        when="@1.35.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+filesystem", "msg": "Boost.gil requires Boost.filesystem"},
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.gil requires Boost.variant2"},
+        ],
+        description="Generic Image Library"
+    )
+    variants.add(
         "mpi",
         default=False,
         sticky=False,
@@ -654,6 +667,19 @@ def load():
         description=(
             "Contract programming with subcontracting, class invariants, and pre/postconditions."
         ),
+    )
+    variants.add(
+        "yap",
+        when="@1.68.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.yap requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.yap requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.yap requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+hana", "msg": "Boost.yap requires Boost.hana"},
+        ],
+        description="Expression-template concepts and composable algorithms",
     )
     variants.add(
         "nowide",
