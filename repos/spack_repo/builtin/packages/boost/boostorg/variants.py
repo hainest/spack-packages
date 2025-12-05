@@ -820,6 +820,20 @@ def load():
       description="Lightweight error-handling",
     )
     variants.add(
+        "describe",
+        when="@1.77.0:",
+        description="Advanced reflection for user-defined types",
+    )
+    variants.add(
+        "lambda2",
+        when="@1.77.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "msg": "Boost.lambda2 requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.lambda2 requires cxxstd >= 14"},
+        ],
+        description="Adds std::bind features to C++14 lambdas",
+    )
+    variants.add(
         "url",
         when="@1.81.0:",
         buildable="@1.81.0:",
@@ -882,6 +896,16 @@ def load():
             {"spec": "+system", "msg": "Boost.mqtt5 requires Boost.system"},
         ],
         description="A C++17 MQTT client built on top of Boost.Asio",
+    )
+    variants.add(
+        "property_map_parallel",
+        default=False,
+        when="@1.77.0:",
+        requires=[
+            {"spec": "+mpi", "msg": "Boost.property_map_parallel requires Boost.mpi"},
+            {"spec": "+serialization", "msg": "Boost.property_map_parallel requires Boost.serialization"},
+        ],
+        description="Parallel extensions to Property Map for use with Parallel Graph"
     )
 
     return variants

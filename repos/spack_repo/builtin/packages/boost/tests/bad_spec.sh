@@ -72,6 +72,7 @@ should_fail "+python ~graph"                                          # python r
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+json ~container"                                        # json requires container
 should_fail "+json ~system"                                           # json requires system
+should_fail "+lambda2 cxxstd=11"                                      # lambda2 requires cxxstd >= 14
 should_fail "+locale ~icu"                                            # locale requires icu
 should_fail "+locale ~thread"                                         # locale requires thread
 should_fail "+log ~asio"                                              # log requires asio
@@ -107,6 +108,8 @@ should_fail "+process ~filesystem"                                    # process 
 should_fail "+process ~system"                                        # process requires system
 should_fail "+outcome ~exception"                                     # outcome requires exception
 should_fail "+outcome ~system"                                        # outcome requires system
+should_fail "+property_map_parallel ~mpi"                             # property_map_parallel requires mpi
+should_fail "+property_map_parallel ~serialization"                   # property_map_parallel requires serialization
 should_fail "+random ~system"                                         # random requires system
 should_fail "+safe_numerics cxxstd=98"                                # safe_numerics requires cxxstd >= 14
 should_fail "+safe_numerics cxxstd=03"                                # safe_numerics requires cxxstd >= 14

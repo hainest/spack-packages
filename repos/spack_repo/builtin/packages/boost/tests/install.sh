@@ -44,7 +44,7 @@ test_install "+parameter_python+python"
 test_install "@1.67.0 +signals"
 
 # All mpi/parallel stuff
-parallel="+mpi+graph_parallel"
+parallel="+mpi+graph_parallel+property_map_parallel"
 test_install ${parallel}
 
 # All C++14 non-parallel, non-windows, non-default libraries
