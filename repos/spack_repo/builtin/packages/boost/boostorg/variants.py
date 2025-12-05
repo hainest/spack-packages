@@ -724,5 +724,15 @@ def load():
         when="@1.75.0:",
         description="Lightweight error-handling",
     )
+    variants.add(
+        "property_map_parallel",
+        default=False,
+        when="@1.77.0:",
+        requires=[
+            {"spec": "+mpi", "msg": "Boost.property_map_parallel requires Boost.mpi"},
+            {"spec": "+serialization", "msg": "Boost.property_map_parallel requires Boost.serialization"},
+        ],
+        description="Parallel extensions to Property Map for use with Parallel Graph"
+    )
 
     return variants
