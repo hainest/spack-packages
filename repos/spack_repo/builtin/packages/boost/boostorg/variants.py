@@ -410,6 +410,8 @@ def load():
         conflicts=[
             {"spec": "cxxstd=98", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
             {"spec": "cxxstd=03", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
+            {"spec": "cxxstd=11", "when": "@1.80.0:", "msg": "Boost.gil requires cxxstd >= 14"},
+            {"spec": "%gcc@5", "when": "@1.80.0:", "msg": "Boost.gil no longer works with gcc-5"},
         ],
         requires=[
             {"spec": "+filesystem", "msg": "Boost.gil requires Boost.filesystem"},
