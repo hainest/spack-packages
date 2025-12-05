@@ -206,6 +206,7 @@ should_fail "@1.86.0 +graph ~regex"                                   # graph re
 should_fail "@1.86.0 +graph cxxstd=11"                                # graph requires cxxstd >= 14 since 1.86.0
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
 should_fail "@1.90.0 +openmethod cxxstd=14"                           # openmethod requires cxxstd >= 17
+should_fail "@1.88.0 +heap cxxstd=11"                                 # heap requires cxxstd >= 14 after 1.88.0
 should_fail "@1.88.0 +lockfree cxxstd=11"                             # lockfree requires cxxstd >= 14 after 1.87.0
 should_fail "@1.89.0 +parser cxxstd=14"                               # parser requires cxxstd >= 17 since 1.89.0
 
