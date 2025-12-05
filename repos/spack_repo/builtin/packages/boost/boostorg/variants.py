@@ -946,6 +946,11 @@ def load():
         description="An implementation of C++20's <charconv> in C++11",
     )
     variants.add(
+        "scope",
+        when="@1.85.0:",
+        description="A collection of scope guards and a unique_resource wrapper"
+    )
+    variants.add(
         "mqtt5",
         default=False,
         when="@1.88.0:",
