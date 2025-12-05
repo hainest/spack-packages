@@ -172,6 +172,7 @@ should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 a
 should_fail "@1.78.0 +process cxxstd=03"                              # process requires cxxstd >= 11 after 1.78.0
 should_fail "@1.79.0 +wave cxxstd=03"                                 # wave requires cxxstd >= 11 as of 1.79.0
 should_fail "@1.80.0 +gil cxxstd=11"                                  # gil requires cxxstd >= 14 as of 1.80.0
+should_fail "@1.80.0 +locale cxxstd=03"                               # locale requires cxxstd >= 11 as of 1.81.0
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
 should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
 should_fail "@1.85.0 +locale ~charconv"                               # locale requires charconv since 1.85.0
