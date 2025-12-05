@@ -654,5 +654,17 @@ def load():
             "Contract programming with subcontracting, class invariants, and pre/postconditions."
         ),
     )
+    variants.add(
+        "parameter_python",
+        default=False,
+        when="@1.69.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.parameter_python requires cxxstd >= 03"},
+        ],
+        requires=[
+            {"spec": "+python", "msg": "Boost.parameter_python requires Boost.python"},
+        ],
+        description="python bindings for Boost.Parameter"
+    )
 
     return variants

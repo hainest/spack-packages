@@ -74,6 +74,8 @@ should_fail "+mpi ~lexical_cast"                                      # mpi requ
 should_fail "+mpi ~serialization"                                     # mpi requires serialization
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+numpy ~python"                                          # numpy requires python
+should_fail "+parameter_python cxxstd=98"                             # parameter_python requires cxxstd >= 03
+should_fail "+parameter_python ~python"                               # parameter_python requires python
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system
