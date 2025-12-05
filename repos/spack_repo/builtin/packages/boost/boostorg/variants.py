@@ -1014,5 +1014,10 @@ def load():
         ],
         description="A C++17 MQTT client built on top of Boost.Asio",
     )
+    variants.add(
+        "bloom",
+        when="@1.89.0:",
+        description="Bloom filters"
+    )
 
     return variants
