@@ -569,6 +569,15 @@ def load():
         description="Localization and Unicode facilities",
     )
     variants.add(
+        "heap",
+        when="@1.49.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
+        ],
+        description="Priority queue data structures"
+    )
+    variants.add(
         "context",
         when="@1.51.0:",
         buildable="@1.51.0:",
