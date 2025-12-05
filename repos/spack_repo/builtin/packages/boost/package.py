@@ -125,7 +125,6 @@ class Boost(Package):
         "container",
         "context",
         "contract",
-        "conversion",
         "coroutine",
         "date_time",
         "exception",
@@ -162,7 +161,6 @@ class Boost(Package):
     # https://www.boost.org/releases/1.69.0/#:~:text=Discontinued
     all_libs_opts = {
         "openmethod": {"when": "@1.90.0:"},
-        "conversion": {"when": "@1.87.0:"},
         "charconv": {"when": "@1.85.0:"},
         "cobalt": {"when": "@1.84.0:"},
         "signals": {"when": "@:1.68"},
