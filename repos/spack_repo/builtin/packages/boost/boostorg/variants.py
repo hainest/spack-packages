@@ -1023,5 +1023,10 @@ def load():
         ],
         description="Parallel extensions to Property Map for use with Parallel Graph"
     )
+    variants.add(
+        "bloom",
+        when="@1.89.0:",
+        description="Bloom filters"
+    )
 
     return variants
