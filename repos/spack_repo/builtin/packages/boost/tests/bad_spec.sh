@@ -88,6 +88,7 @@ should_fail "@1.61.0 +context cxxstd=98"                              # context 
 should_fail "@1.61.0 +context cxxstd=03"                              # context requires cxxstd >= 11 after 1.61.0
 should_fail "@1.53.0 +filesystem ~atomic"                             # filesystem requires atomic 1.53.0
 should_fail "@1.53.0 +thread ~atomic"                                 # thread requires atomic since 1.53.0
+should_fail "@1.60.0 +hana"                                           # hana was added in 1.61.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0

@@ -572,5 +572,10 @@ def load():
         ],
         description="Runtime polymorphism based on concepts",
     )
+    variants.add(
+        "hana",
+        when="@1.61.0:",
+        description="Modern metaprogramming suited for computations on both types and values",
+    )
 
     return variants
