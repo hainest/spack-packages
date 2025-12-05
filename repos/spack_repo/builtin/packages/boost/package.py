@@ -125,7 +125,6 @@ class Boost(Package):
         "container",
         "context",
         "contract",
-        "conversion",
         "coroutine",
         "date_time",
         "exception",
