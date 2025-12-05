@@ -36,6 +36,7 @@ test_patch "@1.59.0 +log"                     # log_v1590
 test_patch "@1.63.0 +python +numpy"           # python_PR218, python_PR432
 test_patch "@1.65.0 +fiber+thread"            # fiber_v1650, thread_v1650
 test_patch "@1.67.0 +python+wave+fiber"       # python_v1670, wave_v1670, fiber_v1670
+test_patch "@1.68.0 +container"               # container_PR101
 test_patch "@1.69.0 +system"                  # system-non-virtual-dtor-{include,test}, pthread-stack-min-fix
 test_patch "@1.72.0 +process"                 # process_PR116
 test_patch "@1.73.0 +beast+outcome"           # beast_PR1927, outcome_PR223

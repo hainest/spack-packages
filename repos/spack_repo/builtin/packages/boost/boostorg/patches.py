@@ -292,6 +292,14 @@ def load():
             sha256="7e096e4cacd67dc1d2f5cf0e3be3708a7d26bbd59ecbe2a9cc3b40a00d260057",
         )
 
+    # Fix: "Compile issue with flat_tree insert"
+    # See: https://github.com/boostorg/container/pull/101
+    sp.patch(
+        "patches/container_PR101.patch",
+        when="@1.66.0:1.69.0",
+        sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
+    )
+
     with sp.when("@1.69.0"):
         # Patch fix for warnings from commits 2d37749, af1dc84, c705bab, and
         # 0134441 on https://github.com/boostorg/system.

@@ -399,6 +399,19 @@ def load():
         description="Portable networking and other low-level I/O",
     )
     variants.add(
+        "gil",
+        when="@1.35.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+filesystem", "msg": "Boost.gil requires Boost.filesystem"},
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.gil requires Boost.variant2"},
+        ],
+        description="Generic Image Library"
+    )
+    variants.add(
         "mpi",
         default=False,
         sticky=False,

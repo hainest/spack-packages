@@ -148,14 +148,6 @@ class Boost(Package):
     # Boost did not support the oneapi compilers prior to 1.76
     conflicts("%oneapi@2023:", when="@:1.75")
 
-    # Fix: "Compile issue with flat_tree insert"
-    # See: https://github.com/boostorg/container/pull/101
-    patch(
-        "container_PR101.patch",
-        when="@1.66.0:1.69.0",
-        sha256="d216bf7c826c577912aa518c76c17697898483f95336cc035ae9ed16b12dc2b0",
-    )
-
     def patch(self):
         # Disable SSSE3 and AVX2 when using the NVIDIA compiler
         if self.spec.satisfies("%nvhpc"):
