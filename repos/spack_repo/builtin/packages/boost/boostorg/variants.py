@@ -682,6 +682,43 @@ def load():
         description="Expression-template concepts and composable algorithms",
     )
     variants.add(
+        "parameter_python",
+        default=False,
+        when="@1.69.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.parameter_python requires cxxstd >= 03"},
+        ],
+        requires=[
+            {"spec": "+python", "msg": "Boost.parameter_python requires Boost.python"},
+        ],
+        description="python bindings for Boost.Parameter",
+    )
+    variants.add(
+        "safe_numerics",
+        when="@1.69.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
+        ],
+        description="Guaranteed Correct Integer Arithmetic",
+    )
+    variants.add(
+        "histogram",
+        when="@1.70.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.histogram requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.histogram requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.histogram requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+math", "msg": "Boost.histogram requires Boost.math"},
+            {"spec": "+serialization", "msg": "Boost.histogram requires Boost.serialization"},
+            {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.histogram requires Boost.variant2"},
+        ],
+        description="Fast multi-dimensional histogram with convenient interface for C++14"
+    )
+    variants.add(
         "nowide",
         default=False,
         when="@1.73.0:",

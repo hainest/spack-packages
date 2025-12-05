@@ -60,6 +60,12 @@ should_fail "+graph_parallel ~lexical_cast"                           # graph_pa
 should_fail "+graph_parallel ~mpi"                                    # graph_parallel requires mpi
 should_fail "+graph_parallel ~random"                                 # graph_parallel requires random
 should_fail "+graph_parallel ~serialization"                          # graph_parallel requires serialization
+should_fail "+histogram cxxstd=98"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram cxxstd=03"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram cxxstd=11"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram ~math"                                        # histogram requires math
+should_fail "+histogram ~serialization"                               # histogram requires serialization
+should_fail "+histogram ~variant2"                                    # histogram requires variant2
 should_fail "+iostreams ~random"                                      # iostreams requires random
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+python ~graph"                                          # python requires graph
@@ -89,10 +95,15 @@ should_fail "+mqtt5 ~system"                                          # mqtt5 re
 should_fail "+nowide ~filesystem"                                     # nowide requires filesystem
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+numpy ~python"                                          # numpy requires python
+should_fail "+parameter_python cxxstd=98"                             # parameter_python requires cxxstd >= 03
+should_fail "+parameter_python ~python"                               # parameter_python requires python
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system
 should_fail "+random ~system"                                         # random requires system
+should_fail "+safe_numerics cxxstd=98"                                # safe_numerics requires cxxstd >= 14
+should_fail "+safe_numerics cxxstd=03"                                # safe_numerics requires cxxstd >= 14
+should_fail "+safe_numerics cxxstd=11"                                # safe_numerics requires cxxstd >= 14
 should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
 should_fail "+system ~variant2"                                       # system requires variant2
 should_fail "+test ~exception"                                        # test requires exception
@@ -127,6 +138,7 @@ should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 a
 should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.68.0 +gil cxxstd=98"                                  # gil requires cxxstd >= 11 starting in 1.68.0
 should_fail "@1.68.0 +gil cxxstd=03"                                  # gil requires cxxstd >= 11 starting in 1.68.0
+should_fail "@1.68.0 +safe_numerics"                                  # safe_numerics was added in 1.69.0
 should_fail "@1.69.0 +signals"                                        # signals was removed in 1.68.0
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98

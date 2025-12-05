@@ -38,6 +38,7 @@ done
 python_libs="+python+numpy"
 test_install "${python_libs} ^py-numpy@1"
 test_install "${python_libs} ^py-numpy@2"
+test_install "+parameter_python+python"
 
 # signals was removed in 1.68.0
 test_install "@1.67.0 +signals"
