@@ -984,6 +984,11 @@ def load():
         description="A parser combinator library"
     )
     variants.add(
+        "hash2",
+        when="@1.88.0:",
+        description="An extensible hashing framework"
+    )
+    variants.add(
         "mqtt5",
         default=False,
         when="@1.88.0:",
