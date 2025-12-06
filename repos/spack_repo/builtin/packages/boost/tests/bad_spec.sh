@@ -160,8 +160,12 @@ should_fail "@1.73.0 +beast ~static_string"                           # beast re
 should_fail "@1.75.0 +geometry cxxstd=98"                             # geometry requires cxxstd >= 14 after 1.75.0
 should_fail "@1.75.0 +geometry cxxstd=03"                             # geometry requires cxxstd >= 14 after 1.75.0
 should_fail "@1.75.0 +geometry cxxstd=11"                             # geometry requires cxxstd >= 14 after 1.75.0
+should_fail "@1.75.0 +math cxxstd=03"                                 # math requires cxxstd >= 11 after 1.76.0
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
 should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
+should_fail "@1.76.0 +nowide cxxstd=03"                               # nowide requires cxxstd >= 11 after 1.76.0
+should_fail "@1.76.0 +nowide cxxstd=98"                               # nowide requires cxxstd >= 11 after 1.76.0
+should_fail "@1.76.0 +variant2 cxxstd=03"                             # variant2 requires cxxstd >= 11 after 1.76.0
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
 should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 added C++26 support
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support

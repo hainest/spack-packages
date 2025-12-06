@@ -382,6 +382,13 @@ def load():
         sha256="f2409bfa0e69e44817a5f8799e25c2e9e5ee50876a5aaacefd32fa647b80472f",
     )
 
+    # Fix missing include in math/mp.hpp
+    sp.patch(
+        "patches/math_v1760.patch",
+        when="@1.76.0 +math",
+        sha256="9c8ea683cdb49563a9dbceb910b5164ed153d67e64fd1d4136624d68c9967b2e",
+    )
+
     # Fix compiler used for building bjam during bootstrap
     sp.patch(
         "patches/bootstrap-compiler.patch",

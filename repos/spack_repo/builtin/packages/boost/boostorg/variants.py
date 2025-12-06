@@ -304,6 +304,9 @@ def load():
         "math",
         when="@1.23.0:",
         buildable="@1.23.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.math requires cxxstd >= 11"},
+        ],
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.math requires Boost.lexical_cast"},
             {"spec": "+random", "msg": "Boost.math requires Boost.random"},
@@ -737,6 +740,11 @@ def load():
     variants.add(
         "outcome",
         when="@1.70.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
+        ],
         requires=[
             {"spec": "+exception", "msg": "Boost.outcome requires Boost.exception"},
             {"spec": "+system", "msg": "Boost.outcome requires Boost.system"},
@@ -748,6 +756,9 @@ def load():
     variants.add(
         "variant2",
         when="@1.71.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.variant2 requires cxxstd >= 11"},
+        ],
         description="A never-valueless, strong-guarantee tagged union",
     )
     variants.add(
@@ -755,6 +766,10 @@ def load():
         default=False,
         when="@1.73.0:",
         buildable="@1.73.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.76.0:", "msg": "Boost.nowide requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.nowide requires cxxstd >= 11"},
+        ],
         requires=[
             {"spec": "+filesystem", "msg": "Boost.nowide requires Boost.filesystem"},
         ],
