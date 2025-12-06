@@ -835,6 +835,15 @@ def load():
         description="Advanced reflection for user-defined types",
     )
     variants.add(
+        "lambda2",
+        when="@1.77.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "msg": "Boost.lambda2 requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.lambda2 requires cxxstd >= 14"},
+        ],
+        description="Adds std::bind features to C++14 lambdas",
+    )
+    variants.add(
         "url",
         when="@1.81.0:",
         buildable="@1.81.0:",

@@ -70,6 +70,7 @@ should_fail "+iostreams ~random"                                      # iostream
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+json ~container"                                        # json requires container
 should_fail "+json ~system"                                           # json requires system
+should_fail "+lambda2 cxxstd=11"                                      # lambda2 requires cxxstd >= 14
 should_fail "+locale ~icu"                                            # locale requires icu
 should_fail "+locale ~thread"                                         # locale requires thread
 should_fail "+log ~asio"                                              # log requires asio
