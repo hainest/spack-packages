@@ -115,6 +115,10 @@ should_fail "+url ~variant2"                                          # url requ
 should_fail "+wave ~filesystem"                                       # wave requires filesystem
 should_fail "+wave ~lexical_cast"                                     # wave requires lexical_cast
 should_fail "+wave ~serialization"                                    # wave requires serialization
+should_fail "+yap cxxstd=98"                                          # yap requires cxxstd >= 14
+should_fail "+yap cxxstd=03"                                          # yap requires cxxstd >= 14
+should_fail "+yap cxxstd=11"                                          # yap requires cxxstd >= 14
+should_fail "+yap ~hana"                                              # yap requires hana
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.47.0 +thread ~chrono"                                 # thread requires chrono since 1.47.0
 should_fail "@1.48.0 +geometry ~container"                            # geometry requires container since 1.48.0

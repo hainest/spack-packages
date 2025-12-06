@@ -667,6 +667,19 @@ def load():
         ),
     )
     variants.add(
+        "yap",
+        when="@1.68.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.yap requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.yap requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.yap requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+hana", "msg": "Boost.yap requires Boost.hana"},
+        ],
+        description="Expression-template concepts and composable algorithms",
+    )
+    variants.add(
         "parameter_python",
         default=False,
         when="@1.69.0:",
