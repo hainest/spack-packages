@@ -761,6 +761,16 @@ def load():
         description="A fixed capacity dynamically sized string"
     )
     variants.add(
+        "stl_interfaces",
+        when="@1.74.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
+        ],
+        description="Simplifies writing STL-compliant containers and ranges",
+    )
+    variants.add(
         "json",
         when="@1.75.0:",
         buildable="@1.75.0:",

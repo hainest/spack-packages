@@ -110,6 +110,9 @@ should_fail "+safe_numerics cxxstd=03"                                # safe_num
 should_fail "+safe_numerics cxxstd=11"                                # safe_numerics requires cxxstd >= 14
 should_fail "+signals2 cxxstd=98"                                     # signals2 requires cxxstd >= 03
 should_fail "+static_string cxxstd=03"                                # static_string requires cxxstd >= 11
+should_fail "+stl_interfaces cxxstd=98"                               # stl_interfaces requires cxxstd >= 14
+should_fail "+stl_interfaces cxxstd=03"                               # stl_interfaces requires cxxstd >= 14
+should_fail "+stl_interfaces cxxstd=11"                               # stl_interfaces requires cxxstd >= 14
 should_fail "+system ~variant2"                                       # system requires variant2
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+thread ~atomic"                                         # thread requires atomic
