@@ -42,6 +42,7 @@ test_patch "@1.70.0 +beast"                   # beast_PR1599
 test_patch "@1.72.0 +process+coroutine"       # process_PR116, coroutine_PR44
 test_patch "@1.73.0 +beast+outcome"           # beast_PR1927, outcome_PR223
 test_patch "@1.75"                            # bootstrap-toolset
+test_patch "@1.76.0 +math"                    # math_v1760
 test_patch "@1.76.0 +python ^python@3"        # python_jam, bootstrap-compiler
 test_patch "@1.77.0 +python ^python@3"        # python_jam-1_77, b2_PR79
 test_patch "@1.82.0"                          # phoenix_PR111
