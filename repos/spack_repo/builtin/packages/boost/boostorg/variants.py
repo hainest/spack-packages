@@ -830,6 +830,11 @@ def load():
         description="Parallel extensions to Property Map for use with Parallel Graph"
     )
     variants.add(
+        "describe",
+        when="@1.77.0:",
+        description="Advanced reflection for user-defined types",
+    )
+    variants.add(
         "url",
         when="@1.81.0:",
         buildable="@1.81.0:",
