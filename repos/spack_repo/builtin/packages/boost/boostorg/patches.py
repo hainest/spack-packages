@@ -482,6 +482,21 @@ def load():
             sha256="53a37c8673b20ee697b48bbee0370334958775d7824d43f533672b2c22f523c0",
         )
 
+    with sp.when("@1.83.0"):
+        # Compilation on Windows ARM platforms may fail for missing intrinsics
+        sp.patch(
+            "patches/json_PR926.patch",
+            when="+json platform=windows",
+            sha256="af68f8be3fedcbc2eca8fff625c7bd3cfeb0f0611e1579ba9901bd5282da5909",
+        )
+
+        # Fix erroneous copy assigment operator that would destroy non-existent elements
+        sp.patch(
+            "patches/unordered_PR205.patch",
+            when="+unordered",
+            sha256="565aeaf171459b79680009d9f702b4dfd599efc40eec8a96ca35ef936b1be294",
+        )
+
     # https://github.com/boostorg/context/pull/280
     sp.patch(
         "patches/context_PR280.patch",

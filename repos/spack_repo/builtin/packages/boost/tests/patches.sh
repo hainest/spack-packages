@@ -49,6 +49,7 @@ test_patch "@1.78.0 +atomic"                  # atomic_PR54, build_PR113
 test_patch "@1.79.0 +json"                    # json_PR695
 test_patch "@1.80.0 +filesystem"              # filesystem_PR250, unordered_PR{139,165}
 test_patch "@1.82.0 +filesystem"              # phoenix_PR111, filesystem_PR283
+test_patch "@1.83.0 +json"                    # json_PR926, unordered_PR205
 test_patch "@1.87.0 +context"                 # context_PR280
 
 exit $failed
