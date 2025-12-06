@@ -926,6 +926,20 @@ def load():
         ),
     )
     variants.add(
+        "redis",
+        default=False,
+        when="@1.84.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "msg": "Boost.redis requires cxxstd >= 17"},
+            {"spec": "cxxstd=14", "msg": "Boost.redis requires cxxstd >= 17"},
+        ],
+        requires=[
+            {"spec": "+asio", "msg": "Boost.redis requires Boost.asio"},
+            {"spec": "+system", "msg": "Boost.redis requires Boost.system"},
+        ],
+        description="Redis async client library built on top of Boost.Asio"
+    )
+    variants.add(
         "charconv",
         when="@1.85.0:",
         buildable="@1.85.0:",

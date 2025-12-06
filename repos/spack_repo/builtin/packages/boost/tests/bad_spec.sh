@@ -120,6 +120,10 @@ should_fail "+outcome ~system"                                        # outcome 
 should_fail "+property_map_parallel ~mpi"                             # property_map_parallel requires mpi
 should_fail "+property_map_parallel ~serialization"                   # property_map_parallel requires serialization
 should_fail "+random ~system"                                         # random requires system
+should_fail "+redis cxxstd=11"                                        # redis requires cxxstd >= 17
+should_fail "+redis cxxstd=14"                                        # redis requires cxxstd >= 17
+should_fail "+redis ~asio"                                            # redis requires asio
+should_fail "+redis ~system"                                          # redis requires system
 should_fail "+safe_numerics cxxstd=98"                                # safe_numerics requires cxxstd >= 14
 should_fail "+safe_numerics cxxstd=03"                                # safe_numerics requires cxxstd >= 14
 should_fail "+safe_numerics cxxstd=11"                                # safe_numerics requires cxxstd >= 14
