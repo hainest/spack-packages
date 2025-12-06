@@ -39,7 +39,7 @@ test_patch "@1.67.0 +python+wave+fiber"       # python_v1670, wave_v1670, fiber_
 test_patch "@1.68.0 +container"               # container_PR101
 test_patch "@1.69.0 +system"                  # system-non-virtual-dtor-{include,test}, pthread-stack-min-fix
 test_patch "@1.70.0 +beast"                   # beast_PR1599
-test_patch "@1.72.0 +process"                 # process_PR116
+test_patch "@1.72.0 +process+coroutine"       # process_PR116, coroutine_PR44
 test_patch "@1.73.0 +beast+outcome"           # beast_PR1927, outcome_PR223
 test_patch "@1.75"                            # bootstrap-toolset
 test_patch "@1.76.0 +python ^python@3"        # python_jam, bootstrap-compiler
