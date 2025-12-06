@@ -193,6 +193,8 @@ should_fail "@1.82.0: +multiprecision cxxstd=11"                      # multipre
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
 should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
 should_fail "@1.85.0 +locale ~charconv"                               # locale requires charconv since 1.85.0
+should_fail "@1.86.0 +graph ~regex"                                   # graph requires regex until 1.86.0
+should_fail "@1.86.0 +graph cxxstd=11"                                # graph requires cxxstd >= 14 since 1.86.0
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
 
 exit $failed

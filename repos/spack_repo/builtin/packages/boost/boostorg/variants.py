@@ -241,10 +241,14 @@ def load():
         "graph",
         when="@1.18.0:",
         buildable="@1.18.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "when": "@1.86.0:", "msg": "Boost.graph requires cxxstd >= 14"},
+        ],
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.graph requires Boost.lexical_cast"},
             {"spec": "+math", "msg": "Boost.graph requires Boost.math"},
             {"spec": "+random", "msg": "Boost.graph requires Boost.random"},
+            {"spec": "+regex", "when": "@:1.86.0", "msg": "Boost.graph requires Boost.regex"},
             {"spec": "+serialization", "msg": "Boost.graph requires Boost.serialization"},
         ],
         description=(
