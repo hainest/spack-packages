@@ -513,6 +513,11 @@ def load():
     variants.add(
         "geometry",
         when="@1.47.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+        ],
         requires=[
             {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.geometry requires Boost.container"},
             {"spec": "+graph", "msg": "Boost.geometry requires Boost.graph"},
@@ -750,6 +755,35 @@ def load():
             {"spec": "cxxstd=11", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
         ],
         description="Simplifies writing STL-compliant containers and ranges",
+    )
+    variants.add(
+        "pfr",
+        when="@1.75.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.pfr requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.pfr requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.pfr requires cxxstd >= 14"},
+        ],
+        description="Basic reflection for user-defined types"
+    )
+    variants.add(
+        "json",
+        when="@1.75.0:",
+        buildable="@1.75.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.JSON requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "msg": "Boost.JSON requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+container", "msg": "Boost.json requires Boost.container"},
+            {"spec": "+system", "msg": "Boost.json requires Boost.system"},
+        ],
+        description="JSON parsing, serialization, and DOM in C++11",
+    )
+    variants.add(
+      "leaf",
+      when="@1.75.0:",
+      description="Lightweight error-handling",
     )
     variants.add(
         "url",

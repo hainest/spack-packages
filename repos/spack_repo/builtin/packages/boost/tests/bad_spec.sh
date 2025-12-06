@@ -70,6 +70,8 @@ should_fail "+iostreams ~random"                                      # iostream
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+python ~graph"                                          # python requires graph
 should_fail "+test ~exception"                                        # test requires exception
+should_fail "+json ~container"                                        # json requires container
+should_fail "+json ~system"                                           # json requires system
 should_fail "+locale ~icu"                                            # locale requires icu
 should_fail "+locale ~thread"                                         # locale requires thread
 should_fail "+log ~asio"                                              # log requires asio
@@ -97,6 +99,9 @@ should_fail "+program_options ~lexical_cast"                          # program_
 should_fail "+numpy ~python"                                          # numpy requires python
 should_fail "+parameter_python cxxstd=98"                             # parameter_python requires cxxstd >= 03
 should_fail "+parameter_python ~python"                               # parameter_python requires python
+should_fail "+pfr cxxstd=98"                                          # pfr requires cxxstd >= 14
+should_fail "+pfr cxxstd=03"                                          # pfr requires cxxstd >= 14
+should_fail "+pfr cxxstd=11"                                          # pfr requires cxxstd >= 14
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system
@@ -152,6 +157,12 @@ should_fail "@1.71.0 +system ~variant2"                               # system r
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98
 should_fail "@1.73.0 +beast ~static_string"                           # beast requires static_string since 1.73.0
+should_Fail "@1.73.0 +pfr"                                            # pfr was added in 1.75.0
+should_fail "@1.74.0 +leaf"                                           # leaf was added in 1.75.0
+should_fail "@1.74.0 +json"                                           # json was added in 1.75.0
+should_fail "@1.75.0 +geometry cxxstd=98"                             # geometry requires cxxstd >= 14 after 1.75.0
+should_fail "@1.75.0 +geometry cxxstd=03"                             # geometry requires cxxstd >= 14 after 1.75.0
+should_fail "@1.75.0 +geometry cxxstd=11"                             # geometry requires cxxstd >= 14 after 1.75.0
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
 should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support

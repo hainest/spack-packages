@@ -92,25 +92,8 @@ class Boost(Package):
 
     with_default_variants = "boost"
 
-    # mpi/python are not installed by default because they pull in many
-    # dependencies and/or because there is a great deal of customization
-    # possible (and it would be difficult to choose sensible defaults)
-    #
-    all_libs = [
-        "json",
-    ]
-
     boost_variants = boostvariants.load()
     boostpatches.load()
-
-    # Add any extra requirements for specific libraries
-    all_libs_opts = {
-        "json": {"when": "@1.75:"},
-    }
-
-    for lib in all_libs:
-        lib_opts = all_libs_opts.get(lib, {})
-        variant(lib, default=False, description="Compile with {0} library".format(lib), **lib_opts)
 
     @property
     def libs(self):
@@ -452,10 +435,6 @@ class Boost(Package):
             env["PATH"] = newdir + ":" + env["PATH"]
 
         with_libs = {f"{lib}" for lib in Boost.all_libs if f"+{lib}" in spec}
-
-        # Remove libraries that the release version does not support
-        if not spec.satisfies("@1.75.0:"):
-            with_libs.discard("json")
 
         if self.spec.satisfies("platform=windows"):
             self.bootstrap_windows()
