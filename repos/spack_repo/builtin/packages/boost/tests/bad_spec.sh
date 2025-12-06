@@ -97,6 +97,9 @@ should_fail "+program_options ~lexical_cast"                          # program_
 should_fail "+numpy ~python"                                          # numpy requires python
 should_fail "+parameter_python cxxstd=98"                             # parameter_python requires cxxstd >= 03
 should_fail "+parameter_python ~python"                               # parameter_python requires python
+should_fail "+pfr cxxstd=98"                                          # pfr requires cxxstd >= 14
+should_fail "+pfr cxxstd=03"                                          # pfr requires cxxstd >= 14
+should_fail "+pfr cxxstd=11"                                          # pfr requires cxxstd >= 14
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system

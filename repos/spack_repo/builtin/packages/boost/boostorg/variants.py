@@ -790,6 +790,16 @@ def load():
         description="Lightweight error-handling",
     )
     variants.add(
+        "pfr",
+        when="@1.75.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "msg": "Boost.pfr requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "msg": "Boost.pfr requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "msg": "Boost.pfr requires cxxstd >= 14"},
+        ],
+        description="Basic reflection for user-defined types"
+    )
+    variants.add(
         "property_map_parallel",
         default=False,
         when="@1.77.0:",
