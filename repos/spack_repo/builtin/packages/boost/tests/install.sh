@@ -52,7 +52,7 @@ cxx14_libs="+locale"
 test_install "${cxx14_libs}  cxxstd=14"
 
 # All C++17 non-parallel, non-windows, non-default libraries
-cxx17_libs="+mqtt5+redis"
+cxx17_libs="+mqtt5+redis+parser"
 test_install "${cxx17_libs} cxxstd=17"
 
 # All C++20 non-parallel, non-windows, non-default libraries

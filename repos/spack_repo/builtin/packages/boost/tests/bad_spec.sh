@@ -109,6 +109,8 @@ should_fail "+program_options ~lexical_cast"                          # program_
 should_fail "+numpy ~python"                                          # numpy requires python
 should_fail "+parameter_python cxxstd=98"                             # parameter_python requires cxxstd >= 03
 should_fail "+parameter_python ~python"                               # parameter_python requires python
+should_fail "+parser ~charconv"                                       # parser requires charconv
+should_fail "+parser ~hana"                                           # parser requires hana
 should_fail "+pfr cxxstd=98"                                          # pfr requires cxxstd >= 14
 should_fail "+pfr cxxstd=03"                                          # pfr requires cxxstd >= 14
 should_fail "+pfr cxxstd=11"                                          # pfr requires cxxstd >= 14
@@ -196,5 +198,6 @@ should_fail "@1.85.0 +locale ~charconv"                               # locale r
 should_fail "@1.86.0 +graph ~regex"                                   # graph requires regex until 1.86.0
 should_fail "@1.86.0 +graph cxxstd=11"                                # graph requires cxxstd >= 14 since 1.86.0
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
+should_fail "@1.89.0 +parser cxxstd=14"                               # parser requires cxxstd >= 17 since 1.89.0
 
 exit $failed

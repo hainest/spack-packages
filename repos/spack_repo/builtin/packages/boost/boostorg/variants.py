@@ -955,6 +955,20 @@ def load():
         description="A collection of scope guards and a unique_resource wrapper"
     )
     variants.add(
+        "parser",
+        default=False,
+        when="@1.87.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "when": "@1.89.0:", "msg": "Boost.parser requires cxxstd >= 17"},
+            {"spec": "cxxstd=14", "when": "@1.89.0:", "msg": "Boost.parser requires cxxstd >= 17"},
+        ],
+        requires=[
+            {"spec": "+charconv", "msg": "Boost.parser requires Boost.charconv"},
+            {"spec": "+hana", "msg": "Boost.parser requires Boost.hana"},
+        ],
+        description="A parser combinator library"
+    )
+    variants.add(
         "mqtt5",
         default=False,
         when="@1.88.0:",
