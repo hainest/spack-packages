@@ -418,6 +418,13 @@ def load():
             sha256="1be9f01f238d54ce311c2a8a5ddbdd3f97268c0c011460e41033443d70280a18",
         )
 
+    # json::array::erase(it) seg fault on linux
+    sp.patch(
+        "patches/json_PR695.patch",
+        when="@1.79.0 +json",
+        sha256="0edcb348b9c6f6ab8c67735881dccd9759af852830ffe651ae51248e24ff11ac",
+    )
+
     # https://github.com/boostorg/phoenix/issues/111
     sp.patch(
         "patches/phoenix_PR111.patch",

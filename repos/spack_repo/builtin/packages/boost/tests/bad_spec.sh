@@ -170,6 +170,7 @@ should_fail "@1.76.0 +variant2 cxxstd=03"                             # variant2
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
 should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 added C++26 support
 should_fail "@1.78.0 +process cxxstd=03"                              # process requires cxxstd >= 11 after 1.78.0
+should_fail "@1.79.0 +wave cxxstd=03"                                 # wave requires cxxstd >= 11 as of 1.79.0
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
 should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
 should_fail "@1.85.0 +locale ~charconv"                               # locale requires charconv since 1.85.0
