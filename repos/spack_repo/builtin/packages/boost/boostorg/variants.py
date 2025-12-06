@@ -866,6 +866,22 @@ def load():
         description="Portable model for parsing URLs and URIs",
     )
     variants.add(
+        "mysql",
+        when="@1.82.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "msg": "Boost.mysql requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+asio", "msg": "Boost.mysql requires Boost.asio"},
+            {"spec": "+charconv", "when": "@1.85.0:", "msg": "Boost.mysql requires Boost.charconv"},
+            {"spec": "+container", "msg": "Boost.mysql requires Boost.container"},
+            {"spec": "+pfr", "msg": "Boost.mysql requires Boost.pfr"},
+            {"spec": "+system", "msg": "Boost.mysql requires Boost.system"},
+            {"spec": "+variant2", "msg": "Boost.mysql requires Boost.variant2"},
+        ],
+        description="MySQL client library built on top of Boost.Asio"
+    )
+    variants.add(
         "cobalt",
         default=False,
         when="@1.84.0:",

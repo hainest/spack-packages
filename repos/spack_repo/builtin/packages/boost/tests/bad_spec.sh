@@ -93,6 +93,13 @@ should_fail "+mqtt5 ~beast"                                           # mqtt5 re
 should_fail "+mqtt5 ~container"                                       # mqtt5 requires container
 should_fail "+mqtt5 ~random"                                          # mqtt5 requires random
 should_fail "+mqtt5 ~system"                                          # mqtt5 requires system
+should_fail "+mysql cxxstd=03"                                        # mysql requires cxxstd >= 11
+should_fail "+mysql ~asio"                                            # mysql requires asio
+should_fail "+mysql ~charconv"                                        # mysql requires charconv
+should_fail "+mysql ~container"                                       # mysql requires container
+should_fail "+mysql ~pfr"                                             # mysql requires pfr
+should_fail "+mysql ~system"                                          # mysql requires system
+should_fail "+mysql ~variant2"                                        # mysql requires variant2
 should_fail "+nowide ~filesystem"                                     # nowide requires filesystem
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+numpy ~python"                                          # numpy requires python
