@@ -636,6 +636,10 @@ def load():
         "process",
         when="@1.64.0:",
         buildable="@1.86.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.78.0:", "msg": "Boost.process requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when": "@1.78.0:", "msg": "Boost.process requires cxxstd >= 11"},
+        ],
         requires=[
             {"spec": "+asio", "msg": "Boost.process requires Boost.asio"},
             {"spec": "+filesystem", "msg": "Boost.process requires Boost.filesystem"},
