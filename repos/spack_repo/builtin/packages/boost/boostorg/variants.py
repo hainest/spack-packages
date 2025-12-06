@@ -384,6 +384,9 @@ def load():
         "wave",
         when="@1.33.0:",
         buildable="@1.33.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "when": "@1.79.0:", "msg": "Boost.wave requires cxxstd >= 11"},
+        ],
         requires=[
             {"spec": "+filesystem", "msg": "Boost.wave requires Boost.filesystem"},
             {"spec": "+lexical_cast", "msg": "Boost.wave requires Boost.lexical_cast"},
