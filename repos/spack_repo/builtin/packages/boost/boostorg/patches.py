@@ -340,6 +340,13 @@ def load():
         sha256="1fb372993f9226958d47617984a98a705df67acc2600b89aaec4a4f5a417db4d",
     )
 
+    # Revert "Cease dependence on Range"
+    sp.patch(
+        "patches/coroutine_PR44.patch",
+        when="+coroutine @1.72.0",
+        sha256="da7950df251a9d785a84c0092fb7ac4f68f6872c6172cccb303a5453e0ef98fd",
+    )
+
     # Fix: "Unable to compile code using boost/process.hpp"
     # See: https://github.com/boostorg/process/issues/116
     sp.patch(
