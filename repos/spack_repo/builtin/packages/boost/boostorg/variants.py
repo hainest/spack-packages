@@ -515,6 +515,11 @@ def load():
     variants.add(
         "geometry",
         when="@1.47.0:",
+        conflicts=[
+            {"spec": "cxxstd=98", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+            {"spec": "cxxstd=03", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+            {"spec": "cxxstd=11", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
+        ],
         requires=[
             {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.geometry requires Boost.container"},
             {"spec": "+graph", "msg": "Boost.geometry requires Boost.graph"},

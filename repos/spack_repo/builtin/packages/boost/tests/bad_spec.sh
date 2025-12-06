@@ -157,6 +157,9 @@ should_fail "@1.71.0 +system ~variant2"                               # system r
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
 should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98
 should_fail "@1.73.0 +beast ~static_string"                           # beast requires static_string since 1.73.0
+should_fail "@1.75.0 +geometry cxxstd=98"                             # geometry requires cxxstd >= 14 after 1.75.0
+should_fail "@1.75.0 +geometry cxxstd=03"                             # geometry requires cxxstd >= 14 after 1.75.0
+should_fail "@1.75.0 +geometry cxxstd=11"                             # geometry requires cxxstd >= 14 after 1.75.0
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
 should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
