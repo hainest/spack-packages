@@ -33,6 +33,7 @@ should_fail "+cobalt ~context"                                        # cobalt r
 should_fail "+cobalt ~static_string"                                  # cobalt requires static_string
 should_fail "+cobalt ~system"                                         # cobalt requires system
 should_fail "+cobalt ~variant2"                                       # cobalt requires variant2
+should_fail "+compat cxxstd=03"                                       # compat requires cxxstd >= 11
 should_fail "+icu cxxstd=03"                                          # icu requires cxxstd >= 11
 should_fail "~context context-impl=fcontext"                          # context-impl requires context
 should_fail "+contract ~exception"                                    # contract requires exception
