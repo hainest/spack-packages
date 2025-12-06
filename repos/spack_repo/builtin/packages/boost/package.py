@@ -136,15 +136,6 @@ class Boost(Package):
 
         return find_libraries(libraries, root=self.prefix, shared=shared, recursive=True)
 
-    variant(
-        "context-impl",
-        default="fcontext",
-        values=("fcontext", "ucontext", "winfib"),
-        multi=False,
-        description="Use the specified backend for boost-context",
-        when="@1.65.0: +context",
-    )
-
     depends_on("c", type="build")
     depends_on("cxx", type="build")
 

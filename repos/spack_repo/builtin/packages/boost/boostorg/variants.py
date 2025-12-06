@@ -611,5 +611,19 @@ def load():
         ],
         description="Portable process creation and management",
     )
+    variants.add(
+        "context-impl",
+        when="@1.65.0:",
+        is_named=True,
+        requires=[
+            {"spec": "+context", "when":"context-impl=fcontext", "msg": "context-impl requires Boost.Context"},
+            {"spec": "+context", "when":"context-impl=ucontext", "msg": "context-impl requires Boost.Context"},
+            {"spec": "+context", "when":"context-impl=winfib", "msg": "context-impl requires Boost.Context"},
+        ],
+        default="fcontext",
+        values=("fcontext", "ucontext", "winfib"),
+        multi=False,
+        description="The backend for Boost.Context",
+    )
 
     return variants
