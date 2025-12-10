@@ -364,5 +364,13 @@ def load():
         ],
         description="Highly configurable implementation of the mandatory C99/C++ preprocessor",
     )
+    variants.add(
+        "asio",
+        when="@1.35.0:",
+        requires=[
+            {"spec": "+date_time", "msg": "Boost.asio requires Boost.date_time"},
+        ],
+        description="Portable networking and other low-level I/O",
+    )
 
     return variants
