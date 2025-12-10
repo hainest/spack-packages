@@ -306,6 +306,7 @@ def load():
         buildable="@1.23.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.math requires cxxstd >= 11"},
+            {"spec": "cxxstd=11", "when": "@1.82.0:", "msg": "Boost.math requires cxxstd >= 14"},
         ],
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.math requires Boost.lexical_cast"},
@@ -589,6 +590,19 @@ def load():
         description="DEPRECATED use coroutine2",
     )
     variants.add(
+        "multiprecision",
+        when="@1.53.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "when": "@1.82.0:", "msg": "Boost.multiprecision requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.multiprecision requires Boost.lexical_cast"},
+            {"spec": "+math", "msg": "Boost.multiprecision requires Boost.math"},
+            {"spec": "+random", "msg": "Boost.multiprecision requires Boost.random"},
+        ],
+        description="Extended precision arithmetic types for floating point, integer, and rational arithmetic"
+    )
+    variants.add(
         "log",
         when="@1.54.0:",
         buildable="@1.54.0:",
@@ -863,6 +877,22 @@ def load():
             {"spec": "cxxstd=14", "when": "@1.90.0:", "msg": "Boost.openmethod requires cxxstd >= 17"},
         ],
         description="Open-methods for C++17 and above"
+    )
+    variants.add(
+        "mysql",
+        when="@1.82.0:",
+        conflicts=[
+            {"spec": "cxxstd=03", "msg": "Boost.mysql requires cxxstd >= 11"},
+        ],
+        requires=[
+            {"spec": "+asio", "msg": "Boost.mysql requires Boost.asio"},
+            {"spec": "+charconv", "when": "@1.85.0:", "msg": "Boost.mysql requires Boost.charconv"},
+            {"spec": "+container", "msg": "Boost.mysql requires Boost.container"},
+            {"spec": "+pfr", "msg": "Boost.mysql requires Boost.pfr"},
+            {"spec": "+system", "msg": "Boost.mysql requires Boost.system"},
+            {"spec": "+variant2", "msg": "Boost.mysql requires Boost.variant2"},
+        ],
+        description="MySQL client library built on top of Boost.Asio"
     )
     variants.add(
         "cobalt",
