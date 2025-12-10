@@ -306,6 +306,7 @@ def load():
         buildable="@1.23.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.math requires cxxstd >= 11"},
+            {"spec": "cxxstd=11", "when": "@1.82.0:", "msg": "Boost.math requires cxxstd >= 14"},
         ],
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.math requires Boost.lexical_cast"},
@@ -586,6 +587,19 @@ def load():
             {"spec": "+system", "msg": "Boost.coroutine requires Boost.system"},
         ],
         description="DEPRECATED use coroutine2",
+    )
+    variants.add(
+        "multiprecision",
+        when="@1.53.0:",
+        conflicts=[
+            {"spec": "cxxstd=11", "when": "@1.82.0:", "msg": "Boost.multiprecision requires cxxstd >= 14"},
+        ],
+        requires=[
+            {"spec": "+lexical_cast", "msg": "Boost.multiprecision requires Boost.lexical_cast"},
+            {"spec": "+math", "msg": "Boost.multiprecision requires Boost.math"},
+            {"spec": "+random", "msg": "Boost.multiprecision requires Boost.random"},
+        ],
+        description="Extended precision arithmetic types for floating point, integer, and rational arithmetic"
     )
     variants.add(
         "log",

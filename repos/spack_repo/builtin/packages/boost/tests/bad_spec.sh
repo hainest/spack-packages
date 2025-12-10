@@ -93,6 +93,9 @@ should_fail "+mqtt5 ~beast"                                           # mqtt5 re
 should_fail "+mqtt5 ~container"                                       # mqtt5 requires container
 should_fail "+mqtt5 ~random"                                          # mqtt5 requires random
 should_fail "+mqtt5 ~system"                                          # mqtt5 requires system
+should_fail "+multiprecision ~lexical_cast"                           # multiprecision requires lexical_cast
+should_fail "+multiprecision ~math"                                   # multiprecision requires math
+should_fail "+multiprecision ~random"                                 # multiprecision requires random
 should_fail "+mysql cxxstd=03"                                        # mysql requires cxxstd >= 11
 should_fail "+mysql ~asio"                                            # mysql requires asio
 should_fail "+mysql ~charconv"                                        # mysql requires charconv
@@ -180,6 +183,8 @@ should_fail "@1.78.0 +process cxxstd=03"                              # process 
 should_fail "@1.79.0 +wave cxxstd=03"                                 # wave requires cxxstd >= 11 as of 1.79.0
 should_fail "@1.80.0 +gil cxxstd=11"                                  # gil requires cxxstd >= 14 as of 1.80.0
 should_fail "@1.80.0 +locale cxxstd=03"                               # locale requires cxxstd >= 11 as of 1.81.0
+should_fail "@1.82.0 +math cxxstd=11"                                 # math requires cxxstd >= 14 after 1.82.0
+should_fail "@1.82.0: +multiprecision cxxstd=11"                      # multiprecision requires cxxstd >= 14
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
 should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
 should_fail "@1.85.0 +locale ~charconv"                               # locale requires charconv since 1.85.0

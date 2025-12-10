@@ -475,6 +475,13 @@ def load():
         sha256="a7c807fcd855aa70ba839c0bdfcf5877dc9a37f8026211ccda9c676b42431b17",
     )
 
+    with sp.when("@1.82.0+filesystem"):
+        # OpenBSD has broken support for -Wl,--no-undefined for shared libraries
+        sp.patch(
+            "patches/filesystem_PR283.patch",
+            sha256="53a37c8673b20ee697b48bbee0370334958775d7824d43f533672b2c22f523c0",
+        )
+
     # https://github.com/boostorg/context/pull/280
     sp.patch(
         "patches/context_PR280.patch",
