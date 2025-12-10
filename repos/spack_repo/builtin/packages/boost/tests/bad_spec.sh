@@ -100,6 +100,8 @@ should_fail "+parameter_python ~python"                               # paramete
 should_fail "+process ~asio"                                          # process requires asio
 should_fail "+process ~filesystem"                                    # process requires filesystem
 should_fail "+process ~system"                                        # process requires system
+should_fail "+outcome ~exception"                                     # outcome requires exception
+should_fail "+outcome ~system"                                        # outcome requires system
 should_fail "+random ~system"                                         # random requires system
 should_fail "+safe_numerics cxxstd=98"                                # safe_numerics requires cxxstd >= 14
 should_fail "+safe_numerics cxxstd=03"                                # safe_numerics requires cxxstd >= 14

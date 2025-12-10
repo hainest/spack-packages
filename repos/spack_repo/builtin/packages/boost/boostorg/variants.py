@@ -792,5 +792,16 @@ def load():
         ],
         description="A C++17 MQTT client built on top of Boost.Asio",
     )
+    variants.add(
+        "outcome",
+        when="@1.70.0:",
+        requires=[
+            {"spec": "+exception", "msg": "Boost.outcome requires Boost.exception"},
+            {"spec": "+system", "msg": "Boost.outcome requires Boost.system"},
+        ],
+        description=(
+            "Deterministic failure handling, partially simulating lightweight exceptions"
+        ),
+    )
 
     return variants
