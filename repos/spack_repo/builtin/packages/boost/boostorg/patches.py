@@ -333,6 +333,13 @@ def load():
         sha256="5da7ad24de07adc1e99b2bab8b5aeefa0059d0f0ace932788c7746f9117d9917",
     )
 
+    # Fix moved-from executor in idle ping timeout
+    sp.patch(
+        "patches/beast_PR1599.patch",
+        when="+beast @1.70.0",
+        sha256="1fb372993f9226958d47617984a98a705df67acc2600b89aaec4a4f5a417db4d",
+    )
+
     # Fix: "Unable to compile code using boost/process.hpp"
     # See: https://github.com/boostorg/process/issues/116
     sp.patch(
