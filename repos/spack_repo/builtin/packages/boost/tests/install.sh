@@ -39,4 +39,8 @@ python_libs="+python"
 test_install "${python_libs}"
 test_install "${python_libs}"
 
+# All mpi/parallel stuff
+parallel="+mpi"
+test_install ${parallel}
+
 exit $failed

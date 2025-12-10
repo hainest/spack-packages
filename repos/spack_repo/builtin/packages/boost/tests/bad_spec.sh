@@ -32,6 +32,9 @@ should_fail "+python ~graph"                                          # python r
 should_fail "+test ~exception"                                        # test requires exception
 should_fail "+math ~lexical_cast"                                     # math requires lexical_cast
 should_fail "+math ~random"                                           # math requires random
+should_fail "+mpi ~graph"                                             # mpi requires graph
+should_fail "+mpi ~lexical_cast"                                      # mpi requires lexical_cast
+should_fail "+mpi ~serialization"                                     # mpi requires serialization
 should_fail "+program_options ~lexical_cast"                          # program_options requires lexical_cast
 should_fail "+thread ~chrono"                                         # thread requires chrono
 should_fail "+thread ~container"                                      # thread requires container
@@ -43,11 +46,14 @@ should_fail "+wave ~lexical_cast"                                     # wave req
 should_fail "+wave ~serialization"                                    # wave requires serialization
 should_fail "@1.20.0 +python ~lexical_cast"                           # python requires lexical_cast since 1.20.0
 should_fail "@1.62.0 cxxstd=17"                                       # 1.63.0 added C++17 support
+should_fail "@1.64.0 +python +mpi"                                    # 1.64 uses out-dated APIs
 should_fail "@1.72.0 +clanglibcpp"                                    # clanglibcpp was introduced in 1.73.0
+should_fail "@1.72.0 +python +mpi cxxstd=98"                          # @1.72.0 mpi+python does not support C++98
 should_fail "@1.76.0 cxxstd=98"                                       # core requires cxxstd >= 03
 should_fail "@1.76.0 cxxstd=20"                                       # 1.77.0 added C++20 support
 should_fail "@1.78.0 cxxstd=23"                                       # 1.79.0 added C++23 support
 should_fail "@1.78.0 cxxstd=26"                                       # 1.79.0 added C++26 support
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
+should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
 
 exit $failed
