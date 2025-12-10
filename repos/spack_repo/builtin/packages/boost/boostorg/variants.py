@@ -117,6 +117,7 @@ def load():
         values=(
             # Boost supports pre-releases like 2a, but spack.CompilerAdaptor doesn't
             "98",
+            "03",
             "11",
             "14",
             sp.conditional("17", when="@1.63.0:"),
@@ -128,7 +129,10 @@ def load():
         is_named=True,
         conflicts=[
             # Boost.core requires cxxstd >= 03 since 1.76.0
-            {"spec": "cxxstd=98", "when":"@1.76.0:", "msg": "This version of Boost requires cxxstd >= 03"},
+            {"spec": "cxxstd=98", "when":"@1.76.0:1.83.0", "msg": "This version of Boost requires cxxstd >= 03"},
+            # C++98/03 support was removed in 1.84.0
+            {"spec": "cxxstd=98", "when":"@1.84.0:", "msg": "This version of Boost requires cxxstd >= 11"},
+            {"spec": "cxxstd=03", "when":"@1.84.0:", "msg": "This version of Boost requires cxxstd >= 11"},
         ],
         description="C++ standard",
     )
