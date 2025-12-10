@@ -60,6 +60,12 @@ should_fail "+graph_parallel ~lexical_cast"                           # graph_pa
 should_fail "+graph_parallel ~mpi"                                    # graph_parallel requires mpi
 should_fail "+graph_parallel ~random"                                 # graph_parallel requires random
 should_fail "+graph_parallel ~serialization"                          # graph_parallel requires serialization
+should_fail "+histogram cxxstd=98"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram cxxstd=03"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram cxxstd=11"                                    # histogram requires cxxstd >= 14
+should_fail "+histogram ~math"                                        # histogram requires math
+should_fail "+histogram ~serialization"                               # histogram requires serialization
+should_fail "+histogram ~variant2"                                    # histogram requires variant2
 should_fail "+iostreams ~random"                                      # iostreams requires random
 should_fail "+iostreams ~regex"                                       # iostreams requires regex
 should_fail "+json ~container"                                        # json requires container
