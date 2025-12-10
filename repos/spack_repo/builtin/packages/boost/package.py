@@ -123,7 +123,6 @@ class Boost(Package):
         "json",
         "locale",
         "log",
-        "mpi",
         "mqtt5",
         "nowide",
         "openmethod",
@@ -193,13 +192,15 @@ class Boost(Package):
 
     conflicts("+locale ~icu")  # Boost.Locale "strongly recommends" icu, so enforce it
 
+    with when("+mpi"):
+        depends_on("mpi")
+
     with when("+python"):
         depends_on("python")
 
         # https://github.com/boostorg/python/commit/cbd2d9f033c61d29d0a1df14951f4ec91e7d05cd
         depends_on("python@:3.9", when="@:1.75")
 
-    depends_on("mpi", when="+mpi")
     depends_on("py-numpy", when="+numpy", type=("build", "run"))
     # https://github.com/boostorg/python/issues/431
     depends_on("py-numpy@:1", when="@:1.86+numpy", type=("build", "run"))
@@ -224,20 +225,7 @@ class Boost(Package):
     conflicts("cxxstd=98", when="+fiber")  # Fiber requires >=C++11.
     conflicts("~context", when="+fiber")  # Fiber requires Context.
 
-    # NOTE: 1.64.0 seems fine for *most* applications, but if you need
-    #       +python and +mpi, there seem to be errors with out-of-date
-    #       API calls from mpi/python.
-    #       See: https://github.com/spack/spack/issues/3963
-    conflicts("@1.64.0", when="+python", msg="Errors with out-of-date API calls from Python")
-    conflicts("@1.64.0", when="+mpi", msg="Errors with out-of-date API calls from MPI")
-
     conflicts("+numpy", when="~python")
-
-    # boost-python in 1.72.0 broken with cxxstd=98
-    conflicts("cxxstd=98", when="+mpi+python @1.72.0")
-
-    # boost-mpi depends on boost-python since 1.87.0
-    conflicts("~python", when="+mpi @1.87.0:")
 
     # Container's Extended Allocators were not added until 1.56.0
     conflicts("+container", when="@:1.55")

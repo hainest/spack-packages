@@ -372,5 +372,27 @@ def load():
         ],
         description="Portable networking and other low-level I/O",
     )
+    variants.add(
+        "mpi",
+        default=False,
+        sticky=False,
+        when="@1.35.0:",
+        buildable="@1.35.0:",
+        conflicts=[
+            # 1.64 uses out-dated APIs (https://github.com/spack/spack/issues/3963)
+            {"spec": "@1.64.0 +python", "msg": "Boost.MPI@1.64.0 does not support python"},
+            # Boost.python in 1.72.0 broken with cxxstd=98
+            {"spec": "@1.72.0 +python cxxstd=98", "msg": "Boost.MPI@1.72.0 + Boost.Python is broken in C++98 mode"},
+        ],
+        requires=[
+            {"spec": "+graph", "msg": "Boost.mpi requires Boost.graph"},
+            {"spec": "+lexical_cast", "msg": "Boost.mpi requires Boost.lexical_cast"},
+            {"spec": "+python", "when": "@1.87.0:", "msg": "Boost.mpi requires Boost.python"},
+            {"spec": "+serialization", "msg": "Boost.mpi requires Boost.serialization"},
+        ],
+        description=(
+            "C++ wrapper to the Message Passing Interface for distributed-memory parallelism"
+        ),
+    )
 
     return variants
