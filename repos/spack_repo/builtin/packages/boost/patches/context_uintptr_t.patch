@@ -1,0 +1,10 @@
+--- a/libs/context/src/fcontext.cpp	2025-12-11 11:35:39.954357726 -0600
++++ b/libs/context/src/fcontext.cpp	2025-12-11 11:34:51.511148751 -0600
+@@ -9,5 +9,6 @@
+ #include <boost/context/fcontext.hpp>
+ 
+ #include <cstddef>
++#include <cstdint>
+ 
+ #ifdef BOOST_HAS_ABI_HEADERS
+ #  include BOOST_ABI_PREFIX

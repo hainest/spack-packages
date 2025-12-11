@@ -157,6 +157,12 @@ def load():
         when="@1.50.0",
         sha256="9322b6ce3a51f452485ad4bb1ee4645c7e89796b1c3608826e884c80b55b1d61",
     )
+    # context/fcontext.cpp is missing <cstdint>
+    sp.patch(
+        "patches/context_uintptr_t.patch",
+        when="@1.51.0:1.52.0 +context",
+        sha256="abd5e2f0a3345b47bb8729e3c3d6882e7678f57952d9674b16d7bd6a36606786",
+    )
 
     # Fix missing declaration of uintptr_t with glibc>=2.17 - https://bugs.gentoo.org/482372
     sp.patch(
