@@ -261,6 +261,18 @@ def load():
         sha256="cfd4e6e1e9747def96adeae0075994a03a10e1bfb471900ecb52b7839afa9ca2",
     )
 
+    with sp.when("@1.65.0"):
+        sp.patch(
+            "patches/fiber_v1650.patch",
+            when="+fiber",
+            sha256="1bcafb24b8634170c86fbace4c69fcf389405edb84cfb6a167c217f9390e0b16",
+        )
+        sp.patch(
+            "patches/thread_v1650.patch",
+            when="+thread",
+            sha256="1616e3483a8e7ee07a9ce6cb305a8c891201c5ddb80cada7f1e377961f3dd2b5",
+        )
+
     with sp.when("@1.69.0"):
         # Patch fix for warnings from commits 2d37749, af1dc84, c705bab, and
         # 0134441 on https://github.com/boostorg/system.
