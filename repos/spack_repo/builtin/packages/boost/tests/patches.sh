@@ -21,6 +21,7 @@ function test_patch () {
 
 # Patches requiring a specific version of a compiler or OS are not included
 
+test_patch "@1.50.0"                          # unordered_v1500
 test_patch "@1.54.0 +python ^python@3"        # python_jam_pre156, glibc_gentoo_v1.53.0.patch, call_once_variadic
 test_patch "@1.55.0 %clang"                   # clang-linux_add_option2
 test_patch "@1.56.0 %clang"                   # clang-linux_add_option, build_PR154
