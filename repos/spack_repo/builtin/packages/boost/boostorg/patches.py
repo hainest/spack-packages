@@ -147,6 +147,13 @@ def load():
             sha256="f994ac84634f2f833a7a4d3179c5bf9a06f14349ef67aacba39d08837ffab004",
         )
 
+        # Fix exec_file for Python 3 < 3.4
+        sp.patch(
+            "patches/python_v1580.patch",
+            when="@1.58.0 ^python@:3.3.99",
+            sha256="d2ea75d2fd00db7842252fe827d914d1b2e4558af655443f9bb1f53caa550441",
+        )
+
     #
     # --------------------------------------------------------------------------------------
     #
@@ -211,6 +218,13 @@ def load():
         "patches/call_once_variadic.patch",
         when="@1.54.0:1.55 %gcc@5.0:",
         sha256="4f2b06f77ad5e485e9debb769199414b2d6ebc0784aa1a8e28c1144fa971e155",
+    )
+
+    # Regression with c++14 non-constexpr types
+    sp.patch(
+        "patches/fusion_v1580.patch",
+        when="@1.58.0",
+        sha256="746c6c48f7b88782b3bf792e8e0e042eee65a5c3a419cc8a8c7714991314eda1",
     )
 
     # Add option to C/C++ compile commands in clang-linux.jam
