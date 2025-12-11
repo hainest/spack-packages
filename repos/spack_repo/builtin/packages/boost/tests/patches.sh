@@ -32,6 +32,7 @@ test_patch "@1.55.0 +log"                     # log_v1550
 test_patch "@1.55.0 %clang"                   # clang-linux_add_option2
 test_patch "@1.56.0 %clang"                   # clang-linux_add_option, build_PR154
 test_patch "@1.58.0 +python"                  # python_v1580, fusion_v1580
+test_patch "@1.59.0 +log"                     # log_v1590
 test_patch "@1.63.0 +python +numpy"           # python_PR218, python_PR432
 test_patch "@1.69.0 +system"                  # system-non-virtual-dtor-{include,test}, pthread-stack-min-fix
 test_patch "@1.72.0 +process"                 # process_PR116

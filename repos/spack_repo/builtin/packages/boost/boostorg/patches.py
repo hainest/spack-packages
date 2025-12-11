@@ -227,6 +227,13 @@ def load():
         sha256="746c6c48f7b88782b3bf792e8e0e042eee65a5c3a419cc8a8c7714991314eda1",
     )
 
+    # Regression that prevents some logging statements from compiling
+    sp.patch(
+        "patches/log_v1590.patch",
+        when="@1.59.0 +log",
+        sha256="0bec8d4ae53601cbb455ba182440045a704f8df0250430109fc8421d4cb3d70d",
+    )
+
     # Add option to C/C++ compile commands in clang-linux.jam
     sp.patch(
         "patches/clang-linux_add_option.patch",
