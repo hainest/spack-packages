@@ -199,7 +199,7 @@ should_fail "@1.80.0 +locale cxxstd=03"                               # locale r
 should_fail "@1.82.0 +math cxxstd=11"                                 # math requires cxxstd >= 14 after 1.82.0
 should_fail "@1.82.0: +multiprecision cxxstd=11"                      # multiprecision requires cxxstd >= 14
 should_fail "@1.85.0 cxxstd=03"                                       # 1.84.0 removed C++98/03 support
-should_fail "@1.85.0 +clanglibcpp+stacktrace"                         # 1.85.0 stacktrace added a hard compilation error
+should_fail "@1.85.0 +locale ~charconv"                               # locale requires charconv since 1.85.0
 should_fail "@1.87.0 +mpi ~python"                                    # Boost.MPI requires Boost.Python
 should_fail "@1.90.0 +openmethod cxxstd=14"                           # openmethod requires cxxstd >= 17
 
