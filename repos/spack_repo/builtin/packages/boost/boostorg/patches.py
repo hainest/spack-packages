@@ -200,6 +200,13 @@ def load():
             sha256="c6d0398753c9de45e4df2b6d8e5b3a7f0a0ef0da180dcaf64f36968be6f290e0",
         )
 
+    # avx2 fixes
+    sp.patch(
+        "patches/log_v1550.patch",
+        when="@1.55.0 +log",
+        sha256="cf595b993829693dc2a8377251bcb9395afd533c89801be0e80371b796413cd3",
+    )
+
     sp.patch(
         "patches/call_once_variadic.patch",
         when="@1.54.0:1.55 %gcc@5.0:",

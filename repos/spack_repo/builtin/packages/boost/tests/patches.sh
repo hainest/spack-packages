@@ -28,6 +28,7 @@ test_patch "@1.54.0 +coroutine"               # coroutine_v1540
 test_patch "@1.54.0 +date_time"               # date_time_v1540
 test_patch "@1.54.0 +log"                     # log_v1540
 test_patch "@1.54.0 +thread"                  # thread_v1540
+test_patch "@1.55.0 +log"                     # log_v1550
 test_patch "@1.55.0 %clang"                   # clang-linux_add_option2
 test_patch "@1.56.0 %clang"                   # clang-linux_add_option, build_PR154
 test_patch "@1.63.0 +python +numpy"           # python_PR218, python_PR432
