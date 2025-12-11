@@ -115,44 +115,51 @@ def load():
     #
     # ----- Python ---------
     #
-    with sp.when("^python@3:"):
-        # Backport Python3 import problem
-        # See https://github.com/boostorg/python/pull/218
+    with sp.when("+python"):
         sp.patch(
-            "patches/python_PR218.patch",
-            when="@1.63.0:1.67",
-            sha256="7f95f95be9645eb7f10a7222173c8549501aebbe1db12b955442a7554dc59f3e",
-        )
-        # Support for numpy >= 2
-        sp.patch(
-            "patches/python_PR432.patch",
-            when="@:1.86.0 +numpy",
-            working_dir="libs/python",
-            level=0,
-            sha256="41d0e85c8f29d2b13e259d43f7fa9e44d3ab402a9b8c3d351334feb958c9199e",
-        )
-        sp.patch(
-            "patches/python_jam-1_77.patch",
-            when="@1.77:",
-            sha256="b8569d7d4c3ef0501a39857126a2b0a88519bf256c29f3252a6958916ce82255",
-        )
-        sp.patch(
-            "patches/python_jam.patch",
-            when="@1.56:1.76",
-            sha256="2ab6c72d03dec6a4ae20220a9dfd5c8c572c5294252155b85c6874d97c323199",
-        )
-        sp.patch(
-            "patches/python_jam_pre156.patch",
-            when="@:1.55.0",
-            sha256="f994ac84634f2f833a7a4d3179c5bf9a06f14349ef67aacba39d08837ffab004",
+            "patches/python_v1670.patch",
+            when="@1.67.0",
+            sha256="9b59b89ab165f87d5f3cc653f9f64b322d911092ee9dd2904f0b6ce7bfb5c211",
         )
 
-        # Fix exec_file for Python 3 < 3.4
-        sp.patch(
-            "patches/python_v1580.patch",
-            when="@1.58.0 ^python@:3.3.99",
-            sha256="d2ea75d2fd00db7842252fe827d914d1b2e4558af655443f9bb1f53caa550441",
-        )
+        with sp.when("^python@3:"):
+            # Backport Python3 import problem
+            # See https://github.com/boostorg/python/pull/218
+            sp.patch(
+                "patches/python_PR218.patch",
+                when="@1.63.0:1.67",
+                sha256="7f95f95be9645eb7f10a7222173c8549501aebbe1db12b955442a7554dc59f3e",
+            )
+            # Support for numpy >= 2
+            sp.patch(
+                "patches/python_PR432.patch",
+                when="@:1.86.0 +numpy",
+                working_dir="libs/python",
+                level=0,
+                sha256="41d0e85c8f29d2b13e259d43f7fa9e44d3ab402a9b8c3d351334feb958c9199e",
+            )
+            sp.patch(
+                "patches/python_jam-1_77.patch",
+                when="@1.77:",
+                sha256="b8569d7d4c3ef0501a39857126a2b0a88519bf256c29f3252a6958916ce82255",
+            )
+            sp.patch(
+                "patches/python_jam.patch",
+                when="@1.56:1.76",
+                sha256="2ab6c72d03dec6a4ae20220a9dfd5c8c572c5294252155b85c6874d97c323199",
+            )
+            sp.patch(
+                "patches/python_jam_pre156.patch",
+                when="@:1.55.0",
+                sha256="f994ac84634f2f833a7a4d3179c5bf9a06f14349ef67aacba39d08837ffab004",
+            )
+
+            # Fix exec_file for Python 3 < 3.4
+            sp.patch(
+                "patches/python_v1580.patch",
+                when="@1.58.0 ^python@:3.3.99",
+                sha256="d2ea75d2fd00db7842252fe827d914d1b2e4558af655443f9bb1f53caa550441",
+            )
 
     #
     # --------------------------------------------------------------------------------------
@@ -271,6 +278,18 @@ def load():
             "patches/thread_v1650.patch",
             when="+thread",
             sha256="1616e3483a8e7ee07a9ce6cb305a8c891201c5ddb80cada7f1e377961f3dd2b5",
+        )
+
+    with sp.when("@1.67.0"):
+        sp.patch(
+            "patches/fiber_v1670.patch",
+            when="+fiber",
+            sha256="68749ddd68f5d5a4f76f3f20ffc4d8036930b77316064dde272c4ee3884662d6",
+        )
+        sp.patch(
+            "patches/wave_v1670.patch",
+            when="+wave",
+            sha256="7e096e4cacd67dc1d2f5cf0e3be3708a7d26bbd59ecbe2a9cc3b40a00d260057",
         )
 
     with sp.when("@1.69.0"):
