@@ -151,6 +151,13 @@ def load():
     # --------------------------------------------------------------------------------------
     #
 
+    # Make unordered container grouped_node constructors explicit
+    sp.patch(
+        "patches/unordered_v1500.patch",
+        when="@1.50.0",
+        sha256="9322b6ce3a51f452485ad4bb1ee4645c7e89796b1c3608826e884c80b55b1d61",
+    )
+
     # Fix missing declaration of uintptr_t with glibc>=2.17 - https://bugs.gentoo.org/482372
     sp.patch(
         "patches/glibc_gentoo_v1.53.0.patch",
