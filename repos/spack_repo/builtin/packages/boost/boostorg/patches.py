@@ -497,6 +497,14 @@ def load():
             sha256="565aeaf171459b79680009d9f702b4dfd599efc40eec8a96ca35ef936b1be294",
         )
 
+    with sp.when("@1.85.0"):
+        # flat_map/multimap containers can crash due to UB
+        sp.patch(
+            "patches/container_PR273.patch",
+            when="+container",
+            sha256="def5f619da05c2394818968b9c2341e2266bf27946e2ed40bd0c55c3a8707b15",
+        )
+
     # https://github.com/boostorg/context/pull/280
     sp.patch(
         "patches/context_PR280.patch",
