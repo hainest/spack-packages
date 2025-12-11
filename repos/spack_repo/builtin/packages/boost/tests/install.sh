@@ -22,6 +22,10 @@ function test_install () {
   fi
 }
 
+for v in $(seq 50 90); do
+  test_install "@1.$v.0"
+done
+
 test_install ""
 test_install "%gcc"
 test_install "@develop %gcc"
