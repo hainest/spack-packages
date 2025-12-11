@@ -171,6 +171,35 @@ def load():
         sha256="b6f6ce68282159d46c716a1e6c819c815914bdb096cddc516fa48134209659f2",
     )
 
+    with sp.when("@1.54.0"):
+        # Fix coroutine Jamfile
+        sp.patch(
+            "patches/coroutine_v1540.patch",
+            when="+coroutine",
+            sha256="588319691b9178ac27128af049d97179b513f7098656aa347268c1bc48821ead",
+        )
+
+        # Make shared_ptr -> bool conversion explicit in date_time
+        sp.patch(
+            "patches/date_time_v1540.patch",
+            when="+date_time",
+            sha256="624a5eff5101437a64fd8ad2d06f90da86abfadba7fb6ad4730cc7a5feda8b9f",
+        )
+
+        # Backported fix for BOOST_LOG_ONCE_BLOCK_FLAG macro definition
+        sp.patch(
+            "patches/log_v1540.patch",
+            when="+log",
+            sha256="69e446542919996397e5c70bbb4bb17af51c72d57b1400dcfed470588abe567f",
+        )
+
+        # Rollback change in #8070 as this includes a regression on windows XP
+        sp.patch(
+            "patches/thread_v1540.patch",
+            when="+thread",
+            sha256="c6d0398753c9de45e4df2b6d8e5b3a7f0a0ef0da180dcaf64f36968be6f290e0",
+        )
+
     sp.patch(
         "patches/call_once_variadic.patch",
         when="@1.54.0:1.55 %gcc@5.0:",
