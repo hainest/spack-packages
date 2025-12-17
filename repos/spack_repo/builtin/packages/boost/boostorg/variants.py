@@ -136,8 +136,6 @@ def load():
         default="14",
         values=(
             # Boost supports pre-releases like 2a, but spack.CompilerAdaptor doesn't
-            "98",
-            "03",
             "11",
             "14",
             sp.conditional("17", when="@1.63.0:"),
@@ -147,13 +145,6 @@ def load():
         ),
         multi=False,
         is_named=True,
-        conflicts=[
-            # Boost.core requires cxxstd >= 03 since 1.76.0
-            {"spec": "cxxstd=98", "when":"@1.76.0:1.83.0", "msg": "This version of Boost requires cxxstd >= 03"},
-            # C++98/03 support was removed in 1.84.0
-            {"spec": "cxxstd=98", "when":"@1.84.0:", "msg": "This version of Boost requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when":"@1.84.0:", "msg": "This version of Boost requires cxxstd >= 11"},
-        ],
         description="C++ standard",
     )
     variants.add(
@@ -163,10 +154,6 @@ def load():
     )
     variants.add(
         "icu",
-        conflicts=[
-            {"spec": "cxxstd=98", "msg": "ICU requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "msg": "ICU requires cxxstd >= 11"},
-        ],
         description="Enable Unicode support via ICU",
     )
     variants.add(
@@ -262,11 +249,6 @@ def load():
         # Added in 1.18.0
         "regex",
         buildable="@1.18.0:",
-        conflicts=[
-            # This was found from experimentation
-            {"spec": "cxxstd=98", "when": "@1.43.0:", "msg": "Boost.regex requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when": "@1.43.0:", "msg": "Boost.regex requires cxxstd >= 11"},
-        ],
         requires=[
             # This was found from experimentation
             {"spec": "+icu", "when": "@1.43.0:", "msg": "Boost.regex requires ICU support"},
@@ -312,7 +294,6 @@ def load():
         "math",
         buildable="@1.23.0:",
         conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.math requires cxxstd >= 11"},
             {"spec": "cxxstd=11", "when": "@1.82.0:", "msg": "Boost.math requires cxxstd >= 14"},
         ],
         requires=[
@@ -392,9 +373,6 @@ def load():
         # Added in 1.33.0
         "wave",
         buildable="@1.33.0:",
-        conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.79.0:", "msg": "Boost.wave requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+filesystem", "msg": "Boost.wave requires Boost.filesystem"},
             {"spec": "+lexical_cast", "msg": "Boost.wave requires Boost.lexical_cast"},
@@ -416,8 +394,6 @@ def load():
         # # Added in 1.35.0
         "gil",
         conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
             {"spec": "cxxstd=11", "when": "@1.80.0:", "msg": "Boost.gil requires cxxstd >= 14"},
             {"spec": "%gcc@5", "when": "@1.80.0:", "msg": "Boost.gil no longer works with gcc-5"},
         ],
@@ -436,8 +412,6 @@ def load():
         conflicts=[
             # 1.64 uses out-dated APIs (https://github.com/spack/spack/issues/3963)
             {"spec": "@1.64.0 +python", "msg": "Boost.MPI@1.64.0 does not support python"},
-            # Boost.python in 1.72.0 broken with cxxstd=98
-            {"spec": "@1.72.0 +python cxxstd=98", "msg": "Boost.MPI@1.72.0 + Boost.Python is broken in C++98 mode"},
         ],
         requires=[
             {"spec": "+graph", "msg": "Boost.mpi requires Boost.graph"},
@@ -492,9 +466,6 @@ def load():
         # Added in 1.39.0
         "signals2",
         buildable="@1.87.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.Signals2 requires cxxstd >= 03"}
-        ],
         requires=[
             {
                 "spec": "+signals2",
@@ -532,8 +503,6 @@ def load():
         # Added in 1.47.0
         "geometry",
         conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
         ],
         requires=[
@@ -558,9 +527,6 @@ def load():
         "locale",
         default=False,
         buildable="@1.48.0:",
-        conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.81.0:", "msg": "Boost.locale requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+charconv", "when": "@1.85.0:", "msg": "Boost.locale requires Boost.charconv"},
             {"spec": "+icu", "msg": "Boost.Locale requires Unicode support"},
@@ -572,7 +538,6 @@ def load():
         # Added in 1.49.0
         "heap",
         conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
         ],
         description="Priority queue data structures"
@@ -581,10 +546,6 @@ def load():
         "context",
         when="@1.51.0:",
         buildable="@1.51.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.61.0:", "msg": "Boost.context requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when": "@1.61.0:", "msg": "Boost.context requires cxxstd >= 11"},
-        ],
         description="Cooperative multitasking on a single thread",
     )
     variants.add(
@@ -608,7 +569,6 @@ def load():
         "lockfree",
         when="@1.53.0:",
         conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "when": "@1.87.0:", "msg": "Boost.lockfree requires cxxstd >= 14"},
         ],
         requires=[
@@ -663,10 +623,6 @@ def load():
         "fiber",
         when="@1.62.0:",
         buildable="@1.62.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.fiber requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "msg": "Boost.fiber requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+context", "msg": "Boost.fiber requires Boost.context"},
             {"spec": "+filesystem", "msg": "Boost.fiber requires Boost.filesystem"},
@@ -686,10 +642,6 @@ def load():
         "process",
         when="@1.64.0:",
         buildable="@1.86.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.78.0:", "msg": "Boost.process requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when": "@1.78.0:", "msg": "Boost.process requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+asio", "msg": "Boost.process requires Boost.asio"},
             {"spec": "+filesystem", "msg": "Boost.process requires Boost.filesystem"},
@@ -745,8 +697,6 @@ def load():
         "yap",
         when="@1.68.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.yap requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "msg": "Boost.yap requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.yap requires cxxstd >= 14"},
         ],
         requires=[
@@ -758,9 +708,6 @@ def load():
         "parameter_python",
         default=False,
         when="@1.69.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.parameter_python requires cxxstd >= 03"},
-        ],
         requires=[
             {"spec": "+python", "msg": "Boost.parameter_python requires Boost.python"},
         ],
@@ -770,8 +717,6 @@ def load():
         "safe_numerics",
         when="@1.69.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.safe_numerics requires cxxstd >= 14"},
         ],
         description="Guaranteed Correct Integer Arithmetic"
@@ -780,8 +725,6 @@ def load():
         "histogram",
         when="@1.70.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.histogram requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "msg": "Boost.histogram requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.histogram requires cxxstd >= 14"},
         ],
         requires=[
@@ -795,8 +738,6 @@ def load():
         "outcome",
         when="@1.70.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "when": "@1.76.0:", "msg": "Boost.outcome requires cxxstd >= 14"},
         ],
         requires=[
@@ -810,9 +751,6 @@ def load():
     variants.add(
         "variant2",
         when="@1.71.0:",
-        conflicts=[
-            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.variant2 requires cxxstd >= 11"},
-        ],
         description="A never-valueless, strong-guarantee tagged union",
     )
     variants.add(
@@ -820,10 +758,6 @@ def load():
         default=False,
         when="@1.73.0:",
         buildable="@1.73.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "when": "@1.76.0:", "msg": "Boost.nowide requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.nowide requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+filesystem", "msg": "Boost.nowide requires Boost.filesystem"},
         ],
@@ -838,8 +772,6 @@ def load():
         "stl_interfaces",
         when="@1.74.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.stl_interfaces requires cxxstd >= 14"},
         ],
         description="Simplifies writing STL-compliant containers and ranges",
@@ -848,10 +780,6 @@ def load():
         "json",
         when="@1.75.0:",
         buildable="@1.75.0:",
-        conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.JSON requires cxxstd >= 11"},
-            {"spec": "cxxstd=03", "msg": "Boost.JSON requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+container", "msg": "Boost.json requires Boost.container"},
             {"spec": "+system", "msg": "Boost.json requires Boost.system"},
@@ -867,8 +795,6 @@ def load():
         "pfr",
         when="@1.75.0:",
         conflicts=[
-            {"spec": "cxxstd=98", "msg": "Boost.pfr requires cxxstd >= 14"},
-            {"spec": "cxxstd=03", "msg": "Boost.pfr requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.pfr requires cxxstd >= 14"},
         ],
         description="Basic reflection for user-defined types"
@@ -892,7 +818,6 @@ def load():
         "lambda2",
         when="@1.77.0:",
         conflicts=[
-            {"spec": "cxxstd=03", "msg": "Boost.lambda2 requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "msg": "Boost.lambda2 requires cxxstd >= 14"},
         ],
         description="Adds std::bind features to C++14 lambdas",
@@ -910,9 +835,6 @@ def load():
     variants.add(
         "mysql",
         when="@1.82.0:",
-        conflicts=[
-            {"spec": "cxxstd=03", "msg": "Boost.mysql requires cxxstd >= 11"},
-        ],
         requires=[
             {"spec": "+asio", "msg": "Boost.mysql requires Boost.asio"},
             {"spec": "+charconv", "when": "@1.85.0:", "msg": "Boost.mysql requires Boost.charconv"},
@@ -926,9 +848,6 @@ def load():
     variants.add(
         "compat",
         when="@1.83.0:",
-        conflicts=[
-            {"spec": "cxxstd=03", "msg": "Boost.compat requires cxxstd >= 11"},
-        ],
         description="C++11 implementations of standard components added in later C++ standards"
     )
     variants.add(
