@@ -101,7 +101,6 @@ class Boost(Package):
         "cobalt",
         "json",
         "mqtt5",
-        "openmethod",
     ]
 
     boost_variants = boostvariants.load()
@@ -109,7 +108,6 @@ class Boost(Package):
 
     # Add any extra requirements for specific libraries
     all_libs_opts = {
-        "openmethod": {"when": "@1.90:"},
         "mqtt5": {"when": "@1.88:"},
         "charconv": {"when": "@1.85:"},
         "cobalt": {"when": "@1.84:"},

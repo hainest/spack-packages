@@ -50,4 +50,8 @@ test_install ${parallel}
 cxx14_libs="+locale"
 test_install "${cxx14_libs}  cxxstd=14"
 
+# All C++17 non-parallel, non-windows, non-default libraries
+cxx17_libs="+openmethod"
+test_install "${cxx17_libs} cxxstd=17"
+
 exit $failed
