@@ -201,5 +201,6 @@ should_fail "@1.87.0 +mpi ~python"                                    # Boost.MP
 should_fail "@1.88.0 +heap cxxstd=11"                                 # heap requires cxxstd >= 14 after 1.88.0
 should_fail "@1.88.0 +lockfree cxxstd=11"                             # lockfree requires cxxstd >= 14 after 1.87.0
 should_fail "@1.89.0 +parser cxxstd=14"                               # parser requires cxxstd >= 17 since 1.89.0
+should_fail "@1.90.0 +openmethod cxxstd=14"                           # openmethod requires cxxstd >= 17
 
 exit $failed

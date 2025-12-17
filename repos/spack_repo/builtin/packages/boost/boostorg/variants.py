@@ -1019,5 +1019,14 @@ def load():
         when="@1.89.0:",
         description="Bloom filters"
     )
+    variants.add(
+        "openmethod",
+        default=False,
+        when="@1.90.0:",
+        conflicts=[
+            {"spec": "cxxstd=14", "when": "@1.90.0:", "msg": "Boost.openmethod requires cxxstd >= 17"},
+        ],
+        description="Open-methods for C++17 and above"
+    )
 
     return variants
