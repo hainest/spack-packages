@@ -190,9 +190,9 @@ def load():
         description="Disable use of multiple threads",
     )
     variants.add(
+        # Added in 1.40.0
         "taggedlayout",
         default=False,
-        when="@1.40.0:",
         conflicts=[
             {"spec": "+versionedlayout", "msg": "Layouts cannot be both tagged and versioned"}
         ],
@@ -226,14 +226,14 @@ def load():
     #  possible (and it would be difficult to choose sensible defaults).
     # ----------------------------------------------------------------------
     variants.add(
+        # Added in 1.16.1
         "timer",
-        when="@1.16.1:",
         buildable="@1.48.0:",
         description="Timers for measuring wallclock and CPU times",
     )
     variants.add(
+        # Added in 1.15.0
         "random",
-        when="@1.15.0:",
         buildable="@1.43.0:",
         requires=[
             {"spec": "+system", "msg": "Boost.random requires Boost.system"},
@@ -241,8 +241,8 @@ def load():
         description="A complete system for random number generation",
     )
     variants.add(
+        # Added in 1.18.0
         "graph",
-        when="@1.18.0:",
         buildable="@1.18.0:",
         conflicts=[
             {"spec": "cxxstd=11", "when": "@1.86.0:", "msg": "Boost.graph requires cxxstd >= 14"},
@@ -259,8 +259,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.18.0
         "regex",
-        when="@1.18.0:",
         buildable="@1.18.0:",
         conflicts=[
             # This was found from experimentation
@@ -274,10 +274,10 @@ def load():
         description="Perl and POSIX regular expressions",
     )
     variants.add(
+        # Added in 1.19.0
         "python",
         default=False,
         sticky=False,
-        when="@1.19.0:",
         buildable="@1.19.0:",
         conflicts=[
             # https://github.com/boostorg/python/issues/400
@@ -289,16 +289,16 @@ def load():
         description="C++ wrapper for interacting with Python",
     )
     variants.add(
+        # Added in 1.20.0
         "lexical_cast",
-        when="@1.20.0:",
         requires=[
             {"spec": "+container", "when": "@1.48.0:", "msg": "Boost.lexical_cast requires Boost.container"},
         ],
         description="General literal text conversions, such as an int represented a string, or vice-versa"
     )
     variants.add(
+        # Added in 1.21.0
         "test",
-        when="@1.21.0:",
         buildable="@1.21.0:",
         requires=[
             {"spec": "+exception", "msg": "Boost.test requires Boost.exception"},
@@ -308,8 +308,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.23.0
         "math",
-        when="@1.23.0:",
         buildable="@1.23.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.76.0:", "msg": "Boost.math requires cxxstd >= 11"},
@@ -324,8 +324,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.25.0
         "thread",
-        when="@1.25.0:",
         buildable="@1.25.0:",
         requires=[
             {"spec": "+atomic", "when": "@1.53.0:", "msg": "Boost.thread requires Boost.atomic"},
@@ -338,8 +338,8 @@ def load():
         description="Portable C++ multi-threading",
     )
     variants.add(
+        # Added in 1.29.0
         "date_time",
-        when="@1.29.0:",
         buildable="@1.29.0:",
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.date_time requires Boost.lexical_cast"}
@@ -347,8 +347,8 @@ def load():
         description="Calculate, format, and convert dates and times",
     )
     variants.add(
+        # Added in 1.30.0
         "filesystem",
-        when="@1.30.0:",
         buildable="@1.30.0:",
         requires=[
             {"spec": "+atomic", "when": "@1.53.0:", "msg": "Boost.filesystem requires Boost.atomic"},
@@ -359,8 +359,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.32.0
         "program_options",
-        when="@1.32.0:",
         buildable="@1.32.0:",
         requires=[
             {"spec": "+lexical_cast", "msg": "Boost.program_options requires Boost.lexical_cast"},
@@ -370,8 +370,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.32.0
         "serialization",
-        when="@1.32.0:",
         buildable="@1.32.0:",
         requires=[
             {"spec": "+variant2", "when": "@1.71.0:", "msg": "Boost.serialization requires Boost.variant2"},
@@ -379,8 +379,8 @@ def load():
         description="Serialization for persistence and marshalling",
     )
     variants.add(
+        # Added in 1.33.0
         "iostreams",
-        when="@1.33.0:",
         buildable="@1.33.0:",
         requires=[
             {"spec": "+random", "msg": "Boost.iostreams requires Boost.random"},
@@ -389,8 +389,8 @@ def load():
         description="Streams, stream buffers, and i/o filters",
     )
     variants.add(
+        # Added in 1.33.0
         "wave",
-        when="@1.33.0:",
         buildable="@1.33.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.79.0:", "msg": "Boost.wave requires cxxstd >= 11"},
@@ -403,8 +403,8 @@ def load():
         description="Highly configurable implementation of the mandatory C99/C++ preprocessor",
     )
     variants.add(
+        # Added in 1.35.0
         "asio",
-        when="@1.35.0:",
         requires=[
             {"spec": "+context", "when":"@1.51.0:", "msg": "Boost.asio requires Boost.context"},
             {"spec": "+date_time", "msg": "Boost.asio requires Boost.date_time"},
@@ -413,8 +413,8 @@ def load():
         description="Portable networking and other low-level I/O",
     )
     variants.add(
+        # # Added in 1.35.0
         "gil",
-        when="@1.35.0:",
         conflicts=[
             {"spec": "cxxstd=98", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
             {"spec": "cxxstd=03", "when": "@1.68.0:", "msg": "Boost.gil requires cxxstd >= 11"},
@@ -428,10 +428,10 @@ def load():
         description="Generic Image Library"
     )
     variants.add(
+        # Added in 1.35.0
         "mpi",
         default=False,
         sticky=False,
-        when="@1.35.0:",
         buildable="@1.35.0:",
         conflicts=[
             # 1.64 uses out-dated APIs (https://github.com/spack/spack/issues/3963)
@@ -450,8 +450,8 @@ def load():
         ),
     )
     variants.add(
+        # Added in 1.35.0
         "system",
-        when="@1.35.0:",
         buildable="@1.35.0:",
         conflicts=[
             # gcc on Darwin incorrectly detects 'mutex'
@@ -464,8 +464,8 @@ def load():
         description="Extensible error reporting",
     )
     variants.add(
+        # Added in 1.36.0
         "exception",
-        when="@1.36.0:",
         buildable="@1.47.0:",
         description=(
             "Transport arbitrary data in exceptions, and exceptions between threads"
@@ -489,8 +489,8 @@ def load():
         description="Managed signals & slots callback implementation",
     )
     variants.add(
+        # Added in 1.39.0
         "signals2",
-        when="@1.39.0:",
         buildable="@1.87.0:",
         conflicts=[
             {"spec": "cxxstd=98", "msg": "Boost.Signals2 requires cxxstd >= 03"}
@@ -505,9 +505,9 @@ def load():
         description="Thread-safe managed signals & slots callback implementation",
     )
     variants.add(
+        # Added in 1.40.0
         "graph_parallel",
         default=False,
-        when="@1.40.0:",
         buildable="@1.40.0:",
         requires=[
             {"spec": "+filesystem", "msg": "Boost.graph_parallel requires Boost.filesystem"},
@@ -520,8 +520,8 @@ def load():
         description="Scalable parallel version of Boost.Graph using MPI multiprocessing",
     )
     variants.add(
+        # Added in 1.47.0
         "chrono",
-        when="@1.47.0:",
         buildable="@1.47.0:",
         requires=[
             {"spec": "+system", "msg": "Boost.chrono requires Boost.system"},
@@ -529,8 +529,8 @@ def load():
         description="Extended version of C++11 time utilities",
     )
     variants.add(
+        # Added in 1.47.0
         "geometry",
-        when="@1.47.0:",
         conflicts=[
             {"spec": "cxxstd=98", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
             {"spec": "cxxstd=03", "when": "@1.75.0:", "msg": "Boost.geometry requires cxxstd >= 14"},
@@ -548,15 +548,15 @@ def load():
         description="The Boost.Geometry library provides geometric algorithms, primitives and spatial index"
     )
     variants.add(
+        # Added in 1.48.0
         "container",
-        when="@1.48.0:",
         buildable="@1.56.0:",  # Extended Allocators need to be compiled
         description="Standard library containers and extensions",
     )
     variants.add(
+        # Added in 1.48.0
         "locale",
         default=False,
-        when="@1.48.0:",
         buildable="@1.48.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.81.0:", "msg": "Boost.locale requires cxxstd >= 11"},
@@ -569,8 +569,8 @@ def load():
         description="Localization and Unicode facilities",
     )
     variants.add(
+        # Added in 1.49.0
         "heap",
-        when="@1.49.0:",
         conflicts=[
             {"spec": "cxxstd=03", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
             {"spec": "cxxstd=11", "when": "@1.88.0:", "msg": "Boost.heap requires cxxstd >= 14"},
