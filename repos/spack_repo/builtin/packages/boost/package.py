@@ -95,6 +95,13 @@ class Boost(Package):
 
         return find_libraries(libraries, root=self.prefix, shared=shared, recursive=True)
 
+    # Boost 1.80 does not build with the Intel oneapi compiler
+    # (https://github.com/spack/spack/pull/32879#issuecomment-1265933265)
+    conflicts("%oneapi", when="@1.80")
+
+    # Boost did not support the oneapi compilers prior to 1.76
+    conflicts("%oneapi@2023:", when="@:1.75")
+
     depends_on("c", type="build")
     depends_on("cxx", type="build")
 
@@ -134,13 +141,6 @@ class Boost(Package):
     conflicts("context-impl=fcontext", when="@:1.65.0")
     conflicts("context-impl=ucontext", when="@:1.65.0")
     conflicts("context-impl=winfib", when="@:1.65.0")
-
-    # Boost 1.80 does not build with the Intel oneapi compiler
-    # (https://github.com/spack/spack/pull/32879#issuecomment-1265933265)
-    conflicts("%oneapi", when="@1.80")
-
-    # Boost did not support the oneapi compilers prior to 1.76
-    conflicts("%oneapi@2023:", when="@:1.75")
 
     def patch(self):
         boostpatches.apply(self.spec)
