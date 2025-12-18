@@ -28,7 +28,7 @@ class Boost(Package):
     homepage = "https://www.boost.org"
     url = "https://archives.boost.org/release/1.90.0/source/boost_1_90_0.tar.bz2"
     git = "https://github.com/boostorg/boost.git"
-    list_url = "https://sourceforge.net/projects/boost/files/boost/"
+    list_url = "https://archives.boost.org/release/"
     list_depth = 1
     maintainers("hainest")
 
