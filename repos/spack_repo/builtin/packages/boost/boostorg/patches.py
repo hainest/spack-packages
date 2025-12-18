@@ -1,5 +1,21 @@
+import spack.llnl.util.filesystem as fs
 import spack.package as sp
 import spack.util.filesystem as fs
+
+
+def apply(spec):
+    # Disable SSSE3 and AVX2 when using the NVIDIA compiler
+    if spec.satisfies("%nvhpc"):
+        fs.filter_file("dump_avx2", "", "libs/log/build/Jamfile.v2")
+        fs.filter_file("<define>BOOST_LOG_USE_AVX2", "", "libs/log/build/Jamfile.v2")
+        fs.filter_file("dump_ssse3", "", "libs/log/build/Jamfile.v2")
+        fs.filter_file("<define>BOOST_LOG_USE_SSSE3", "", "libs/log/build/Jamfile.v2")
+        fs.filter_file("-fast", "-O1", "tools/build/src/tools/pgi.jam")
+        fs.filter_file("-fast", "-O1", "tools/build/src/engine/build.sh")
+
+    # Fixes https://github.com/spack/spack/issues/29352
+    if spec.satisfies("@1.78 %intel") or spec.satisfies("@1.78 %oneapi"):
+        fs.filter_file("-static", "", "tools/build/src/engine/build.sh")
 
 
 def load():
