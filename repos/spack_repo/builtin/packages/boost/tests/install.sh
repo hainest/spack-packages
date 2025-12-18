@@ -59,4 +59,14 @@ test_install "${cxx17_libs} cxxstd=17"
 cxx20_libs="+cobalt"
 test_install "${cxx20_libs} cxxstd=20"
 
+
+# Big build with all non-default options
+all_libs="${python_libs}+parameter_python"
+all_libs+="+nowide"
+all_libs+="${parallel}"
+all_libs+="${cxx14_libs}"
+all_libs+="${cxx17_libs}"
+all_libs+="${cxx20_libs}"
+test_install "${all_libs} cxxstd=20"
+
 exit $failed
