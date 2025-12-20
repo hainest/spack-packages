@@ -173,8 +173,8 @@ class Boost(Package):
     def determine_toolset(self, spec):
         toolsets = {
             "%gcc": "gcc",
-            "%intel": "intel",
-            "%oneapi": "intel",
+            "%intel": "intel-linux",
+            "%oneapi": "intel-linux",
             "%clang": "clang",
             "%apple-clang": "clang",
             "%arm": "clang",
@@ -183,10 +183,6 @@ class Boost(Package):
             "%nvhpc": "pgi",
             "%fj": "clang",
         }
-
-        if spec.satisfies("@1.47:"):
-            toolsets["%intel"] += "-linux"
-            toolsets["%oneapi"] += "-linux"
 
         for cc, toolset in toolsets.items():
             if self.spec.satisfies(cc):
@@ -440,10 +436,9 @@ class Boost(Package):
             os.path.join(self.stage.source_path, "project-config.jam"),
         )
 
-        # b2 used to be called bjam, before 1.47 (sigh)
-        b2name = "./b2" if spec.satisfies("@1.47:") else "./bjam"
+        b2name = "./b2"
         if self.spec.satisfies("platform=windows"):
-            b2name = "b2.exe" if spec.satisfies("@1.47:") else "bjam.exe"
+            b2name = "b2.exe"
 
         b2 = Executable(b2name)
         jobs = make_jobs
