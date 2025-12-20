@@ -11,6 +11,7 @@ from spack_repo.builtin.build_systems.generic import Package
 from spack.package import *  # noqa: E402
 
 sys.path.append(os.path.dirname(__file__))
+import boostorg.bootstrap as bootstrap  # noqa: E402
 import boostorg.patches as boostpatches  # noqa: E402
 import boostorg.toolset  # noqa: E402
 import boostorg.variants as boostvariants  # noqa: E402
@@ -168,27 +169,8 @@ class Boost(Package):
 
     def determine_bootstrap_options(self, spec, options):
         boost_toolset_id = boostorg.toolset.config(spec)
-
-        # Arm compiler bootstraps with 'gcc' (but builds as 'clang')
-        if spec.satisfies("%arm") or spec.satisfies("%fj"):
-            options.append("--with-toolset=gcc")
-        else:
-            options.append("--with-toolset=%s" % boost_toolset_id)
-
         with_libs = self.boost_variants.libraries_to_build(self.spec)
-        if with_libs:
-            options.append("--with-libraries=%s" % ",".join(sorted(with_libs)))
-        else:
-            options.append("--with-libraries=headers")
-
-        if spec.satisfies("+python"):
-            options.append("--with-python=%s" % spec["python"].command.path)
-
-        if spec.satisfies("+icu"):
-            options.append("--with-icu")
-        else:
-            options.append("--without-icu")
-
+        options.extend(boostorg.bootstrap.options(spec, boost_toolset_id, with_libs))
         self.write_jam_file(spec, boost_toolset_id)
 
     def write_jam_file(self, spec, boost_toolset_id=None):
