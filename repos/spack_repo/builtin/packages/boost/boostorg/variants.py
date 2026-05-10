@@ -1028,5 +1028,11 @@ def load():
         when="@1.89.0:",
         description="Bloom filters"
     )
+    variants.add(
+      "decimal",
+      default=False,
+      when="@1.91.0:",
+      description="An implementation of IEEE754 Decimal Floating Point Numbers",
+    )
 
     return variants

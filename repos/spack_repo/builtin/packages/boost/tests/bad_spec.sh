@@ -210,5 +210,6 @@ should_fail "@1.88.0 +heap cxxstd=11"                                 # heap req
 should_fail "@1.88.0 +lockfree cxxstd=11"                             # lockfree requires cxxstd >= 14 after 1.87.0
 should_fail "@1.89.0 +parser cxxstd=14"                               # parser requires cxxstd >= 17 since 1.89.0
 should_fail "@1.88.0 +bloom"                                          # bloom was added in 1.89.0
+should_fail "@1.90.0 +decimal"                                        # decimal was added in 1.91.0
 
 exit $failed

@@ -35,6 +35,7 @@ class Boost(Package):
     license("BSL-1.0")
 
     version("develop", branch="develop", submodules=True)
+    version("1.91.0", sha256="de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5")
     version("1.90.0", sha256="49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305")
     version("1.89.0", sha256="85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a")
     version("1.88.0", sha256="46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b")
@@ -386,7 +387,7 @@ class Boost(Package):
                 cxxflags.append("-std=c++11")
 
         # https://github.com/boostorg/stacktrace/pull/150.
-        if spec.satisfies("@1.85: +stacktrace+clanglibcpp"):
+        if spec.satisfies("@1.85:1.90.0 +stacktrace+clanglibcpp"):
             cxxflags.append("-DBOOST_STACKTRACE_LIBCXX_RUNTIME_MAY_CAUSE_MEMORY_LEAK")
 
         if cxxflags:
